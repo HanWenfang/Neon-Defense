@@ -13,45 +13,25 @@ public class ScreenTDGame extends GameScreen
 	public ScreenTDGame(NeonDefense game)
 	{
 		super(game);
-		field = new Field();
+		this.field = new Field();
 	}
 	
 	@Override
 	public void update(float delta)
 	{//Update method. Update game logic.
-		
+		this.field.update(delta);
 	}
 	
 	@Override
 	public void render(float delta)
 	{//Draw method. Call update first.
+		//Clear screen and update.
 		super.render(delta);
 		this.update(delta);
 		
 		//Begin drawing
 		this.batch.begin();
-		
+			this.field.render(delta, batch);
 		this.batch.end();
 	}
 }
-
-/*
-
-	SpriteBatch batch;
-	Texture img;
-	
-	@Override
-	public void create () 
-	{
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-	}
-
-	@Override
-	public void render () 
-	{
-		
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
-	}*/

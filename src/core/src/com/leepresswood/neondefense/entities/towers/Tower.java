@@ -1,6 +1,6 @@
 //Main tower class. Extend from this.
 //Some tower attributes: radius of attack, strength, attack speed, cost, level.
-package com.leepresswood.neondefense.entities;
+package com.leepresswood.neondefense.entities.towers;
 
 public class Tower
 {
