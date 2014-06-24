@@ -5,7 +5,6 @@ import com.leepresswood.neondefense.screens.ScreenTDGame;
 
 public class NeonDefense extends Game
 {
-
 	@Override
 	public void create()
 	{
