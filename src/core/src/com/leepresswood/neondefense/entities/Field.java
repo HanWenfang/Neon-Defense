@@ -24,4 +24,10 @@ public class Field implements GameEntityInterface
 	{
 		
 	}
+
+	@Override
+	public void dispose()
+	{
+		
+	}
 }
