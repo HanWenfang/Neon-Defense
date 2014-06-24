@@ -5,12 +5,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Tile implements GameEntityInterface
 {//The tiles for the game board. Towers placed on these, and enemies walk on these.
-	private boolean walkable;
 	private Texture texture;
+	private float tile_size;
+	private boolean walkable;	
 
-	public Tile(Texture texture, float tile_size)
+	public Tile(Texture texture, float tile_size, boolean walkable)
 	{
-		
+		this.texture = texture;
+		this.tile_size = tile_size;
+		this.walkable = walkable;		
 	}
 
 	@Override

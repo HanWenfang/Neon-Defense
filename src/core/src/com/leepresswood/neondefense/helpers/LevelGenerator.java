@@ -64,7 +64,7 @@ public class LevelGenerator
 		int x = 0, y = 0;
 		for(Integer tile_type : tile_numbers)
 		{
-			tiles[y][x++] = new Tile(tnd.getTileTexture(tile_type), this.tile_size);
+			tiles[y][x++] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type));
 			if(x == tiles_across)
 			{
 				x = 0;
@@ -93,18 +93,28 @@ public class LevelGenerator
 		private static final int NUMBER_OF_TILES = 2;
 		private Texture[] textures;
 		private static final String file_opener = "tiles/";
+		private boolean[] walkables;		
 		
 		public TileNumberDecoder()
 		{//Preload all the textures
-			textures = new Texture[NUMBER_OF_TILES];
-			
+			textures = new Texture[NUMBER_OF_TILES];			
 			textures[0] = new Texture(file_opener + "normal.png");
 			textures[1] = new Texture(file_opener + "path.png");
+			
+			//Also preload whether the tile is walkable or not.
+			walkables = new boolean[NUMBER_OF_TILES];
+			walkables[0] = false;
+			walkables[1] = false;
 		}
 		
 		public Texture getTileTexture(int tile_type)
 		{
 			return this.textures[tile_type];
+		}
+		
+		public boolean isWalkable(int tile_type)
+		{
+			return this.walkables[tile_type];
 		}
 	}
 }
