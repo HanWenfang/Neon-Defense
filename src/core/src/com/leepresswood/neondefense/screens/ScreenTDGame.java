@@ -1,12 +1,37 @@
+//All game drawing done here. Game logic should be done in the Field class.
 package com.leepresswood.neondefense.screens;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.NeonDefense;
+import com.leepresswood.neondefense.entities.Field;
 
 public class ScreenTDGame extends GameScreen
 {
+	private SpriteBatch batch;
+	private Field field;
+	
 	public ScreenTDGame(NeonDefense game)
 	{
-		super(game);		
+		super(game);
+		field = new Field();
+	}
+	
+	@Override
+	public void update(float delta)
+	{//Update method. Update game logic.
+		
+	}
+	
+	@Override
+	public void render(float delta)
+	{//Draw method. Call update first.
+		super.render(delta);
+		this.update(delta);
+		
+		//Begin drawing
+		this.batch.begin();
+		
+		this.batch.end();
 	}
 }
 
@@ -25,8 +50,7 @@ public class ScreenTDGame extends GameScreen
 	@Override
 	public void render () 
 	{
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
 		batch.begin();
 		batch.draw(img, 0, 0);
 		batch.end();
