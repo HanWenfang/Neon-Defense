@@ -1,6 +1,7 @@
 package com.leepresswood.neondefense.entities;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Tile implements GameEntityInterface
@@ -8,12 +9,16 @@ public class Tile implements GameEntityInterface
 	private Texture texture;
 	private float tile_size;
 	private boolean walkable;	
-
+	
+	private Sprite sprite;
+	
 	public Tile(Texture texture, float tile_size, boolean walkable)
 	{
 		this.texture = texture;
 		this.tile_size = tile_size;
-		this.walkable = walkable;		
+		this.walkable = walkable;
+		
+		this.sprite = new Sprite(this.texture);
 	}
 
 	@Override
@@ -25,7 +30,7 @@ public class Tile implements GameEntityInterface
 	@Override
 	public void render(float delta, SpriteBatch batch)
 	{
-		
+		this.sprite.draw(batch);
 	}
 
 	public boolean isWalkable()

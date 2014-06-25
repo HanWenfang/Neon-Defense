@@ -23,11 +23,11 @@ public class LevelGenerator
 	
 	public LevelGenerator(int level, float field_width)
 	{
-		//Fill the tiles array
-		this.readFromFile(level);
-		
 		//Determine the tile size
 		this.tile_size = field_width / tiles_across;
+		
+		//Fill the tiles array
+		this.readFromFile(level);		
 	}
 
 	private void readFromFile(Integer level)

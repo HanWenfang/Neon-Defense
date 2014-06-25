@@ -2,7 +2,10 @@
 //Some tower attributes: radius of attack, strength, attack speed, cost, level.
 package com.leepresswood.neondefense.entities.towers;
 
-public class Tower
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.leepresswood.neondefense.entities.GameEntityInterface;
+
+public class Tower implements GameEntityInterface
 {
 	private float radius;
 	private float strength;
@@ -49,5 +52,23 @@ public class Tower
 	public void setLevel(float level)
 	{
 		this.level = level;
+	}
+	
+	@Override
+	public void update(float delta)
+	{
+		
+	}
+	
+	@Override
+	public void render(float delta, SpriteBatch batch)
+	{
+		
+	}
+	
+	@Override
+	public void dispose()
+	{
+		
 	}
 }

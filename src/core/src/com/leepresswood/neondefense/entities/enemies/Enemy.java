@@ -3,7 +3,10 @@
 //Possible attributes: Invisibility, level, type (such as creep, boss, healer)
 package com.leepresswood.neondefense.entities.enemies;
 
-public class Enemy
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.leepresswood.neondefense.entities.GameEntityInterface;
+
+public class Enemy implements GameEntityInterface
 {
 	private float speed;
 	private float damage;
@@ -41,5 +44,23 @@ public class Enemy
 	public void setBounty(float bounty)
 	{
 		this.bounty = bounty;
+	}
+	
+	@Override
+	public void update(float delta)
+	{
+		
+	}
+	
+	@Override
+	public void render(float delta, SpriteBatch batch)
+	{
+		
+	}
+	
+	@Override
+	public void dispose()
+	{
+		
 	}
 }
