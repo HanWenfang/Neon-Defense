@@ -35,6 +35,18 @@ public class Field implements GameEntityInterface
 	@Override
 	public void update(float delta)
 	{//Every tower, enemy, and projectile should be updated here.
+		//Tiles drawn first
+		for(int y = 0; y < this.tiles.length; y++)
+			for(int x = 0; x < this.tiles[y].length; x++)
+				this.tiles[y][x].update(delta);
+		
+		//Towers and enemies next
+		for(Tower t : this.towers)
+			t.update(delta);
+		for(Enemy e : this.enemies)
+			e.update(delta);
+		
+		//Projectiles last
 		
 	}
 
@@ -59,6 +71,13 @@ public class Field implements GameEntityInterface
 	@Override
 	public void dispose()
 	{//Every tower, enemy, and projectile should be disposed here.
-		
+		for(int y = 0; y < this.tiles.length; y++)
+			for(int x = 0; x < this.tiles[y].length; x++)
+				this.tiles[y][x].dispose();
+		for(Tower t : this.towers)
+			t.dispose();		
+		for(Enemy e : this.enemies)
+			e.dispose();
+		/*Projectiles here*/		
 	}
 }
