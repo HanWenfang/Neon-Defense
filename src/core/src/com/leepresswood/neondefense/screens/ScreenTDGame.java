@@ -13,7 +13,7 @@ public class ScreenTDGame extends GameScreen
 	public ScreenTDGame(NeonDefense game)
 	{
 		super(game);
-		this.field = new Field();
+		this.field = new Field(1);	//The passed in number is the level number.
 	}
 	
 	@Override

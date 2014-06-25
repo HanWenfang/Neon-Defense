@@ -33,14 +33,15 @@ public class Tile implements GameEntityInterface
 		return walkable;
 	}
 
-	public void setWalkable(boolean walkable)
+	public float getTile_size()
 	{
-		this.walkable = walkable;
+		return tile_size;
 	}
 
 	@Override
 	public void dispose()
 	{
-		this.texture.dispose();
+		if(this.texture != null)
+			this.texture.dispose();
 	}	
 }

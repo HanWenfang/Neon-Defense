@@ -10,4 +10,22 @@ public class NeonDefense extends Game
 	{
 		this.setScreen(new ScreenTDGame(this));
 	}	
+	
+	@Override
+	public void render()
+	{
+		super.render();	
+	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+	}
+	
+	@Override
+	public void resume()
+	{
+		super.resume();	
+	}
 }
