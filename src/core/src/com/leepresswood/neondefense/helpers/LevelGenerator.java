@@ -7,6 +7,7 @@ import java.util.Scanner;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.leepresswood.neondefense.NeonDefense;
 import com.leepresswood.neondefense.entities.Tile;
 
 public class LevelGenerator
@@ -32,7 +33,7 @@ public class LevelGenerator
 
 	private void readFromFile(Integer level)
 	{//Open level file, fill array of tiles and tiles across and down, and close level file
-		FileHandle file = Gdx.files.internal(level.toString());
+		FileHandle file = Gdx.files.internal(level.toString() + NeonDefense.FILE_EXTENSION_LEVEL);
 		InputStream level_string = file.read();
 		Scanner scanner = new Scanner(level_string);
 		

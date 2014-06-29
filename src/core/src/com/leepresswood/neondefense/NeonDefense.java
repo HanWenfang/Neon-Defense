@@ -5,6 +5,9 @@ import com.leepresswood.neondefense.screens.ScreenTDGame;
 
 public class NeonDefense extends Game
 {
+	public static final String FILE_EXTENSION_TOWER = ".twr";
+	public static final String FILE_EXTENSION_LEVEL = ".lvl";
+	
 	@Override
 	public void create()
 	{
