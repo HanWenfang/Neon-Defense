@@ -33,7 +33,7 @@ public class LevelGenerator
 
 	private void readFromFile(Integer level)
 	{//Open level file, fill array of tiles and tiles across and down, and close level file
-		FileHandle file = Gdx.files.internal(level.toString() + NeonDefense.FILE_EXTENSION_LEVEL);
+		FileHandle file = Gdx.files.internal(NeonDefense.FILE_PATH_START_LEVEL + level.toString() + NeonDefense.FILE_EXTENSION_LEVEL);
 		InputStream level_string = file.read();
 		Scanner scanner = new Scanner(level_string);
 		
@@ -91,21 +91,21 @@ public class LevelGenerator
 	
 	private class TileNumberDecoder
 	{
-		private static final int NUMBER_OF_TILES = 2;
 		private Texture[] textures;
-		private static final String file_opener = "tiles/";
+		private static final String file_opener = NeonDefense.FILE_PATH_START_TILE;
 		private boolean[] walkables;		
 		
 		public TileNumberDecoder()
-		{//Preload all the textures
-			textures = new Texture[NUMBER_OF_TILES];			
+		{
+			//Preload all the textures
+			textures = new Texture[NeonDefense.NUMBER_OF_TILES];			
 			textures[0] = new Texture(file_opener + "normal.png");
-			textures[1] = new Texture(file_opener + "path.png");
+			//textures[1] = new Texture(file_opener + "path.png");
 			
 			//Also preload whether the tile is walkable or not.
-			walkables = new boolean[NUMBER_OF_TILES];
+			walkables = new boolean[NeonDefense.NUMBER_OF_TILES];
 			walkables[0] = false;
-			walkables[1] = false;
+			walkables[1] = true;
 		}
 		
 		public Texture getTileTexture(int tile_type)

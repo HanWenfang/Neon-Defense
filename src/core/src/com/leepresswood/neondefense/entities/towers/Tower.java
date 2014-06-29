@@ -3,15 +3,14 @@
 package com.leepresswood.neondefense.entities.towers;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.leepresswood.neondefense.entities.GameEntityInterface;
 
-public class Tower implements GameEntityInterface
+public class Tower implements TowerInterface
 {
-	private float radius;
-	private float strength;
-	private float attack_speed;
-	private float cost;
-	private float level;
+	private float radius;			//In terms of blocks.
+	private float strength;			//Damage removed from enemy
+	private float attack_speed;	//Attacks per second
+	private float cost;				//Gold cost
+	private float level;				//Current upgrad level. Should always start at one
 	
 	public float getRadius()
 	{
@@ -68,6 +67,11 @@ public class Tower implements GameEntityInterface
 	
 	@Override
 	public void dispose()
+	{
+		
+	}
+	@Override
+	public void levelUp()
 	{
 		
 	}
