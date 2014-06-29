@@ -65,7 +65,7 @@ public class LevelGenerator
 		int x = 0, y = 0;
 		for(Integer tile_type : tile_numbers)
 		{
-			tiles[y][x++] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type));
+			tiles[y][x++] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), x, y);
 			if(x == tiles_across)
 			{
 				x = 0;
