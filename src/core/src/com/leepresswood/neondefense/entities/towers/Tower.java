@@ -6,11 +6,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Tower implements TowerInterface
 {
-	private float radius;			//In terms of blocks.
-	private float strength;			//Damage removed from enemy
-	private float attack_speed;	//Attacks per second
-	private float cost;				//Gold cost
-	private float level;				//Current upgrad level. Should always start at one
+	protected float radius;				//In terms of blocks.
+	protected float strength;			//Damage removed from enemy
+	protected float attack_speed;		//Attacks per second
+	protected float cost;				//Gold cost
+	protected float level = 1;			//Current upgrade level. Should always start at one
 	
 	public float getRadius()
 	{
