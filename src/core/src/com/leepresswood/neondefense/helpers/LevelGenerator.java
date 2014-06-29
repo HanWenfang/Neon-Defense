@@ -3,6 +3,7 @@ package com.leepresswood.neondefense.helpers;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -59,13 +60,23 @@ public class LevelGenerator
 	private void setTiles(ArrayList<Integer> tile_numbers)
 	{
 		tiles = new Tile[this.tiles_down][this.tiles_across];
+		Iterator<Integer> iterator = tile_numbers.iterator();
 		TileNumberDecoder tnd = new TileNumberDecoder();
 		
 		//Count through all the tile_numbers
+		for(int y = 0; y < this.tiles_down; y++)
+		{
+			tiles[y] = new Tile[this.tiles_across];
+			for(int x = 0; x < this.tiles_across; x++)
+			{
+				Integer tile_type = iterator.next();
+				tiles[y][x++] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), x, y);	
+			}
+
+		}
 		int x = 0, y = 0;
 		for(Integer tile_type : tile_numbers)
 		{
-			tiles[y][x++] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), x, y);
 			if(x == tiles_across)
 			{
 				x = 0;

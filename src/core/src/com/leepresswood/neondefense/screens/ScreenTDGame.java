@@ -14,6 +14,7 @@ public class ScreenTDGame extends GameScreen
 	{
 		super(game);
 		this.field = new Field(1);	//The passed in number is the level number.
+		this.batch = new SpriteBatch();
 	}
 	
 	@Override
