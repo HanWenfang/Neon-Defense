@@ -13,7 +13,7 @@ public class Tile implements GameEntityInterface
 	
 	private Sprite sprite;
 	
-	public Tile(Texture texture, float tile_size, boolean walkable, int x, int y)
+	public Tile(Texture texture, float tile_size, boolean walkable, float pos_x, float pos_y)
 	{
 		this.texture = texture;
 		this.tile_size = tile_size;
@@ -21,8 +21,8 @@ public class Tile implements GameEntityInterface
 		
 		//Set the sprite
 		this.sprite = new Sprite(this.texture);
-		float position_x = Gdx.graphics.getWidth() - x * tile_size;
-		float position_y = Gdx.graphics.getHeight() - y * tile_size;
+		float position_x = Gdx.graphics.getWidth() - pos_x * tile_size;
+		float position_y = Gdx.graphics.getHeight() - pos_y * tile_size;
 
 		this.sprite.setPosition(position_x, position_y);
 		this.sprite.setSize(tile_size, tile_size);

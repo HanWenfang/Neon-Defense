@@ -49,8 +49,15 @@ public class LevelGenerator
 			tiles[y] = new Tile[this.tiles_across];
 			for(int x = 0; x < this.tiles_across; x++)
 			{
+				//Get the tile image
 				int tile_type = scanner.nextInt();
-				tiles[y][x] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), x, y);	
+				
+				//Get the tile location
+				float pos_x;
+				float pos_y;
+				
+				//Set tile				
+				tiles[y][x] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), pos_x, pos_y);	
 			}
 		}
 		scanner.close();
@@ -59,24 +66,6 @@ public class LevelGenerator
 	public Tile[][] getTiles()
 	{
 		return tiles;
-	}
-
-	private void setTiles(ArrayList<Integer> tile_numbers)
-	{
-		tiles = new Tile[this.tiles_down][this.tiles_across];
-		Iterator<Integer> iterator = tile_numbers.iterator();
-		TileNumberDecoder tnd = new TileNumberDecoder();
-		
-		//Count through all the tile_numbers
-		for(int y = 0; y < this.tiles_down; y++)
-		{
-			tiles[y] = new Tile[this.tiles_across];
-			for(int x = 0; x < this.tiles_across; x++)
-			{
-				Integer tile_type = iterator.next();
-				tiles[y][x] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), x, y);	
-			}
-		}
 	}
 
 	public int getTiles_across()
