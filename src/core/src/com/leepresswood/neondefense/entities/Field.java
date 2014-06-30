@@ -11,7 +11,6 @@ import com.leepresswood.neondefense.helpers.LevelGenerator;
 
 public class Field implements GameEntityInterface
 {
-	private LevelGenerator generator;
 	private float field_width;
 	private Tile[][] tiles;
 	
@@ -28,8 +27,7 @@ public class Field implements GameEntityInterface
 		 * In either case, this will create a square field.
 		 */
 		this.field_width = Gdx.graphics.getWidth() > 0.6f * Gdx.graphics.getHeight() ? Gdx.graphics.getWidth() : 0.6f * Gdx.graphics.getHeight();
-		this.generator = new LevelGenerator(level, this.field_width);
-		this.tiles = this.generator.getTiles();
+		this.tiles = new LevelGenerator(level, this.field_width).getTiles();
 		
 		//Initialize the variables.
 		this.towers = new ArrayList<Tower>();
@@ -50,7 +48,10 @@ public class Field implements GameEntityInterface
 		for(Enemy e : this.enemies)
 			e.update(delta);
 		
-		//Projectiles last
+		//Projectiles
+		
+		
+		//GUI
 		
 	}
 
@@ -60,7 +61,7 @@ public class Field implements GameEntityInterface
 		//Tiles drawn first
 		for(int y = 0; y < this.tiles.length; y++)
 			for(int x = 0; x < this.tiles[y].length; x++)
-				System.out.println(this.tiles.length);//this.tiles[y][x].render(delta, batch);
+				this.tiles[y][x].render(delta, batch);
 		
 		//Towers and enemies next
 		for(Tower t : this.towers)

@@ -24,15 +24,11 @@ public class LevelGenerator
 	private float tile_size;
 	
 	public LevelGenerator(int level, float field_width)
-	{
-		//Determine the tile size
-		this.tile_size = field_width / tiles_across;
-		
-		//Fill the tiles array
-		this.readFromFile(level);		
+	{//Fill the tiles array
+		this.readFromFile(level, field_width);		
 	}
 
-	private void readFromFile(Integer level)
+	private void readFromFile(Integer level, float field_width)
 	{//Open level file, fill array of tiles and tiles across and down, and close level file
 		FileHandle file = Gdx.files.internal(NeonDefense.FILE_PATH_START_LEVEL + level.toString() + NeonDefense.FILE_EXTENSION_LEVEL);
 		InputStream level_string = file.read();
@@ -42,13 +38,21 @@ public class LevelGenerator
 		this.tiles_across = scanner.nextInt();
 		this.tiles_down = scanner.nextInt();
 		
-		//Every other number is a tile.
-		ArrayList<Integer> tile_numbers = new ArrayList<Integer>();
-		while(scanner.hasNext())
-			tile_numbers.add(scanner.nextInt());
+		//Determine the tile size
+		this.tile_size = field_width / tiles_across;
 		
-		//Set tiles and end
-		this.setTiles(tile_numbers);
+		//Every other number is a tile. Make the tiles
+		tiles = new Tile[this.tiles_down][this.tiles_across];
+		TileNumberDecoder tnd = new TileNumberDecoder();
+		for(int y = 0; y < this.tiles_down; y++)
+		{
+			tiles[y] = new Tile[this.tiles_across];
+			for(int x = 0; x < this.tiles_across; x++)
+			{
+				int tile_type = scanner.nextInt();
+				tiles[y][x] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), x, y);	
+			}
+		}
 		scanner.close();
 	}
 
@@ -70,17 +74,7 @@ public class LevelGenerator
 			for(int x = 0; x < this.tiles_across; x++)
 			{
 				Integer tile_type = iterator.next();
-				tiles[y][x++] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), x, y);	
-			}
-
-		}
-		int x = 0, y = 0;
-		for(Integer tile_type : tile_numbers)
-		{
-			if(x == tiles_across)
-			{
-				x = 0;
-				y++;
+				tiles[y][x] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), x, y);	
 			}
 		}
 	}
