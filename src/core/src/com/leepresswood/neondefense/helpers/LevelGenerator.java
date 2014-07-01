@@ -53,8 +53,8 @@ public class LevelGenerator
 				int tile_type = scanner.nextInt();
 				
 				//Get the tile location
-				float pos_x;
-				float pos_y;
+				float pos_x = Gdx.graphics.getWidth() - x * tile_size;
+				float pos_y = Gdx.graphics.getHeight() - y * tile_size;
 				
 				//Set tile				
 				tiles[y][x] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), pos_x, pos_y);	

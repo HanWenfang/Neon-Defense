@@ -1,6 +1,5 @@
 package com.leepresswood.neondefense.entities;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,10 +20,7 @@ public class Tile implements GameEntityInterface
 		
 		//Set the sprite
 		this.sprite = new Sprite(this.texture);
-		float position_x = Gdx.graphics.getWidth() - pos_x * tile_size;
-		float position_y = Gdx.graphics.getHeight() - pos_y * tile_size;
-
-		this.sprite.setPosition(position_x, position_y);
+		this.sprite.setPosition(pos_x, pos_y);
 		this.sprite.setSize(tile_size, tile_size);
 	}
 
