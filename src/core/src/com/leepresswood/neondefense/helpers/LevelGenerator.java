@@ -60,6 +60,11 @@ public class LevelGenerator
 		}
 		scanner.close();
 	}
+	
+	public float getHeight()
+	{
+		return this.tile_size * this.tiles_down;
+	}
 
 	public Tile[][] getTiles()
 	{
