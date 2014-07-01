@@ -1,5 +1,6 @@
 <towers>
-	<tower id="1" name="Blaster">
+	<tower id="1">
+	    <name value="Blaster"/>
 	    <radius value="2"/>
 	    <strength value="10"/>
 	    <attack_speed value="1"/>
