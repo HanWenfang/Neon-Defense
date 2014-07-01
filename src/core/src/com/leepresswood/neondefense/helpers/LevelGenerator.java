@@ -2,8 +2,6 @@
 package com.leepresswood.neondefense.helpers;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -23,9 +21,9 @@ public class LevelGenerator
 	//Using the above, we can then determine the tile size
 	private float tile_size;
 	
-	public LevelGenerator(int level, float field_width)
+	public LevelGenerator(int level)
 	{//Fill the tiles array
-		this.readFromFile(level, field_width);		
+		this.readFromFile(level, Gdx.graphics.getWidth());		
 	}
 
 	private void readFromFile(Integer level, float field_width)

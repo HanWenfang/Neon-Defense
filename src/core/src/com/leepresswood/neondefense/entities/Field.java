@@ -3,7 +3,6 @@
 package com.leepresswood.neondefense.entities;
 
 import java.util.ArrayList;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.entities.towers.Tower;
@@ -11,7 +10,6 @@ import com.leepresswood.neondefense.helpers.LevelGenerator;
 
 public class Field implements GameEntityInterface
 {
-	private float field_width;
 	private Tile[][] tiles;
 	
 	private ArrayList<Tower> towers;
@@ -19,15 +17,19 @@ public class Field implements GameEntityInterface
 	
 	public Field(int level)
 	{//Collect the level and generate it.
-		/* For the width of the field, the screen size should normally be good enough
-		 * The last 40% of the height of the screen should be left for the control box.
-		 * Therefore, if the screen width is greater than 60% of the height of the screen,
-		 * just use that 60% height as the width.
-		 * 
-		 * In either case, this will create a square field.
+		/* The width of the field should be the width of the screen.
+		 * Divide the width evenly by the number of blocks across to 
+		 * get the block size.
+		 * The height of the field can then be determined from the 
+		 * previously found width. Because all tiles are square,
+		 * it is a simple matter of finding one side to find the total 
+		 * height and width.
+		 * Because we want a user interface at the bottom of the screen
+		 * to display a shop and any menu bars, it is possible the
+		 * field height will be larger than the screen. Thus, we will need
+		 * a vertical scroll option.
 		 */
-		this.field_width = Gdx.graphics.getWidth() > 0.6f * Gdx.graphics.getHeight() ? Gdx.graphics.getWidth() : 0.6f * Gdx.graphics.getHeight();
-		this.tiles = new LevelGenerator(level, this.field_width).getTiles();
+		this.tiles = new LevelGenerator(level).getTiles();
 		
 		//Initialize the variables.
 		this.towers = new ArrayList<Tower>();
