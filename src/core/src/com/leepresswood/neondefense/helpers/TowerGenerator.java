@@ -4,16 +4,14 @@
  */
 package com.leepresswood.neondefense.helpers;
 
-import java.security.KeyPair;
 import java.util.HashMap;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.leepresswood.neondefense.NeonDefense;
+import com.leepresswood.neondefense.entities.towers.Blaster;
 import com.leepresswood.neondefense.entities.towers.Tower;
-import com.sun.java.util.jar.pack.Package.Class;
 
 public class TowerGenerator
 {
@@ -43,16 +41,17 @@ public class TowerGenerator
 				id = 0;
 				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(id));
 				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(id));
-				return new Tower();
+				return new Blaster(attribute_pairs, upgrade_pairs);
 			case BOLT:
 				break;
 			case BOMB:
 				break;
 			case BUFF:
 				break;
-			default:
-				break;
 		}
+		
+		//Something went wrong if you are here.
+		return null;
 	}
 
 	private HashMap<String, String> get(Element e)
