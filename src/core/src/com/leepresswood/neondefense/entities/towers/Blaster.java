@@ -9,7 +9,6 @@ public class Blaster extends Tower
 	public Blaster(HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
 		super(properties, upgrades);
-		
 	}
 
 	@Override

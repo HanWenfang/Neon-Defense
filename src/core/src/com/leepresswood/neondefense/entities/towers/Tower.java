@@ -3,6 +3,9 @@
 package com.leepresswood.neondefense.entities.towers;
 
 import java.util.HashMap;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class Tower implements TowerInterface
@@ -20,6 +23,9 @@ public abstract class Tower implements TowerInterface
 	protected float upgrade_strength;		//How much strength changes
 	protected float upgrade_attack_speed;	//How much attack speed changes
 	
+	protected String base_texture_file;		//The file for the base sprite's texture.
+	protected Sprite base_sprite;				//The base sprite of the tower
+	
 	public Tower(HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
 		//Get the properties
@@ -33,6 +39,10 @@ public abstract class Tower implements TowerInterface
 		this.upgrade_radius = Float.parseFloat(upgrades.get("radius"));
 		this.upgrade_strength = Float.parseFloat(upgrades.get("strength"));
 		this.upgrade_attack_speed = Float.parseFloat(upgrades.get("attack_speed"));
+	
+		//Set the base image.
+		this.base_texture_file = properties.get("file");
+		this.base_sprite = new Sprite(new Texture(Gdx.files.internal(this.base_texture_file)));
 	}
 	
 	public float getRadius()
