@@ -6,15 +6,14 @@ import java.util.HashMap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Tower implements TowerInterface
-{
-	protected static final float XP_TO_NEXT_LEVEL = 100;
+{	
+	protected static final int MAX_LEVEL = 5;
 	
 	protected float radius;						//In terms of blocks.
 	protected float strength;					//Damage removed from enemy
 	protected float attack_speed;				//Attacks per second
-	protected float cost;						//Gold cost
-	protected float level = 1;					//Current upgrade level. Should always start at one
-	protected float xp = 0;						//Current experience.
+	protected int cost;						//Gold cost
+	protected int level = 1;					//Current upgrade level. Should always start at one
 	
 	protected float upgrade_multiplier;		//The cost per level increase
 	protected float upgrade_radius;			//How much radius changes
@@ -29,6 +28,7 @@ public class Tower implements TowerInterface
 		this.attack_speed = Float.parseFloat(properties.get("attack_speed"));
 		this.cost = Float.parseFloat(properties.get("cost"));
 		
+		//Get the upgrades
 		
 	}
 	
@@ -60,7 +60,7 @@ public class Tower implements TowerInterface
 	{
 		return cost;
 	}
-	public void setCost(float cost)
+	public void setCost(int cost)
 	{
 		this.cost = cost;
 	}
@@ -68,7 +68,7 @@ public class Tower implements TowerInterface
 	{
 		return level;
 	}
-	public void setLevel(float level)
+	public void setLevel(int level)
 	{
 		this.level = level;
 	}
@@ -90,9 +90,13 @@ public class Tower implements TowerInterface
 	{
 		
 	}
+
 	@Override
-	public void levelUp()
-	{
+	public float levelUp(float money)
+	{//A level up has been requested. 
+		//Formula: Cost to level up = Initial tower cost * Multiplier * Current level
 		
+		
+		return 0;	
 	}
 }

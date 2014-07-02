@@ -4,5 +4,5 @@ import com.leepresswood.neondefense.entities.GameEntityInterface;
 
 public interface TowerInterface extends GameEntityInterface
 {
-	public void levelUp();
+	public float levelUp(float money);
 }
