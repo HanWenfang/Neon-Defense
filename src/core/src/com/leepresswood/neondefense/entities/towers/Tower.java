@@ -39,41 +39,25 @@ public class Tower implements TowerInterface
 	{
 		return radius;
 	}
-	public void setRadius(float radius)
-	{
-		this.radius = radius;
-	}
+
 	public float getStrength()
 	{
 		return strength;
 	}
-	public void setStrength(float strength)
-	{
-		this.strength = strength;
-	}
+	
 	public float getAttack_speed()
 	{
 		return attack_speed;
 	}
-	public void setAttack_speed(float attack_speed)
-	{
-		this.attack_speed = attack_speed;
-	}
+	
 	public float getCost()
 	{
 		return cost;
 	}
-	public void setCost(int cost)
-	{
-		this.cost = cost;
-	}
+	
 	public float getLevel()
 	{
 		return level;
-	}
-	public void setLevel(int level)
-	{
-		this.level = level;
 	}
 	
 	@Override
