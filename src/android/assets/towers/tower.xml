@@ -7,7 +7,7 @@
 	    <cost value="10"/>
 	</tower>
 	<upgrade id="0">
-	    <cost value="2"/>
+	    <multiplier value="2"/>
 	    <radius value="0.5"/>
 	    <strength value="5"/>
 	    <attack_speed value="1"/>
