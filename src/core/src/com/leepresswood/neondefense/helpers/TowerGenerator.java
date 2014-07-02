@@ -4,13 +4,16 @@
  */
 package com.leepresswood.neondefense.helpers;
 
-import java.io.IOException;
+import java.security.KeyPair;
+import java.util.HashMap;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.leepresswood.neondefense.NeonDefense;
 import com.leepresswood.neondefense.entities.towers.Tower;
+import com.sun.java.util.jar.pack.Package.Class;
 
 public class TowerGenerator
 {
@@ -33,27 +36,35 @@ public class TowerGenerator
 	
 	public Tower spawn(Towers t)
 	{//Spawn the passed tower and return it.
+		int id;
 		switch(t)
 		{
 			case BLASTER:
-				int id = 1;
-				
-				
+				id = 0;
+				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(id));
+				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(id));
+				return new Tower();
+			case BOLT:
+				break;
+			case BOMB:
+				break;
+			case BUFF:
+				break;
+			default:
 				break;
 		}
-		Element e = tower_properties.get(1);
-		String name = e.getChildByName("name").getAttribute("value");
-		float radius = Float.parseFloat(e.getChildByName("radius").getAttribute("radius"));
-		/* Get the rest of the data here.
-		 * Afterward, you may want to make an Object array for the data
-		 * Create a method that calls all this reading.
-		 * Return the specific tower from the switch statement after reading.
-		 */
-		return tower;
 	}
-	
+
+	private HashMap<String, String> get(Element e)
+	{//Get the data here and package it into a NameValuePair array. This goes into the tower and is parsed there.		
+		HashMap<String, String> map = new HashMap<String, String>();
+		for(int i = 0; i < e.getChildCount(); i++)
+			map.put(e.getChild(i).getName(), e.getChild(i).getAttribute("value"));
+		return map;
+	}
+
 	public static enum Towers
 	{//Tower names to be called during spawning.
-		BLASTER
+		BLASTER, BOMB, BOLT, BUFF
 	}
 }
