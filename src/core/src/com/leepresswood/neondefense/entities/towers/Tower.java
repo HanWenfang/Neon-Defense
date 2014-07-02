@@ -5,7 +5,7 @@ package com.leepresswood.neondefense.entities.towers;
 import java.util.HashMap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Tower implements TowerInterface
+public abstract class Tower implements TowerInterface
 {	
 	protected final int MAX_LEVEL = 5;
 	
@@ -61,22 +61,13 @@ public class Tower implements TowerInterface
 	}
 	
 	@Override
-	public void update(float delta)
-	{
-		
-	}
+	public abstract void update(float delta);
 	
 	@Override
-	public void render(float delta, SpriteBatch batch)
-	{
-		
-	}
+	public abstract void render(float delta, SpriteBatch batch);
 	
 	@Override
-	public void dispose()
-	{
-		
-	}
+	public abstract void dispose();
 
 	@Override
 	public int levelUp(int money)
