@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.entities.towers.Tower;
-import com.leepresswood.neondefense.helpers.LevelGenerator;
+import com.leepresswood.neondefense.generators.LevelGenerator;
 
 public class Field implements GameEntityInterface
 {
