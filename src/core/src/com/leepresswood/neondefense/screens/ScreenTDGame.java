@@ -22,6 +22,9 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		this.field = new Field(1);	//The passed in number is the level number.
 		this.batch = new SpriteBatch();
 		this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		this.camera.position.x = camera.viewportWidth / 2f;
+		this.camera.position.y = camera.viewportHeight / 2f;
+		this.camera.update();
 		Gdx.input.setInputProcessor(new GestureDetector(this));
 	}
 	
@@ -84,7 +87,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		//vertical scroll, use -deltaX.
 		this.camera.translate(0, deltaY);
 		this.camera.update();
-		return false;	
+		return true;	
 	}
 
 	@Override
