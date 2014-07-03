@@ -23,10 +23,10 @@ public class LevelGenerator
 	
 	public LevelGenerator(int level)
 	{//Fill the tiles array
-		this.readFromFile(level, Gdx.graphics.getWidth());		
+		this.readFromFile(level);		
 	}
 
-	private void readFromFile(Integer level, float field_width)
+	private void readFromFile(Integer level)
 	{//Open level file, fill array of tiles and tiles across and down, and close level file
 		FileHandle file = Gdx.files.internal(NeonDefense.FILE_PATH_START_LEVEL + level.toString() + NeonDefense.FILE_EXTENSION_LEVEL);
 		InputStream level_string = file.read();
@@ -37,7 +37,7 @@ public class LevelGenerator
 		this.tiles_down = scanner.nextInt();
 		
 		//Determine the tile size
-		this.tile_size = field_width / tiles_across;
+		this.tile_size = Gdx.graphics.getWidth() / tiles_across;
 		
 		//Every other number is a tile. Make the tiles
 		tiles = new Tile[this.tiles_down][this.tiles_across];
