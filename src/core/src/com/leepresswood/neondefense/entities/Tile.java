@@ -57,5 +57,10 @@ public class Tile implements GameEntityInterface
 	{
 		if(this.texture != null)
 			this.texture.dispose();
+	}
+
+	public Sprite getSprite()
+	{
+		return this.sprite;		
 	}	
 }

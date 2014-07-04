@@ -90,4 +90,44 @@ public class Field implements GameEntityInterface
 			e.dispose();
 		/*Projectiles here*/		
 	}
+	
+	public float getFieldHeight()
+	{//The height of the field will be the combined heights of all the tiles
+		int array_height = tiles.length;
+		
+		float bot_y = this.tiles[0][0].getSprite().getY();
+		float top_y = this.tiles[array_height][0].getSprite().getY() + this.tiles[array_height][0].getSprite().getHeight();
+		return top_y - bot_y;
+	}
+	
+	public float getFieldWidth()
+	{//The width of the field will be the combined widths of all the tiles
+		int array_height = tiles[0].length;
+		
+		float bot_x = this.tiles[0][0].getSprite().getX();
+		float top_x = this.tiles[array_height][0].getSprite().getX() + this.tiles[0][array_height].getSprite().getWidth();
+		return top_x - bot_x;
+	}
+	
+	public float getFieldX()
+	{//Return bottom left corner X of the field
+		return this.tiles[0][0].getSprite().getX();
+	}
+	
+	public float getFieldY()
+	{//Return bottom left corner Y of the field
+		return this.tiles[0][0].getSprite().getY();
+	}
+	
+	public float getFieldTop()
+	{
+		int array_height = tiles.length;
+		return this.tiles[array_height][0].getSprite().getY() + this.tiles[array_height][0].getSprite().getHeight();
+	}
+	
+	public float getFieldRight()
+	{
+		int array_height = tiles[0].length;
+		return this.tiles[array_height][0].getSprite().getX() + this.tiles[0][array_height].getSprite().getWidth();
+	}
 }
