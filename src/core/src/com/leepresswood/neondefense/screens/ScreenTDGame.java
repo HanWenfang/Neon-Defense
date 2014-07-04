@@ -19,12 +19,17 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	public ScreenTDGame(NeonDefense game)
 	{
 		super(game);
-		this.field = new Field(1);	//The passed in number is the level number.
-		this.batch = new SpriteBatch();
+		
+		//Set up camera
 		this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		this.camera.position.x = camera.viewportWidth / 2f;
-		this.camera.position.y = camera.viewportHeight / 2f;
+		this.camera.position.y = Gdx.graphics.getWidth();
 		this.camera.update();
+		
+		//Initialize spritebatch and field
+		this.batch = new SpriteBatch();
+		this.field = new Field(1);	//The passed in number is the level number.
+		
 		Gdx.input.setInputProcessor(new GestureDetector(this));
 	}
 	
@@ -83,7 +88,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	@Override
 	public boolean pan(float x, float y, float deltaX, float deltaY)
 	{
-		//Because of the way the maps are rendered, if there need to be a
+		//Because of the way the maps are rendered, if there needs to be a
 		//vertical scroll, use -deltaX.
 		this.camera.translate(0, deltaY);
 		this.camera.update();
