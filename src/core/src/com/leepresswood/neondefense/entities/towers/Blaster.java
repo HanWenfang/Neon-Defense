@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Blaster extends Tower
 {
 
-	public Blaster(HashMap<String, String> properties, HashMap<String, String> upgrades)
+	public Blaster(int id, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
-		super(properties, upgrades);
+		super(id, properties, upgrades);
 	}
 
 	@Override

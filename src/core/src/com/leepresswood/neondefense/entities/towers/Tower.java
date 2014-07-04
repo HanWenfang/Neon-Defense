@@ -12,6 +12,8 @@ public abstract class Tower implements TowerInterface
 {	
 	protected final int MAX_LEVEL = 5;
 	
+	protected int id;
+	
 	protected float radius;						//In terms of blocks.
 	protected float strength;					//Damage removed from enemy
 	protected float attack_speed;				//Attacks per second
@@ -26,8 +28,10 @@ public abstract class Tower implements TowerInterface
 	protected String base_texture_file;		//The file for the base sprite's texture.
 	protected Sprite base_sprite;				//The base sprite of the tower
 	
-	public Tower(HashMap<String, String> properties, HashMap<String, String> upgrades)
+	public Tower(int id, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
+		this.id = id;
+		
 		//Get the properties
 		this.radius = Float.parseFloat(properties.get("radius"));
 		this.strength = Float.parseFloat(properties.get("strength"));
