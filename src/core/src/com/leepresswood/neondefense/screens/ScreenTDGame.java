@@ -9,12 +9,18 @@ import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.NeonDefense;
 import com.leepresswood.neondefense.entities.Field;
+import com.leepresswood.neondefense.entities.GUI;
 
 public class ScreenTDGame extends GameScreen implements GestureListener
 {
-	private SpriteBatch batch;
+	//Field variables
+	private SpriteBatch field_batch;
 	private OrthographicCamera camera;
 	private Field field;
+	
+	//GUI variables
+	private SpriteBatch gui_batch;
+	private GUI gui;
 	
 	public ScreenTDGame(NeonDefense game)
 	{
@@ -26,9 +32,12 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		this.camera.position.y = Gdx.graphics.getWidth();
 		this.camera.update();
 		
-		//Initialize spritebatch and field
-		this.batch = new SpriteBatch();
+		//Initialize spritebatches, GUI, and field
+		this.field_batch = new SpriteBatch();
+		this.gui_batch = new SpriteBatch();
+				
 		this.field = new Field(1);	//The passed in number is the level number.
+		this.gui = new GUI();
 		
 		Gdx.input.setInputProcessor(new GestureDetector(this));
 	}
@@ -37,6 +46,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	public void update(float delta)
 	{//Update method. Update game logic.
 		this.field.update(delta);
+		this.gui.update(delta);
 	}
 	
 	@Override
@@ -47,10 +57,14 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		this.update(delta);
 		
 		//Begin drawing
-		this.batch.setProjectionMatrix(camera.combined);
-		this.batch.begin();
-			this.field.render(delta, batch);
-		this.batch.end();
+		this.field_batch.setProjectionMatrix(camera.combined);
+		this.field_batch.begin();
+			this.field.render(delta, field_batch);
+		this.field_batch.end();
+		
+		this.gui_batch.begin();
+			this.gui.render(delta, gui_batch);
+		this.gui_batch.end();
 	}
 
 	@Override
@@ -94,8 +108,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 			//vertical scroll, use -deltaX.
 			this.camera.translate(0, deltaY);
 			this.camera.update();
-		}
-		
+		}		
 		
 		return true;	
 	}
