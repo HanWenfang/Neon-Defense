@@ -89,10 +89,11 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	public boolean pan(float x, float y, float deltaX, float deltaY)
 	{
 		//We need to limit the camera.
-		//If deltaY > 0 and cameraY >= field.y, don't scroll.
-		if(deltaY > 0 && this.camera.position.y >= this.field.getFieldTop() + this.camera.viewportHeight / 2f)
+		//If deltaY > 0 and cameraY >= field.y, don't scroll up.
+		
+		if(deltaY < 0 && !this.camera.frustum.pointInFrustum(this.field.getTopLeft()))
 			;
-		else if(deltaY < 0 && this.camera.position.y <= this.field.getFieldY() - this.camera.viewportHeight / 2f)
+		else if(deltaY > 0 && !this.camera.frustum.pointInFrustum(this.field.getBottomLeft()))
 			;
 		else	
 		{

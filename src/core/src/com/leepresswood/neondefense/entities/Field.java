@@ -4,6 +4,7 @@ package com.leepresswood.neondefense.entities;
 
 import java.util.ArrayList;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.entities.towers.Tower;
 import com.leepresswood.neondefense.generators.LevelGenerator;
@@ -109,25 +110,43 @@ public class Field implements GameEntityInterface
 		return top_x - bot_x;
 	}
 	
-	public float getFieldX()
-	{//Return bottom left corner X of the field
-		return this.tiles[0][0].getSprite().getX();
+	//Positions of the corners
+	public Vector3 getTopLeft()
+	{
+		float x = this.tiles[0][0].getSprite().getX();
+		float y = this.tiles[0][0].getSprite().getY() + this.tiles[0][0].getSprite().getHeight();
+		
+		return new Vector3(x, y, 0);
 	}
 	
-	public float getFieldY()
-	{//Return bottom left corner Y of the field
+	public Vector3 getTopRight()
+	{
+		int array_width = tiles[0].length;
+		
+		float x = this.tiles[0][array_width].getSprite().getX() + this.tiles[0][0].getSprite().getWidth();
+		float y = this.tiles[0][0].getSprite().getY() + this.tiles[0][0].getSprite().getHeight();
+		
+		return new Vector3(x, y, 0);
+	}
+	
+	public Vector3 getBottomLeft()
+	{
 		int array_height = tiles.length;
-		return this.tiles[array_height - 1][0].getSprite().getY();
+		
+		float x = this.tiles[array_height - 1][0].getSprite().getX();
+		float y = this.tiles[array_height - 1][0].getSprite().getY();
+		
+		return new Vector3(x, y, 0);
 	}
 	
-	public float getFieldTop()
+	public Vector3 getBottomRight()
 	{
-		return this.tiles[0][0].getSprite().getY() + this.tiles[0][0].getSprite().getHeight();
-	}
-	
-	public float getFieldRight()
-	{
-		int array_height = tiles[0].length;
-		return this.tiles[array_height][0].getSprite().getX() + this.tiles[0][array_height].getSprite().getWidth();
+		int array_height = tiles.length;
+		int array_width = tiles[0].length;
+		
+		float x = this.tiles[array_height - 1][array_width - 1].getSprite().getX() + this.tiles[0][0].getSprite().getWidth();
+		float y = this.tiles[array_height - 1][array_width - 1].getSprite().getY();
+		
+		return new Vector3(x, y, 0);
 	}
 }
