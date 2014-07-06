@@ -116,13 +116,13 @@ public class Field implements GameEntityInterface
 	
 	public float getFieldY()
 	{//Return bottom left corner Y of the field
-		return this.tiles[0][0].getSprite().getY();
+		int array_height = tiles.length;
+		return this.tiles[array_height - 1][0].getSprite().getY();
 	}
 	
 	public float getFieldTop()
 	{
-		int array_height = tiles.length;
-		return this.tiles[array_height][0].getSprite().getY() + this.tiles[array_height][0].getSprite().getHeight();
+		return this.tiles[0][0].getSprite().getY() + this.tiles[0][0].getSprite().getHeight();
 	}
 	
 	public float getFieldRight()

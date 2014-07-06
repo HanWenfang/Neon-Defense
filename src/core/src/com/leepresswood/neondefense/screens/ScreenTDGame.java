@@ -88,10 +88,21 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	@Override
 	public boolean pan(float x, float y, float deltaX, float deltaY)
 	{
-		//Because of the way the maps are rendered, if there needs to be a
-		//vertical scroll, use -deltaX.
-		this.camera.translate(0, deltaY);
-		this.camera.update();
+		//We need to limit the camera.
+		//If deltaY > 0 and cameraY >= field.y, don't scroll.
+		if(deltaY > 0 && this.camera.position.y >= this.field.getFieldTop() + this.camera.viewportHeight / 2f)
+			;
+		else if(deltaY < 0 && this.camera.position.y <= this.field.getFieldY() - this.camera.viewportHeight / 2f)
+			;
+		else	
+		{
+			//Because of the way the maps are rendered, if there needs to be a
+			//vertical scroll, use -deltaX.
+			this.camera.translate(0, deltaY);
+			this.camera.update();
+		}
+		
+		
 		return true;	
 	}
 
