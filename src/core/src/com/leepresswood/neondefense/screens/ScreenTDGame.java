@@ -57,32 +57,25 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	public boolean touchDown(float x, float y, int pointer, int button)
 	{
 		return false;
-		
-		
 	}
 
 	@Override
 	public boolean tap(float x, float y, int count, int button)
-	{
-		return false;
+	{//Player will tap on square to place/upgrade tower there.
 		
-		
+		return true;		
 	}
 
 	@Override
 	public boolean longPress(float x, float y)
 	{
-		return false;
-		
-		
+		return false;		
 	}
 
 	@Override
 	public boolean fling(float velocityX, float velocityY, int button)
 	{
-		return false;
-		
-		
+		return false;		
 	}
 
 	@Override
@@ -110,24 +103,18 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	@Override
 	public boolean panStop(float x, float y, int pointer, int button)
 	{
-		return false;
-		
-		
+		return false;		
 	}
 
 	@Override
 	public boolean zoom(float initialDistance, float distance)
 	{
-		return false;
-		
-		
+		return false;		
 	}
 
 	@Override
 	public boolean pinch(Vector2 initialPointer1, Vector2 initialPointer2, Vector2 pointer1, Vector2 pointer2)
 	{
-		return false;
-		
-		
+		return false;		
 	}
 }
