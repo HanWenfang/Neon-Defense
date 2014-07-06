@@ -16,6 +16,9 @@ public class Field implements GameEntityInterface
 	private ArrayList<Tower> towers;
 	private ArrayList<Enemy> enemies;
 	
+	//GUI variables
+	private int money_change;
+	
 	public Field(int level)
 	{//Collect the level and generate it.
 		/* The width of the field should be the width of the screen.
@@ -53,9 +56,6 @@ public class Field implements GameEntityInterface
 		
 		//Projectiles
 		
-		
-		//GUI
-		
 	}
 
 	@Override
@@ -73,9 +73,6 @@ public class Field implements GameEntityInterface
 			e.render(delta, batch);
 		
 		//Projectiles
-		
-		
-		//GUI
 		
 	}
 
@@ -148,5 +145,10 @@ public class Field implements GameEntityInterface
 		float y = this.tiles[array_height - 1][array_width - 1].getSprite().getY();
 		
 		return new Vector3(x, y, 0);
+	}
+
+	public int getMoneyChange()
+	{
+		return this.money_change;		
 	}
 }

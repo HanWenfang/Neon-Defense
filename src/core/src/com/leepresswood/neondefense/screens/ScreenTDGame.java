@@ -46,6 +46,8 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	public void update(float delta)
 	{//Update method. Update game logic.
 		this.field.update(delta);
+		
+		this.gui.setUpdatesFromField(this.field);			
 		this.gui.update(delta);
 	}
 	
@@ -62,6 +64,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 			this.field.render(delta, field_batch);
 		this.field_batch.end();
 		
+		//Second batch is necessary to avoid camera projections
 		this.gui_batch.begin();
 			this.gui.render(delta, gui_batch);
 		this.gui_batch.end();
