@@ -12,7 +12,9 @@ import com.leepresswood.neondefense.generators.LevelGenerator;
 
 public class Field implements GameEntityInterface
 {
+	private LevelGenerator generator;
 	private Tile[][] tiles;
+	private int theme;
 	
 	private ArrayList<Tower> towers;
 	private ArrayList<Enemy> enemies;
@@ -34,7 +36,8 @@ public class Field implements GameEntityInterface
 		 * field height will be larger than the screen. Thus, we will need
 		 * a vertical scroll option.
 		 */
-		this.tiles = new LevelGenerator(level).getTiles();
+		this.generator = new LevelGenerator(assets, level);
+		this.tiles = this.generator.getTiles();
 		
 		//Initialize the variables.		
 		this.towers = new ArrayList<Tower>();

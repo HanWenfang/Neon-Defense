@@ -16,7 +16,7 @@ public class Assets
 	private static final String GUI_BACKGROUND = GUI_FILE_PATH + "background.png";
 
 	//Preload all the textures for the game.
-	public static Texture TEXTURE_UNOCCUPIED = new Texture(TILE_UNOCCUPIED); 
-	public static Texture TEXTURE_PATH = new Texture(TILE_PATH);
-	public static Texture TEXTURE_GUI_BACKGROUND = new Texture(GUI_BACKGROUND); 
+	public Texture TEXTURE_UNOCCUPIED = new Texture(TILE_UNOCCUPIED); 
+	public Texture TEXTURE_PATH = new Texture(TILE_PATH);
+	public Texture TEXTURE_GUI_BACKGROUND = new Texture(GUI_BACKGROUND); 
 }

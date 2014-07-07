@@ -1,5 +1,6 @@
 package com.leepresswood.neondefense.entities;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,8 +13,9 @@ public class Tile implements GameEntityInterface
 	private boolean occupied;
 	
 	private Sprite sprite;
+	private Color color;
 	
-	public Tile(Texture texture, float tile_size, boolean walkable, float pos_x, float pos_y)
+	public Tile(Texture texture, float tile_size, boolean walkable, float pos_x, float pos_y, Color color)
 	{
 		this.texture = texture;
 		this.tile_size = tile_size;
@@ -23,6 +25,10 @@ public class Tile implements GameEntityInterface
 		this.sprite = new Sprite(this.texture);
 		this.sprite.setPosition(pos_x, pos_y);
 		this.sprite.setSize(tile_size, tile_size);
+		
+		//Walkable textures will have a tint.
+		if(walkable)
+			this.color = color;
 	}
 
 	@Override
@@ -34,6 +40,8 @@ public class Tile implements GameEntityInterface
 	@Override
 	public void render(float delta, SpriteBatch batch)
 	{
+		if(this.walkable)
+			batch.setColor(color);
 		batch.draw(sprite.getTexture(), sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
 	}
 

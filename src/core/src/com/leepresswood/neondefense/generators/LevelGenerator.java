@@ -5,12 +5,16 @@ import java.io.InputStream;
 import java.util.Scanner;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.leepresswood.neondefense.NeonDefense;
 import com.leepresswood.neondefense.entities.Tile;
 
 public class LevelGenerator
 {
+	//Preloaded textures
+	private Assets assets;
+	
 	//Tile holder
 	private Tile[][] tiles;
 	
@@ -21,8 +25,12 @@ public class LevelGenerator
 	//Using the above, we can then determine the tile size
 	private float tile_size;
 	
-	public LevelGenerator(int level)
+	//Theme of the level. (Color of the path)
+	private int theme;
+	
+	public LevelGenerator(Assets assets, int level)
 	{//Fill the tiles array
+		this.assets = assets;
 		this.readFromFile(level);		
 	}
 
@@ -39,12 +47,15 @@ public class LevelGenerator
 		//Determine the tile size
 		this.tile_size = Gdx.graphics.getWidth() / (float) tiles_across;
 		
+		//Next number is the theme number. Get this theme's color
+		Color color = Tinter.getColor(scanner.nextInt());
+		
 		//Every other number is a tile. Make the tiles
-		tiles = new Tile[this.tiles_down][this.tiles_across];
+		this.tiles = new Tile[this.tiles_down][this.tiles_across];
 		TileNumberDecoder tnd = new TileNumberDecoder();
 		for(int y = 0; y < this.tiles_down; y++)
 		{
-			tiles[y] = new Tile[this.tiles_across];
+			this.tiles[y] = new Tile[this.tiles_across];
 			for(int x = 0; x < this.tiles_across; x++)
 			{
 				//Get the tile image
@@ -55,7 +66,7 @@ public class LevelGenerator
 				float pos_y = Gdx.graphics.getHeight() - y * tile_size;
 				
 				//Set tile				
-				tiles[y][x] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), pos_x, pos_y);	
+				this.tiles[y][x] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), pos_x, pos_y, color);	
 			}
 		}
 		scanner.close();
@@ -86,21 +97,26 @@ public class LevelGenerator
 		return tile_size;
 	}
 	
+	public int getTheme()
+	{
+		return theme;
+	}
+
 	private class TileNumberDecoder
 	{
-		private Texture[] textures;
-		private static final String file_opener = NeonDefense.FILE_PATH_START_TILE;
-		private boolean[] walkables;		
+		public static final int NUMBER_OF_TILES = 2;	
+		private Texture[] textures;	
+		private boolean[] walkables;					
 		
 		public TileNumberDecoder()
 		{
-			//Preload all the textures
-			textures = new Texture[NeonDefense.NUMBER_OF_TILES];			
-			textures[0] = new Texture(file_opener + "blank.png");
-			//textures[1] = new Texture(file_opener + "path.png");
+			//Preload the texture
+			textures = new Texture[NUMBER_OF_TILES];			
+			textures[0] = assets.TEXTURE_UNOCCUPIED;
+			textures[1] =	assets.TEXTURE_PATH;
 			
 			//Also preload whether the tile is walkable or not.
-			walkables = new boolean[NeonDefense.NUMBER_OF_TILES];
+			walkables = new boolean[NUMBER_OF_TILES];
 			walkables[0] = false;
 			walkables[1] = true;
 		}
