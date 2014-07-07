@@ -96,7 +96,7 @@ public class LevelGenerator
 		{
 			//Preload all the textures
 			textures = new Texture[NeonDefense.NUMBER_OF_TILES];			
-			textures[0] = new Texture(file_opener + "normal.png");
+			textures[0] = new Texture(file_opener + "blank.png");
 			//textures[1] = new Texture(file_opener + "path.png");
 			
 			//Also preload whether the tile is walkable or not.
