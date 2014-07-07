@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.entities.towers.Tower;
-import com.leepresswood.neondefense.generators.Asset;
+import com.leepresswood.neondefense.generators.Assets;
 
 public class GUI implements GameEntityInterface
 {
@@ -15,7 +15,7 @@ public class GUI implements GameEntityInterface
 	
 	private Sprite background;			//Background image
 	
-	public GUI(Asset asset_manager)
+	public GUI(Assets asset_manager)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
 		//this.background = new Sprite(asset_manager.getTexture(asset_manager.GUI_BACKGROUND));
 		this.background = new Sprite(new Texture("gui/cell.png"));

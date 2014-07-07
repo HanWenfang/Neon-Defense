@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.entities.towers.Tower;
-import com.leepresswood.neondefense.generators.Asset;
+import com.leepresswood.neondefense.generators.Assets;
 import com.leepresswood.neondefense.generators.LevelGenerator;
 
 public class Field implements GameEntityInterface
@@ -20,7 +20,7 @@ public class Field implements GameEntityInterface
 	//GUI variables
 	private int money_change;
 	
-	public Field(Asset asset_manager, int level)
+	public Field(Assets assets, int level)
 	{//Collect the level and generate it.
 		/* The width of the field should be the width of the screen.
 		 * Divide the width evenly by the number of blocks across to 
