@@ -26,7 +26,7 @@ public class Tinter
 			case GRAY:
 				return Color.GRAY;
 			case WHITE:
-				return Color.ORANGE;
+				return Color.WHITE;
 			case GREEN:
 				return Color.GREEN;
 			case PURPLE:
