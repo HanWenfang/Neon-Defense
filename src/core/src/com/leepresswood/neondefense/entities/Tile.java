@@ -25,10 +25,7 @@ public class Tile implements GameEntityInterface
 		this.sprite = new Sprite(this.texture);
 		this.sprite.setPosition(pos_x, pos_y);
 		this.sprite.setSize(tile_size, tile_size);
-		
-		//Walkable textures will have a tint.
-		if(walkable)
-			this.color = color;
+		this.color = color;
 	}
 
 	@Override
@@ -40,9 +37,15 @@ public class Tile implements GameEntityInterface
 	@Override
 	public void render(float delta, SpriteBatch batch)
 	{
+		//Walkable textures will have a tint.
+		Color old = batch.getColor();
 		if(this.walkable)
 			batch.setColor(color);
+		
 		batch.draw(sprite.getTexture(), sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
+		
+		if(this.walkable)
+			batch.setColor(old);
 	}
 
 	public boolean isWalkable()
