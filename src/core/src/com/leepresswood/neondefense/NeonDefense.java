@@ -1,6 +1,7 @@
 package com.leepresswood.neondefense;
 
 import com.badlogic.gdx.Game;
+import com.leepresswood.neondefense.generators.Asset;
 import com.leepresswood.neondefense.screens.ScreenTDGame;
 
 public class NeonDefense extends Game
@@ -13,9 +14,12 @@ public class NeonDefense extends Game
 	
 	public static final int NUMBER_OF_TILES = 2;
 	
+	public Asset asset_manager;
+	
 	@Override
 	public void create()
 	{
+		this.asset_manager = new Asset();
 		this.setScreen(new ScreenTDGame(this));
 	}	
 	
