@@ -104,13 +104,12 @@ public class LevelGenerator
 
 	private class TileNumberDecoder
 	{
-		private static final int NUMBER_OF_TILES = 2;
 		private Texture[] textures;					
 		
 		public TileNumberDecoder()
 		{
 			//Preload the texture
-			textures = new Texture[NUMBER_OF_TILES];			
+			textures = new Texture[2];			
 			textures[0] = assets.TEXTURE_UNOCCUPIED;
 			textures[1] =	assets.TEXTURE_PATH;
 		}
