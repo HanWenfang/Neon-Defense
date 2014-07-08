@@ -101,11 +101,11 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		//We need to limit the camera.
 		//If deltaY > 0 and cameraY >= field.y, don't scroll up.
 		
-		if(deltaY < 0 && !this.camera.frustum.pointInFrustum(this.field.getTopLeft()))
+		//if(deltaY < 0 && !this.camera.frustum.pointInFrustum(this.field.getTopLeft()))
 			;
-		else if(deltaY > 0 && !this.camera.frustum.pointInFrustum(this.field.getBottomLeft()))
+		//else if(deltaY > 0 && !this.camera.frustum.pointInFrustum(this.field.getBottomLeft()))
 			;
-		else	
+		//else	
 		{
 			//Because of the way the maps are rendered, if there needs to be a
 			//vertical scroll, use -deltaX.
