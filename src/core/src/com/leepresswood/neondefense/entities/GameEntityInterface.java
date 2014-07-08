@@ -7,5 +7,4 @@ public interface GameEntityInterface
 {
 	public void update(float delta);
 	public void render(float delta, SpriteBatch batch);
-	public void dispose();
 }

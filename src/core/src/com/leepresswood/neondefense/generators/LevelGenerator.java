@@ -66,7 +66,7 @@ public class LevelGenerator
 				float pos_y = Gdx.graphics.getHeight() - y * tile_size;
 				
 				//Set tile				
-				this.tiles[y][x] = new Tile(tnd.getTileTexture(tile_type), this.tile_size, tnd.isWalkable(tile_type), pos_x, pos_y, color);	
+				this.tiles[y][x] = new Tile(tile_type, tnd.getTileTexture(tile_type), this.tile_size, pos_x, pos_y, color);	
 			}
 		}
 		scanner.close();
@@ -104,9 +104,8 @@ public class LevelGenerator
 
 	private class TileNumberDecoder
 	{
-		public static final int NUMBER_OF_TILES = 2;	
-		private Texture[] textures;	
-		private boolean[] walkables;					
+		private static final int NUMBER_OF_TILES = 2;
+		private Texture[] textures;					
 		
 		public TileNumberDecoder()
 		{
@@ -114,21 +113,11 @@ public class LevelGenerator
 			textures = new Texture[NUMBER_OF_TILES];			
 			textures[0] = assets.TEXTURE_UNOCCUPIED;
 			textures[1] =	assets.TEXTURE_PATH;
-			
-			//Also preload whether the tile is walkable or not.
-			walkables = new boolean[NUMBER_OF_TILES];
-			walkables[0] = false;
-			walkables[1] = true;
 		}
 		
 		public Texture getTileTexture(int tile_type)
 		{
 			return this.textures[tile_type];
-		}
-		
-		public boolean isWalkable(int tile_type)
-		{
-			return this.walkables[tile_type];
 		}
 	}
 }
