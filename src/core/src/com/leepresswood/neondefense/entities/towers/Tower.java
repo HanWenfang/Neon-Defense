@@ -79,9 +79,6 @@ public abstract class Tower implements TowerInterface
 	
 	@Override
 	public abstract void render(float delta, SpriteBatch batch);
-	
-	@Override
-	public abstract void dispose();
 
 	@Override
 	public int levelUp(int money)

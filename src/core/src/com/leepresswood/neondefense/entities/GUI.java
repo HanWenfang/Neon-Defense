@@ -34,12 +34,6 @@ public class GUI implements GameEntityInterface
 		this.background.draw(batch);
 	}
 
-	@Override
-	public void dispose()
-	{
-		
-	}
-
 	public void setUpdatesFromField(Field field)
 	{//Check field for necessary updates.
 		this.money_change = field.getMoneyChange();

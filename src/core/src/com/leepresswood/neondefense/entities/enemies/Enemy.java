@@ -57,10 +57,4 @@ public class Enemy implements GameEntityInterface
 	{
 		
 	}
-	
-	@Override
-	public void dispose()
-	{
-		
-	}
 }

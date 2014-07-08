@@ -79,19 +79,6 @@ public class Field implements GameEntityInterface
 		//Projectiles
 		
 	}
-
-	@Override
-	public void dispose()
-	{//Every tower, enemy, and projectile should be disposed here.
-		for(int y = 0; y < this.tiles.length; y++)
-			for(int x = 0; x < this.tiles[y].length; x++)
-				this.tiles[y][x].dispose();
-		for(Tower t : this.towers)
-			t.dispose();		
-		for(Enemy e : this.enemies)
-			e.dispose();
-		/*Projectiles here*/		
-	}
 	
 	public float getFieldHeight()
 	{//The height of the field will be the combined heights of all the tiles

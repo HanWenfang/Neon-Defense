@@ -22,10 +22,4 @@ public class Blaster extends Tower
 	{
 		
 	}
-
-	@Override
-	public void dispose()
-	{
-		
-	}
 }
