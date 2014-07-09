@@ -133,9 +133,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	@Override
 	public boolean zoom(float initialDistance, float distance)
 	{
-		camera.zoom += distance;
-		camera.update();
-		return true;		
+		return false;		
 	}
 
 	@Override
