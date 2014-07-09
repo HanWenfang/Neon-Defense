@@ -142,4 +142,15 @@ public class Field implements GameEntityInterface
 	{
 		return this.money_change;		
 	}
+
+	public boolean isOnField(float x, float y)
+	{
+		
+		return false;
+	}
+
+	public void doInput(float x, float y)
+	{
+		
+	}
 }

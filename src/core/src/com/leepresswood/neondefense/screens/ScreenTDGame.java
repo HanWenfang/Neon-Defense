@@ -79,7 +79,10 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	@Override
 	public boolean tap(float x, float y, int count, int button)
 	{//Player will tap on square to place/upgrade tower there.
-		
+		//Send the location of the tap to the field and the GUI.
+		if(this.field.isOnField(x, y))
+			this.field.doInput(x,y);
+			
 		return true;		
 	}
 
@@ -102,16 +105,16 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		//If deltaY > 0 and cameraY >= field.y, don't scroll up.
 		
 		//if(deltaY < 0 && !this.camera.frustum.pointInFrustum(this.field.getTopLeft()))
-			;
+			//;
 		//else if(deltaY > 0 && !this.camera.frustum.pointInFrustum(this.field.getBottomLeft()))
-			;
+			//;
 		//else	
-		{
+		//{
 			//Because of the way the maps are rendered, if there needs to be a
-			//vertical scroll, use -deltaX.
+			//horizontal scroll, use -deltaX.
 			this.camera.translate(0, deltaY);
 			this.camera.update();
-		}		
+		//}		
 		
 		return true;	
 	}
