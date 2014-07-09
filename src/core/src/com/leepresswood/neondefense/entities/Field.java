@@ -150,7 +150,7 @@ public class Field implements GameEntityInterface
 		for(int i = 0; i < this.tiles.length; i++)
 			for(int j = 0; j < this.tiles[0].length; j++)
 				if(this.tiles[i][j].getSprite().getBoundingRectangle().contains(x, y))
-					return new Vector2(j, i);
+					return new Vector2(i, j);
 		
 		return null;
 	}
@@ -162,6 +162,6 @@ public class Field implements GameEntityInterface
 
 	private void doTileAction(Tile tile)
 	{//Do the action of the particular tile.
-		
+		tile.getSprite().translate(-10, -10);
 	}
 }
