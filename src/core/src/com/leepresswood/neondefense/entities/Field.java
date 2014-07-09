@@ -162,6 +162,16 @@ public class Field implements GameEntityInterface
 
 	private void doTileAction(Tile tile)
 	{//Do the action of the particular tile.
-		tile.getSprite().translate(-10, -10);
+		//If we clicked on a path, nothing needs to happen
+		if(tile.isWalkable() || !tile.isPlaceable())
+			return;
+		else if(tile.isOccupied())	//Otherwise, we're doing something with towers.
+		{//This tile is occupied. Allow user to upgrade or sell tower.
+			
+		}
+		else
+		{//This tile is empty. Open the tile shop.
+			
+		}
 	}
 }
