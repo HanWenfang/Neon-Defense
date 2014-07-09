@@ -18,7 +18,7 @@ public class GUI implements GameEntityInterface
 	public GUI(Assets asset_manager)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
 		//this.background = new Sprite(asset_manager.getTexture(asset_manager.GUI_BACKGROUND));
-		this.background = new Sprite(new Texture("gui/cell.png"));
+		this.background = new Sprite(asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(0, 0, Gdx.graphics.getWidth(), 40);
 	}
 

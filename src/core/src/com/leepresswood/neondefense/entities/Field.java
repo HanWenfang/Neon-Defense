@@ -15,7 +15,6 @@ public class Field implements GameEntityInterface
 {
 	private LevelGenerator generator;
 	private Tile[][] tiles;
-	private int theme;
 	
 	private ArrayList<Tower> towers;
 	private ArrayList<Enemy> enemies;
