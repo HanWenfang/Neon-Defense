@@ -84,8 +84,9 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		Vector3 unprojected = this.camera.unproject(new Vector3(x, y, 0));
 		
 		//Send the location of the tap to the field and the GUI.
-		if(this.field.isOnField(unprojected.x, unprojected.y))
-			this.field.doInput(unprojected.x, unprojected.y);
+		Vector2 location = this.field.isOnField(unprojected.x, unprojected.y);
+		if(location != null)
+			this.field.doInput(location);
 			
 		return true;		
 	}

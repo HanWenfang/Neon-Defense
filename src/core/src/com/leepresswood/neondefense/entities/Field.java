@@ -4,6 +4,7 @@ package com.leepresswood.neondefense.entities;
 
 import java.util.ArrayList;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.entities.towers.Tower;
@@ -143,33 +144,24 @@ public class Field implements GameEntityInterface
 		return this.money_change;		
 	}
 
-	public boolean isOnField(float x, float y)
+	public Vector2 isOnField(float x, float y)
 	{
 		//If the given x and y values are on of the tiles, we will be focusing on that one.
 		for(int i = 0; i < this.tiles.length; i++)
 			for(int j = 0; j < this.tiles[0].length; j++)
 				if(this.tiles[i][j].getSprite().getBoundingRectangle().contains(x, y))
-					return true;
+					return new Vector2(j, i);
 		
-		return false;
+		return null;
 	}
 
-	public void doInput(float x, float y)
+	public void doInput(Vector2 location)
 	{
-		for(int i = 0; i < this.tiles.length; i++)
-			for(int j = 0; j < this.tiles[0].length; j++)
-				if(this.tiles[i][j].getSprite().getBoundingRectangle().contains(x, y))
-				{
-					this.doTileAction(this.tiles[i][j]);
-					
-					//Because we found the right tile, just end the loop. No need to continue.
-					i += this.tiles.length;
-					j += this.tiles[0].length;
-				}
+		this.doTileAction(this.tiles[(int) location.x][(int) location.y]);
 	}
 
 	private void doTileAction(Tile tile)
-	{
+	{//Do the action of the particular tile.
 		
 	}
 }
