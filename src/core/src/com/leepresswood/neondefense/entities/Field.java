@@ -159,7 +159,13 @@ public class Field implements GameEntityInterface
 		for(int i = 0; i < this.tiles.length; i++)
 			for(int j = 0; j < this.tiles[0].length; j++)
 				if(this.tiles[i][j].getSprite().getBoundingRectangle().contains(x, y))
+				{
 					this.doTileAction(this.tiles[i][j]);
+					
+					//Because we found the right tile, just end the loop. No need to continue.
+					i += this.tiles.length;
+					j += this.tiles[0].length;
+				}
 	}
 
 	private void doTileAction(Tile tile)
