@@ -145,11 +145,24 @@ public class Field implements GameEntityInterface
 
 	public boolean isOnField(float x, float y)
 	{
+		//If the given x and y values are on of the tiles, we will be focusing on that one.
+		for(int i = 0; i < this.tiles.length; i++)
+			for(int j = 0; j < this.tiles[0].length; j++)
+				if(this.tiles[i][j].getSprite().getBoundingRectangle().contains(x, y))
+					return true;
 		
 		return false;
 	}
 
 	public void doInput(float x, float y)
+	{
+		for(int i = 0; i < this.tiles.length; i++)
+			for(int j = 0; j < this.tiles[0].length; j++)
+				if(this.tiles[i][j].getSprite().getBoundingRectangle().contains(x, y))
+					this.doTileAction(this.tiles[i][j]);
+	}
+
+	private void doTileAction(Tile tile)
 	{
 		
 	}

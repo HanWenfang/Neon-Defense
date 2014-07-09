@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.leepresswood.neondefense.NeonDefense;
 import com.leepresswood.neondefense.entities.Field;
 import com.leepresswood.neondefense.entities.GUI;
@@ -79,9 +80,12 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	@Override
 	public boolean tap(float x, float y, int count, int button)
 	{//Player will tap on square to place/upgrade tower there.
+		//We need to unproject the screen coordinates to world coordinates
+		Vector3 unprojected = this.camera.unproject(new Vector3(x, y, 0));
+		
 		//Send the location of the tap to the field and the GUI.
-		if(this.field.isOnField(x, y))
-			this.field.doInput(x,y);
+		if(this.field.isOnField(unprojected.x, unprojected.y))
+			this.field.doInput(unprojected.x, unprojected.y);
 			
 		return true;		
 	}
