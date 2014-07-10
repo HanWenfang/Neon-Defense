@@ -56,7 +56,19 @@ public class GUI implements GameEntityInterface
 		
 		//Only draw the other panel if it's not null.
 		if(other != null)
-			this.other.draw(batch);
+		{
+			this.other.draw(batch);				//Other's background.
+			
+			//Get the type of other we have.
+			if(tower_spotlight != null)
+			{//Upgrade selected.
+				
+			}
+			else
+			{//Shop selected.
+				
+			}
+		}
 	}
 
 	public void getUpdatesFromField(Field field)
