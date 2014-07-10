@@ -10,7 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.leepresswood.neondefense.NeonDefense;
 import com.leepresswood.neondefense.entities.Field;
-import com.leepresswood.neondefense.entities.GUI;
+import com.leepresswood.neondefense.gui.GUI;
 
 public class ScreenTDGame extends GameScreen implements GestureListener
 {
