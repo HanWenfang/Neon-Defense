@@ -11,6 +11,8 @@ import com.leepresswood.neondefense.generators.Assets;
 
 public class GUI implements GameEntityInterface
 {
+	public Assets asset_manager;
+	
 	private int money;						//Current cash amount.
 	private int money_change;				//Received from field. Bounty from killing enemies.
 	private boolean new_panel_requested;//Has a new panel been requested?
@@ -21,6 +23,7 @@ public class GUI implements GameEntityInterface
 	
 	public GUI(Assets asset_manager)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
+		this.asset_manager = asset_manager;
 		this.background = new Sprite(asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(0, 0, Gdx.graphics.getWidth(), 40);
 		

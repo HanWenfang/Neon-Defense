@@ -1,13 +1,18 @@
 package com.leepresswood.neondefense.gui;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.entities.towers.Tower;
 
 public class GUIUpdate extends Other
 {
-	public GUIUpdate(int i, int j, float f, float g, Tower tower, GUI gui)
+	private Sprite background;				//Main GUI bar
+	
+	public GUIUpdate(int x, int y, float width, float height, Tower tower, GUI gui)
 	{
-		
+		this.background = new Sprite(gui.asset_manager.TEXTURE_GUI_BACKGROUND);
+		this.background.setBounds(x, y, width, height);
 	}
 	
 	@Override
