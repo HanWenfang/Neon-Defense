@@ -200,4 +200,9 @@ public class Field implements GameEntityInterface
 			this.selected_tower_id = -1;
 		}
 	}
+
+	public Tower getTowerFromID(int tower_id)
+	{
+		return null;		
+	}
 }
