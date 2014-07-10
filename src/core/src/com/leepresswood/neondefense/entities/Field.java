@@ -45,12 +45,18 @@ public class Field implements GameEntityInterface
 		//Initialize the variables.		
 		this.towers = new ArrayList<Tower>();
 		this.enemies = new ArrayList<Enemy>();
+		this.open_shop = false;
+		this.tower_is_selected = false;
+		this.selected_tower_id = -1;
 	}
 	
 	@Override
 	public void update(float delta)
 	{//Every tower, enemy, and projectile should be updated here.
-		//Tiles drawn first
+		//Every tic should reset the money change
+		this.money_change = 0;
+		
+		//Tiles updated first
 		for(int y = 0; y < this.tiles.length; y++)
 			for(int x = 0; x < this.tiles[y].length; x++)
 				this.tiles[y][x].update(delta);

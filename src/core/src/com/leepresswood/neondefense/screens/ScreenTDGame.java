@@ -38,7 +38,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		this.gui_batch = new SpriteBatch();
 				
 		this.field = new Field(game.asset_manager, 1);	//The passed in number is the level number.
-		this.gui = new GUI(game.asset_manager);
+		this.gui = new GUI(game.asset_manager, this.field);
 		
 		Gdx.input.setInputProcessor(new GestureDetector(this));
 	}
@@ -48,7 +48,8 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	{//Update method. Update game logic.
 		this.field.update(delta);
 		
-		this.gui.setUpdatesFromField(this.field);			
+		//Scan the field for a GUI update request.
+		this.gui.getUpdatesFromField(this.field);			
 		this.gui.update(delta);
 	}
 	

@@ -15,9 +15,8 @@ public class GUI implements GameEntityInterface
 	
 	private Sprite background;			//Background image
 	
-	public GUI(Assets asset_manager)
+	public GUI(Assets asset_manager, Field field)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
-		//this.background = new Sprite(asset_manager.getTexture(asset_manager.GUI_BACKGROUND));
 		this.background = new Sprite(asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(0, 0, Gdx.graphics.getWidth(), 40);
 	}
@@ -34,7 +33,7 @@ public class GUI implements GameEntityInterface
 		this.background.draw(batch);
 	}
 
-	public void setUpdatesFromField(Field field)
+	public void getUpdatesFromField(Field field)
 	{//Check field for necessary updates.
 		this.money_change = field.getMoneyChange();
 	}
