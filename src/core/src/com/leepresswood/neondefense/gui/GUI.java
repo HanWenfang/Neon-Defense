@@ -37,17 +37,21 @@ public class GUI implements GameEntityInterface
 		this.money += money_change;
 		
 		//Only update the other panel if it's not null.
-		if(other != null)
+		if(other == null)
+		{
+			
+		}
+		else
 			this.other.update(delta);
 	}
 
 	@Override
 	public void render(float delta, SpriteBatch batch)
 	{//Draw all components.
-		this.background.draw(batch);
-		
-		//Only draw the other panel if it's not null.
-		if(other != null)
+		//Only draw the other panel if it's not null. Draw the main panel otherwise.
+		if(other == null)
+			this.background.draw(batch);
+		else
 			this.other.render(delta, batch);
 	}
 
@@ -78,14 +82,10 @@ public class GUI implements GameEntityInterface
 			this.new_panel_requested = false;
 			
 			//Which panel is it?
-			if(new_panel_shop) 	
-			{//Shop
+			if(new_panel_shop) 		//Shop
 				this.other = new GUIShop(0, 0, this.background.getWidth(), this.background.getHeight(), this);
-			}
-			else						
-			{//Upgrade
+			else							//Upgrade
 				this.other = new GUIUpdate(0, 0, this.background.getWidth(), this.background.getHeight(), field.getTowerFromID(field.getSelectedTower()), this);
-			}
 		}
 	}
 
