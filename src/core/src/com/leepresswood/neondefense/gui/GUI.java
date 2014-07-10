@@ -11,15 +11,12 @@ import com.leepresswood.neondefense.generators.Assets;
 
 public class GUI implements GameEntityInterface
 {
-	private Tower tower_spotlight;		//Which tower was selected.
 	private int money;						//Current cash amount.
 	private int money_change;				//Received from field. Bounty from killing enemies.
 	private boolean new_panel_requested;//Has a new panel been requested?
 	private boolean new_panel_shop;		//Is the new panel the shop? True. Upgrade? False.
 	
-	private Sprite background;				//Background image
-	
-	//These are the field-dependent 
+	private Sprite background;				//Main GUI bar
 	private Other other;						//This is the other panel. This will be either the update or the shop panel.
 	
 	public GUI(Assets asset_manager)
@@ -29,7 +26,6 @@ public class GUI implements GameEntityInterface
 		
 		//Set the other GUI elements.
 		this.other = null;
-		this.tower_spotlight = null;
 		this.other = null;
 		this.new_panel_requested = false;
 	}
@@ -84,21 +80,23 @@ public class GUI implements GameEntityInterface
 			//Which panel is it?
 			if(new_panel_shop) 	
 			{//Shop
-				this.tower_spotlight = null;
-				this.other = new GUIShop();
+				this.other = new GUIShop(0, 0, this.background.getWidth(), this.background.getHeight(), this);
 			}
 			else						
 			{//Upgrade
-				this.tower_spotlight = field.getTowerFromID(field.getSelectedTower());
-				this.other = new GUIUpdate();
+				this.other = new GUIUpdate(0, 0, this.background.getWidth(), this.background.getHeight(), field.getTowerFromID(field.getSelectedTower()), this);
 			}
 		}
 	}
 
 	public void closeExtraScreens()
 	{//The other panel needs to be closed.
-		this.tower_spotlight = null;
 		this.new_panel_requested = false;
 		this.other = null;
+	}
+	
+	public int getMoney()
+	{//Return current money amount.
+		return this.money;
 	}
 }

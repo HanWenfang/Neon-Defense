@@ -5,6 +5,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class GUIShop extends Other
 {
 
+	public GUIShop(int x, int y, float width, float height, GUI gui)
+	{
+		
+	}
+
 	@Override
 	public void update(float delta)
 	{
