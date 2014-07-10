@@ -103,7 +103,7 @@ public class Field implements GameEntityInterface
 		int array_height = tiles[0].length;
 		
 		float bot_x = this.tiles[0][0].getSprite().getX();
-		float top_x = this.tiles[array_height - 1][0].getSprite().getX() + this.tiles[0][array_height].getSprite().getWidth();
+		float top_x = this.tiles[array_height - 1][0].getSprite().getX() + this.tiles[0][array_height - 1].getSprite().getWidth();
 		return top_x - bot_x;
 	}
 	
@@ -180,6 +180,11 @@ public class Field implements GameEntityInterface
 	public void doInput(Vector2 location)
 	{
 		this.doTileAction(this.tiles[(int) location.x][(int) location.y]);
+	}
+	
+	public float getTileWidth()
+	{
+		return this.tiles[0][0].getSprite().getWidth();
 	}
 
 	private void doTileAction(Tile tile)
