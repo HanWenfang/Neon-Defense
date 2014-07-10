@@ -20,9 +20,8 @@ public class GUI implements GameEntityInterface
 	
 	private Sprite background;				//Background image
 	
+	//These are the field-dependent 
 	private Other other;						//This is the other panel. This will be either the update or the shop panel.
-	private GUIUpdate update_holder;		//Holds the update panel. Set to this if it needs to be drawn.
-	private GUIShop shop_holder;			//See above, but for the shop.
 	
 	public GUI(Assets asset_manager)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
@@ -89,6 +88,9 @@ public class GUI implements GameEntityInterface
 		if(field.isTowerSelected() && this.open_panel_shop)
 		{
 			this.tower_spotlight = field.getTowerFromID(field.getSelectedTower());
+			this.other = new GUIUpdate();
+			
+			//Set the flags
 			this.open_panel_shop = false;
 			this.new_panel_shop = false;
 			this.new_panel_requested = true;
@@ -98,9 +100,19 @@ public class GUI implements GameEntityInterface
 		else if(field.isShopOpen() && !this.open_panel_shop)
 		{
 			this.tower_spotlight = null;
+			this.other = new GUIShop();
+			
+			//Set the flags
 			this.open_panel_shop = true;
 			this.new_panel_shop = true;
 			this.new_panel_requested = true;
 		}
+	}
+
+	public void closeExtraScreens()
+	{//The other panel needs to be closed.
+		this.tower_spotlight = null;
+		this.new_panel_requested = false;
+		this.other = null;
 	}
 }

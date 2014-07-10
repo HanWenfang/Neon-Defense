@@ -88,6 +88,8 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		Vector2 location = this.field.isOnField(unprojected.x, unprojected.y);
 		if(location != null)
 			this.field.doInput(location);
+		else			//This tap wasn't on the field. Clear any open extra screens.
+			this.gui.closeExtraScreens();
 			
 		return true;		
 	}
