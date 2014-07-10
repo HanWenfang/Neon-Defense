@@ -202,7 +202,10 @@ public class Field implements GameEntityInterface
 	}
 
 	public Tower getTowerFromID(int tower_id)
-	{
+	{//Get the tower by the given ID.
+		for(Tower t : this.towers)
+			if(t.getID() == tower_id)
+				return t;
 		return null;		
 	}
 }
