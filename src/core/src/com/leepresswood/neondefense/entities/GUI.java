@@ -23,18 +23,18 @@ public class GUI implements GameEntityInterface
 
 	@Override
 	public void update(float delta)
-	{
+	{//Using information passed from field, update.
 		
 	}
 
 	@Override
 	public void render(float delta, SpriteBatch batch)
-	{
+	{//Draw all components.
 		this.background.draw(batch);
 	}
 
 	public void getUpdatesFromField(Field field)
-	{//Check field for necessary updates.
+	{//Check field for necessary updates. Set them in variable form.
 		this.money_change = field.getMoneyChange();
 	}
 }
