@@ -19,12 +19,20 @@ public class GUI implements GameEntityInterface
 	private boolean open_panel_shop;		//Is the open panel the shop? True. Upgrade? False;
 	
 	private Sprite background;				//Background image
-	private Sprite other;					//This is the other panel. This will be either the update or the shop panel.
+	
+	private Other other;						//This is the other panel. This will be either the update or the shop panel.
+	private GUIUpdate update_holder;		//Holds the update panel. Set to this if it needs to be drawn.
+	private GUIShop shop_holder;			//See above, but for the shop.
 	
 	public GUI(Assets asset_manager)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
 		this.background = new Sprite(asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(0, 0, Gdx.graphics.getWidth(), 40);
+		
+		//Set the other GUI elements.
+		this.other = null;
+		this.update_holder = new GUIUpdate();
+		this.shop_holder = new GUIShop();
 	}
 
 	@Override
@@ -59,7 +67,7 @@ public class GUI implements GameEntityInterface
 		//Only draw the other panel if it's not null.
 		if(other != null)
 		{
-			this.other.draw(batch);				//Other's background.
+			this.other.render(delta, batch);				//The update or shop panel.
 			
 			//Get the type of other we have.
 			if(tower_spotlight != null)

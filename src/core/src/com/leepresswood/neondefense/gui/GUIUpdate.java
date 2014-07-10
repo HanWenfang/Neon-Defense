@@ -8,11 +8,12 @@ public class GUIUpdate extends Other
 	@Override
 	public void update(float delta)
 	{
+		
 	}
 
 	@Override
 	public void render(float delta, SpriteBatch batch)
 	{
+		
 	}
-
 }
