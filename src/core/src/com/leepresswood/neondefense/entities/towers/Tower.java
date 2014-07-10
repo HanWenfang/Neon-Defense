@@ -74,6 +74,11 @@ public abstract class Tower implements TowerInterface
 		return level;
 	}
 	
+	public int getID()
+	{
+		return this.id;
+	}
+	
 	@Override
 	public abstract void update(float delta);
 	

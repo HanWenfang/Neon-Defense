@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.leepresswood.neondefense.entities.towers.Tower;
 import com.leepresswood.neondefense.generators.TileDecoder;
 
 public class Tile implements GameEntityInterface
@@ -11,6 +12,8 @@ public class Tile implements GameEntityInterface
 	protected boolean walkable;
 	protected boolean occupied;
 	protected boolean placeable;
+	
+	protected Tower occupied_by;
 	
 	protected Sprite sprite;
 	protected Color color;
@@ -27,6 +30,9 @@ public class Tile implements GameEntityInterface
 		this.sprite.setPosition(pos_x, pos_y);
 		this.sprite.setSize(tile_size, tile_size);
 		this.color = color;
+		
+		//Set the occupied tower (Should be blank)
+		this.occupied_by = null;
 	}
 
 	@Override
@@ -67,5 +73,10 @@ public class Tile implements GameEntityInterface
 	public Sprite getSprite()
 	{
 		return this.sprite;		
+	}
+	
+	public Tower getTower()
+	{
+		return this.occupied_by;
 	}
 }

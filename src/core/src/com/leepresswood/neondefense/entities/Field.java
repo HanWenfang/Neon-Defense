@@ -166,9 +166,9 @@ public class Field implements GameEntityInterface
 		return this.tower_is_selected;
 	}
 	
-	public Tower getSelectedTower()
+	public int getSelectedTower()
 	{//The selected tower should be gathered by the ID.
-		
+		return this.selected_tower_id;
 	}
 
 	public void doInput(Vector2 location)
@@ -183,11 +183,15 @@ public class Field implements GameEntityInterface
 			return;
 		else if(tile.isOccupied())	//Otherwise, we're doing something with towers.
 		{//This tile is occupied. Allow user to upgrade or sell tower.
-			
+			this.open_shop = false;
+			this.tower_is_selected = true;
+			this.selected_tower_id = tile.getTower().getID();
 		}
 		else
 		{//This tile is empty. Open the tile shop.
-			
+			this.open_shop = true;
+			this.tower_is_selected = false;
+			this.selected_tower_id = -1;
 		}
 	}
 }
