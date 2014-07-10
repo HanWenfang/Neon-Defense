@@ -188,7 +188,7 @@ public class Field implements GameEntityInterface
 			this.selected_tower_id = tile.getTower().getID();
 		}
 		else
-		{//This tile is empty. Open the tile shop.
+		{//This tile is empty. Open the tower shop.
 			this.open_shop = true;
 			this.tower_is_selected = false;
 			this.selected_tower_id = -1;
