@@ -30,6 +30,10 @@ public class GUI implements GameEntityInterface
 		
 		//Set the other GUI elements.
 		this.other = null;
+		this.tower_spotlight = null;
+		this.other = null;
+		this.new_panel_requested = false;		
+		this.open_panel_shop = false;
 	}
 
 	@Override
