@@ -16,7 +16,6 @@ public class GUI implements GameEntityInterface
 	private int money_change;				//Received from field. Bounty from killing enemies.
 	private boolean new_panel_requested;//Has a new panel been requested?
 	private boolean new_panel_shop;		//Is the new panel the shop? True. Upgrade? False.
-	private boolean open_panel_shop;		//Is the open panel the shop? True. Upgrade? False;
 	
 	private Sprite background;				//Background image
 	
@@ -32,8 +31,7 @@ public class GUI implements GameEntityInterface
 		this.other = null;
 		this.tower_spotlight = null;
 		this.other = null;
-		this.new_panel_requested = false;		
-		this.open_panel_shop = false;
+		this.new_panel_requested = false;
 	}
 
 	@Override
@@ -42,22 +40,9 @@ public class GUI implements GameEntityInterface
 		//Change current cash value.
 		this.money += money_change;
 		
-		//Is there a new panel requested?
-		if(new_panel_requested)
-		{
-			//Reset variable to avoid infinite panel changes
-			this.new_panel_requested = false;
-			
-			//Which panel is it?
-			if(new_panel_shop) 	//Shop
-			{
-				
-			}
-			else						//Upgrade
-			{
-				
-			}
-		}
+		//Only update the other panel if it's not null.
+		if(other != null)
+			this.other.update(delta);
 	}
 
 	@Override
@@ -67,19 +52,7 @@ public class GUI implements GameEntityInterface
 		
 		//Only draw the other panel if it's not null.
 		if(other != null)
-		{
-			this.other.render(delta, batch);				//The update or shop panel.
-			
-			//Get the type of other we have.
-			if(tower_spotlight != null)
-			{//Upgrade selected.
-				
-			}
-			else
-			{//Shop selected.
-				
-			}
-		}
+			this.other.render(delta, batch);
 	}
 
 	public void getUpdatesFromField(Field field)
@@ -87,27 +60,38 @@ public class GUI implements GameEntityInterface
 		this.money_change = field.getMoneyChange();
 		
 		//If a tower is selected, get its ID and open the update panel.
-		if(field.isTowerSelected() && this.open_panel_shop)
-		{
-			this.tower_spotlight = field.getTowerFromID(field.getSelectedTower());
-			this.other = new GUIUpdate();
-			
+		if(field.isTowerSelected())
+		{			
 			//Set the flags
-			this.open_panel_shop = false;
 			this.new_panel_shop = false;
 			this.new_panel_requested = true;
 		}
 		
 		//Otherwise, if a blank panel is selected, open the shop.
-		else if(field.isShopOpen() && !this.open_panel_shop)
-		{
-			this.tower_spotlight = null;
-			this.other = new GUIShop();
-			
+		else if(field.isShopOpen())
+		{			
 			//Set the flags
-			this.open_panel_shop = true;
 			this.new_panel_shop = true;
 			this.new_panel_requested = true;
+		}
+		
+		//Is there a new panel requested?
+		if(new_panel_requested)
+		{
+			//Reset variable to avoid infinite panel changes
+			this.new_panel_requested = false;
+			
+			//Which panel is it?
+			if(new_panel_shop) 	
+			{//Shop
+				this.tower_spotlight = null;
+				this.other = new GUIShop();
+			}
+			else						
+			{//Upgrade
+				this.tower_spotlight = field.getTowerFromID(field.getSelectedTower());
+				this.other = new GUIUpdate();
+			}
 		}
 	}
 
