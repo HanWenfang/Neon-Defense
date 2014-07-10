@@ -19,7 +19,7 @@ public class GUI implements GameEntityInterface
 	private Sprite background;				//Background image
 	private Sprite other;					//This is the other panel. This will be either the update or the shop panel.
 	
-	public GUI(Assets asset_manager, Field field)
+	public GUI(Assets asset_manager)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
 		this.background = new Sprite(asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(0, 0, Gdx.graphics.getWidth(), 40);
