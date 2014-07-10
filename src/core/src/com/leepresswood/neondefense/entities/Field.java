@@ -21,6 +21,9 @@ public class Field implements GameEntityInterface
 	
 	//GUI variables
 	private int money_change;
+	private boolean open_shop;
+	private boolean tower_is_selected;
+	private int selected_tower_id;
 	
 	public Field(Assets assets, int level)
 	{//Collect the level and generate it.
@@ -144,14 +147,28 @@ public class Field implements GameEntityInterface
 	}
 
 	public Vector2 isOnField(float x, float y)
-	{
-		//If the given x and y values are on of the tiles, we will be focusing on that one.
+	{//If the given x and y values are on of the tiles, we will be focusing on that one.
 		for(int i = 0; i < this.tiles.length; i++)
 			for(int j = 0; j < this.tiles[0].length; j++)
 				if(this.tiles[i][j].getSprite().getBoundingRectangle().contains(x, y))
 					return new Vector2(i, j);
 		
 		return null;
+	}
+	
+	public boolean isShopOpen()
+	{//Did we click on an empty tile?
+		return this.open_shop;
+	}
+	
+	public boolean isTowerSelected()
+	{//Did we click on a tower?
+		return this.tower_is_selected;
+	}
+	
+	public Tower getSelectedTower()
+	{//The selected tower should be gathered by the ID.
+		
 	}
 
 	public void doInput(Vector2 location)
