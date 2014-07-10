@@ -87,7 +87,11 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		//Send the location of the tap to the field and the GUI.
 		Vector2 location = this.field.isOnField(unprojected.x, unprojected.y);
 		if(location != null)
+		{
 			this.field.doInput(location);
+			this.camera.position.x = unprojected.x + this.field.getFieldWidth() / 2f;//lookAt(unprojected);
+			this.camera.update();
+		}
 		else			//This tap wasn't on the field. Clear any open extra screens.
 			this.gui.closeExtraScreens();
 			
@@ -109,6 +113,9 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	@Override
 	public boolean pan(float x, float y, float deltaX, float deltaY)
 	{
+		//Clear any open extra GUI screens.
+		this.gui.closeExtraScreens();
+		
 		//We need to limit the camera.
 		//If deltaY > 0 and cameraY >= field.y, don't scroll up.
 		
@@ -120,7 +127,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		//{
 			//Because of the way the maps are rendered, if there needs to be a
 			//horizontal scroll, use -deltaX.
-			this.camera.translate(0, deltaY);
+			this.camera.translate(-deltaX, deltaY);
 			this.camera.update();
 		//}		
 		

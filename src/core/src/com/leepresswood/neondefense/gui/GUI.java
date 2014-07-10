@@ -30,8 +30,6 @@ public class GUI implements GameEntityInterface
 		
 		//Set the other GUI elements.
 		this.other = null;
-		this.update_holder = new GUIUpdate();
-		this.shop_holder = new GUIShop();
 	}
 
 	@Override
