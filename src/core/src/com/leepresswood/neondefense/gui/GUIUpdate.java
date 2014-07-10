@@ -12,6 +12,9 @@ public class GUIUpdate extends Other
 	{
 		this.background = new Sprite(gui.asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(x, y, width, height);
+		
+		//Show a picture of this tower centered. Sell button on left. Update on right.
+		
 	}
 	
 	@Override

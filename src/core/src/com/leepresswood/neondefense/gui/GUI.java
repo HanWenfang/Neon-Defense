@@ -27,7 +27,6 @@ public class GUI implements GameEntityInterface
 		
 		//Set the other GUI elements.
 		this.other = null;
-		this.other = null;
 		this.new_panel_requested = false;
 	}
 

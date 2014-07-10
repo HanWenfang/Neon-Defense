@@ -11,6 +11,9 @@ public class GUIShop extends Other
 	{
 		this.background = new Sprite(gui.asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(x, y, width, height);
+		
+		//Display every tower at the bottom. Might need to be horizontally scrollable if enough towers exist.
+		
 	}
 
 	@Override
