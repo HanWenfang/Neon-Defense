@@ -7,6 +7,9 @@ import com.leepresswood.neondefense.entities.towers.Tower;
 public class GUIUpdate extends Other
 {
 	private Sprite background;				//Main GUI bar
+	private Sprite button_sell;			
+	private Sprite button_upgrade;		
+	private Sprite tower;
 	
 	public GUIUpdate(int x, int y, float width, float height, Tower tower, GUI gui)
 	{
@@ -14,6 +17,12 @@ public class GUIUpdate extends Other
 		this.background.setBounds(x, y, width, height);
 		
 		//Show a picture of this tower centered. Sell button on left. Update on right.
+		this.tower = new Sprite(tower.getSprite().getTexture());
+		float tower_x = x + width / 2f - height / 2f;
+		this.tower.setBounds(tower_x, y, height, height);
+		
+		//Buttons
+		this.button_sell = new Sprite(gui.asset_manager.TEXTURE_BUTTON);
 		
 	}
 	

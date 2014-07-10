@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public abstract class Tower implements TowerInterface
 {	
@@ -110,5 +111,10 @@ public abstract class Tower implements TowerInterface
 		
 		//Return the money amount the player has now.
 		return money;	
+	}
+
+	public Sprite getSprite()
+	{
+		return this.base_sprite;		
 	}
 }
