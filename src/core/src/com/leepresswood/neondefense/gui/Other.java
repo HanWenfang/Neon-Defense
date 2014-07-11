@@ -12,4 +12,14 @@ public abstract class Other implements GameEntityInterface
 
 	@Override
 	public abstract void render(float delta, SpriteBatch batch);
+
+	public void checkTouch(float x, float y)
+	{
+		
+	}
+
+	public void doTouch(float x, float y)
+	{
+		
+	}
 }

@@ -92,8 +92,8 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		}
 		else			
 		{//This tap wasn't on the field. Check GUI.
-			if(this.gui.checkTouch(unprojected))	//Touch is on GUI.
-				this.gui.doTouch(unprojected);
+			if(this.gui.checkTouch(x, y))	//Touch is on GUI.
+				this.gui.doTouch(x, y);
 			else	//Touch not on GUI. Clear any open extra GUI screens.
 				this.gui.closeExtraScreens();
 		}

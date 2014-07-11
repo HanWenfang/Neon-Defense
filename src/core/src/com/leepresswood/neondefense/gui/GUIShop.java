@@ -21,9 +21,8 @@ public class GUIShop extends Other
 		this.background.setBounds(x, y, width, height);
 		
 		//Display every tower at the bottom. Might need to be horizontally scrollable if enough towers exist.
-		int count = 0;
-		for(Sprite s : towers)
-			s = new Sprite(TowerGenerator.getTowerTexture(gui.asset_manager, count++));
+		for(int i = 0; i < towers.length; i++)
+			towers[i] = new Sprite(TowerGenerator.getTowerTexture(gui.asset_manager, i));
 	}
 
 	@Override

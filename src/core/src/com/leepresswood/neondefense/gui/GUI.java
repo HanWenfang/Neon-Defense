@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 import com.leepresswood.neondefense.entities.Field;
 import com.leepresswood.neondefense.entities.GameEntityInterface;
 import com.leepresswood.neondefense.generators.Assets;
@@ -105,5 +106,26 @@ public class GUI implements GameEntityInterface
 	public int getMoney()
 	{//Return current money amount.
 		return this.money;
+	}
+
+	public boolean checkTouch(float x, float y)
+	{//Test all clickable GUI components for whether they were touched.
+		//Fast-Forward button
+		
+		
+		//Other bar (if open)
+		if(this.other != null)
+			this.other.checkTouch(x, y);
+		
+		return false;
+	}
+
+	public void doTouch(float x, float y)
+	{//Do the touch of the touched GUI component
+		//Fast-Forward button
+		
+		//Other bar (if open)
+		if(this.other != null)
+			this.other.doTouch(x, y);		
 	}
 }
