@@ -1,6 +1,7 @@
 package com.leepresswood.neondefense.gui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.entities.Field;
@@ -18,6 +19,7 @@ public class GUI implements GameEntityInterface
 	
 	private Sprite background;				//Main GUI bar
 	private Other other;						//This is the other panel. This will be either the update or the shop panel.
+	private BitmapFont font;
 	
 	public GUI(Assets asset_manager)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
@@ -25,9 +27,12 @@ public class GUI implements GameEntityInterface
 		this.background = new Sprite(asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(0, 0, Gdx.graphics.getWidth(), 40);
 		
-		//Set the other GUI elements.
+		//Set the other GUI panels.
 		this.other = null;
 		this.new_panel_requested = false;
+		
+		//Font locations
+		font = new BitmapFont(Gdx.files.internal("gui/white.fnt"));
 	}
 
 	@Override
@@ -53,6 +58,8 @@ public class GUI implements GameEntityInterface
 			this.background.draw(batch);
 		else
 			this.other.render(delta, batch);
+		
+		this.font.draw(batch, ((Integer) this.money).toString(), 0, Gdx.graphics.getHeight());
 	}
 
 	public void getUpdatesFromField(Field field)

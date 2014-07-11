@@ -38,6 +38,9 @@ public class GUIUpdate extends Other
 	@Override
 	public void render(float delta, SpriteBatch batch)
 	{
-		
+		this.background.draw(batch);
+		this.button_sell.draw(batch);
+		this.tower.draw(batch);
+		this.button_upgrade.draw(batch);
 	}
 }
