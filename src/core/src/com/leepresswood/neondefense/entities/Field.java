@@ -10,10 +10,13 @@ import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.entities.towers.Tower;
 import com.leepresswood.neondefense.generators.Assets;
 import com.leepresswood.neondefense.generators.LevelGenerator;
+import com.leepresswood.neondefense.generators.TowerGenerator;
+import com.leepresswood.neondefense.generators.TowerGenerator.Towers;
 
 public class Field implements GameEntityInterface
 {
-	private LevelGenerator generator;
+	private LevelGenerator level_generator;
+	private TowerGenerator tower_generator;
 	private Tile[][] tiles;
 	
 	private ArrayList<Tower> towers;
@@ -27,10 +30,11 @@ public class Field implements GameEntityInterface
 	
 	public Field(Assets assets, int level)
 	{//Collect the level and generate it.
-		this.generator = new LevelGenerator(assets, level);
-		this.tiles = this.generator.getTiles();
+		this.level_generator = new LevelGenerator(assets, level);
+		this.tiles = this.level_generator.getTiles();
 		
 		//Initialize the variables.		
+		this.tower_generator = new TowerGenerator(this.getTileWidth());
 		this.towers = new ArrayList<Tower>();
 		this.enemies = new ArrayList<Enemy>();
 		this.open_shop = false;
@@ -200,5 +204,17 @@ public class Field implements GameEntityInterface
 			if(t.getID() == tower_id)
 				return t;
 		return null;		
+	}
+
+	public void spawn(Towers buyTowerCheck, Vector2 location)
+	{//If the passed Towers attribute isn't null, spawn the tower at the passed location.
+		if(buyTowerCheck != null)
+		{
+			//Generate a tower
+			Tower t = this.tower_generator.spawn(buyTowerCheck);
+			
+			//Place it on a tile.
+			this.tiles[(int) location.x][(int) location.y].setTower(t);
+		}
 	}
 }

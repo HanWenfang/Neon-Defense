@@ -79,4 +79,9 @@ public class Tile implements GameEntityInterface
 	{
 		return this.occupied_by;
 	}
+
+	public void setTower(Tower t)
+	{//Set a tower for this tile.
+		
+	}
 }

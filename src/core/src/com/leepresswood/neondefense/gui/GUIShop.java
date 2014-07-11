@@ -9,12 +9,14 @@ public class GUIShop extends Other
 	private Sprite background;				//Main GUI bar
 	private Sprite[] towers;					//The buyable towers
 	
-	private boolean buy_ready;
+	public boolean buy_ready;
+	public int buy_id;
 	
 	public GUIShop(int x, int y, float width, float height, GUI gui)
 	{
 		//Initialize variables
 		this.buy_ready = false;
+		this.buy_id = -1;
 		this.towers = new Sprite[TowerGenerator.Towers.values().length];
 		
 		this.background = new Sprite(gui.asset_manager.TEXTURE_GUI_BACKGROUND);
@@ -34,6 +36,26 @@ public class GUIShop extends Other
 	@Override
 	public void render(float delta, SpriteBatch batch)
 	{
-		
+		this.background.draw(batch);
+		for(Sprite s : towers)
+			s.draw(batch);
+	}
+	
+	@Override
+	public void doTouch(float x, float y)
+	{//Check every sprite to see if it was tapped
+		for(int i = 0; i < towers.length; i++)
+			if(towers[i].getBoundingRectangle().contains(x, y))
+			{//It was tapped. Buy.
+				this.buy_id = i;
+				this.buy_ready = true;
+				i += towers.length;
+			}
+	}
+
+	public void reset()
+	{//Reset the buy queue
+		this.buy_id = -1;
+		this.buy_ready = false;
 	}
 }

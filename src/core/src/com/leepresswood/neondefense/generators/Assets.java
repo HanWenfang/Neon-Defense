@@ -22,7 +22,7 @@ public class Assets
 	public Texture TEXTURE_PATH = new Texture(TILE_PATH);
 	
 	//Towers
-	public static final Texture TEXTURE_TOWER_BLASTER = null;
+	public Texture TEXTURE_TOWER_BLASTER = null;
 	
 	//GUI
 	public Texture TEXTURE_GUI_BACKGROUND = new Texture(GUI_BACKGROUND); 

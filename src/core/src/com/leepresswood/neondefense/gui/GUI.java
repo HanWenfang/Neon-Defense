@@ -7,7 +7,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.leepresswood.neondefense.entities.Field;
 import com.leepresswood.neondefense.entities.GameEntityInterface;
+import com.leepresswood.neondefense.entities.towers.Tower;
 import com.leepresswood.neondefense.generators.Assets;
+import com.leepresswood.neondefense.generators.TowerGenerator;
+import com.leepresswood.neondefense.generators.TowerGenerator.Towers;
 
 public class GUI implements GameEntityInterface
 {
@@ -48,7 +51,15 @@ public class GUI implements GameEntityInterface
 			
 		}
 		else
+		{
 			this.other.update(delta);
+		
+			//Panel-specific updating
+			if(this.other.getClass() == GUIShop.class)
+			{//If a buy is queued, change to the confirmation panel
+				
+			}
+		}
 	}
 
 	@Override
@@ -127,5 +138,16 @@ public class GUI implements GameEntityInterface
 		//Other bar (if open)
 		if(this.other != null)
 			this.other.doTouch(x, y);		
+	}
+	
+	public Towers buyTowerCheck()
+	{//Was a buy requested? If so, buy and send it to the field.
+		if(this.other != null && this.other.getClass() == GUIShop.class)
+		{//If a buy is queued, get the queued tower and put it on the field.
+			((GUIShop) this.other).reset();
+			return TowerGenerator.Towers.values()[((GUIShop) this.other).buy_id];
+		}
+		
+		return null;
 	}
 }

@@ -46,6 +46,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	@Override
 	public void update(float delta)
 	{//Update method. Update game logic.
+		//Field
 		this.field.update(delta);
 		
 		//Scan the field for a GUI update request.
@@ -93,7 +94,10 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		else			
 		{//This tap wasn't on the field. Check GUI.
 			if(this.gui.checkTouch(x, y))	//Touch is on GUI.
+			{
 				this.gui.doTouch(x, y);
+				this.field.spawn(this.gui.buyTowerCheck(), location);
+			}
 			else	//Touch not on GUI. Clear any open extra GUI screens.
 				this.gui.closeExtraScreens();
 		}
