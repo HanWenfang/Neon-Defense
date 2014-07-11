@@ -32,7 +32,7 @@ public class GUI implements GameEntityInterface
 		this.new_panel_requested = false;
 		
 		//Font locations
-		font = new BitmapFont(Gdx.files.internal("gui/white.fnt"));
+		font = asset_manager.FONT;
 	}
 
 	@Override
