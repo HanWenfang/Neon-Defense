@@ -6,7 +6,7 @@ import com.leepresswood.neondefense.entities.towers.Tower;
 
 public class GUIUpdate extends Other
 {
-	private Sprite background;				//Main GUI bar
+	private Sprite background;
 	private Sprite button_sell;			
 	private Sprite button_upgrade;		
 	private Sprite tower;
@@ -23,7 +23,10 @@ public class GUIUpdate extends Other
 		
 		//Buttons
 		this.button_sell = new Sprite(gui.asset_manager.TEXTURE_BUTTON);
+		this.button_sell.setBounds(x, y, tower_x - x, height);
 		
+		this.button_upgrade = new Sprite(gui.asset_manager.TEXTURE_BUTTON);
+		this.button_upgrade.setBounds(tower_x + this.tower.getWidth(), y, tower_x - x, height);
 	}
 	
 	@Override
