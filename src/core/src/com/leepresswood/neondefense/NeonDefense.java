@@ -29,8 +29,9 @@ public class NeonDefense extends Game
 	
 	@Override
 	public void dispose()
-	{
+	{//End the game and clear the remaining textures from video memory.
 		super.dispose();
+		this.asset_manager.clear();
 	}
 	
 	@Override
