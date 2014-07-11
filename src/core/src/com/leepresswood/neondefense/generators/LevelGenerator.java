@@ -7,7 +7,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.leepresswood.neondefense.NeonDefense;
 import com.leepresswood.neondefense.entities.Tile;
 
 public class LevelGenerator

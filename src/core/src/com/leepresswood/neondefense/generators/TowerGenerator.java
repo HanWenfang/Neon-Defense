@@ -6,6 +6,7 @@ package com.leepresswood.neondefense.generators;
 
 import java.util.HashMap;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
@@ -14,7 +15,7 @@ import com.leepresswood.neondefense.entities.towers.Tower;
 
 public class TowerGenerator
 {
-	public final String FILE_PATH_START_TOWER = "towers/";
+	private final String FILE_PATH_START_TOWER = "towers/";
 	
 	private float tile_size;
 	private int id = 0;				//Current tower being placed. This is the tower's "name".
@@ -61,7 +62,18 @@ public class TowerGenerator
 			map.put(e.getChild(i).getName(), e.getChild(i).getAttribute("value"));
 		return map;
 	}
-
+	
+	public static Texture getTowerTexture(Assets assets, int id)
+	{//The passed ID is the tower ID.
+		switch(id)
+		{
+			case 0:		//Blaster
+				return assets.TEXTURE_TOWER_BLASTER;
+			default:
+				return null;				
+		}
+	}
+	
 	public static enum Towers
 	{//Tower names to be called during spawning.
 		BLASTER, BOMB, BOLT, BUFF

@@ -140,7 +140,7 @@ public class Field implements GameEntityInterface
 		return this.money_change;		
 	}
 
-	public Vector2 isOnField(float x, float y)
+	public Vector2 getTileCoordinatesByPoint(float x, float y)
 	{//If the given x and y values are on of the tiles, we will be focusing on that one.
 		for(int i = 0; i < this.tiles.length; i++)
 			for(int j = 0; j < this.tiles[0].length; j++)
