@@ -12,6 +12,10 @@ import com.leepresswood.neondefense.entities.Tile;
 
 public class LevelGenerator
 {
+	//Path to file that holds levels.
+	public static final String FILE_PATH_START_LEVEL = "levels/";
+	public static final String FILE_EXTENSION_LEVEL = ".lvl";
+	
 	//Preloaded textures
 	private Assets assets;
 	
@@ -36,7 +40,7 @@ public class LevelGenerator
 
 	private void readFromFile(Integer level)
 	{//Open level file, fill array of tiles and tiles across and down, and close level file
-		FileHandle file = Gdx.files.internal(NeonDefense.FILE_PATH_START_LEVEL + level.toString() + NeonDefense.FILE_EXTENSION_LEVEL);
+		FileHandle file = Gdx.files.internal(this.FILE_PATH_START_LEVEL + level.toString() + this.FILE_EXTENSION_LEVEL);
 		InputStream level_string = file.read();
 		Scanner scanner = new Scanner(level_string);
 		

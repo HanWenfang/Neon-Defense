@@ -27,18 +27,6 @@ public class Field implements GameEntityInterface
 	
 	public Field(Assets assets, int level)
 	{//Collect the level and generate it.
-		/* The width of the field should be the width of the screen.
-		 * Divide the width evenly by the number of blocks across to 
-		 * get the block size.
-		 * The height of the field can then be determined from the 
-		 * previously found width. Because all tiles are square,
-		 * it is a simple matter of finding one side to find the total 
-		 * height and width.
-		 * Because we want a user interface at the bottom of the screen
-		 * to display a shop and any menu bars, it is possible the
-		 * field height will be larger than the screen. Thus, we will need
-		 * a vertical scroll option.
-		 */
 		this.generator = new LevelGenerator(assets, level);
 		this.tiles = this.generator.getTiles();
 		

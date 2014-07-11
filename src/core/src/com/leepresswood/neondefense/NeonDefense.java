@@ -5,13 +5,7 @@ import com.leepresswood.neondefense.generators.Assets;
 import com.leepresswood.neondefense.screens.ScreenTDGame;
 
 public class NeonDefense extends Game
-{;
-	public static final String FILE_EXTENSION_LEVEL = ".lvl";
-
-	public static final String FILE_PATH_START_TOWER = "towers/";
-	public static final String FILE_PATH_START_TILE = "tiles/";
-	public static final String FILE_PATH_START_LEVEL = "levels/";
-	
+{	
 	public Assets asset_manager;
 	
 	@Override

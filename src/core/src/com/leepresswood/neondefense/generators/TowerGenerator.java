@@ -9,15 +9,16 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.leepresswood.neondefense.NeonDefense;
 import com.leepresswood.neondefense.entities.towers.Blaster;
 import com.leepresswood.neondefense.entities.towers.Tower;
 
 public class TowerGenerator
 {
+	public final String FILE_PATH_START_TOWER = "towers/";
+	
 	private float tile_size;
 	private int id = 0;				//Current tower being placed. This is the tower's "name".
-	private static final String tower_xml = NeonDefense.FILE_PATH_START_TOWER + "tower.xml";
+	private final String tower_xml = this.FILE_PATH_START_TOWER + "tower.xml";
 	private Array<Element> tower_properties;
 	private Array<Element> tower_upgrades;
 	
