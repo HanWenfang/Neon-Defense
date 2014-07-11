@@ -41,7 +41,7 @@ public class Field implements GameEntityInterface
 	@Override
 	public void update(float delta)
 	{//Every tower, enemy, and projectile should be updated here.
-		//Every tic should reset the money change
+		//Every tick should reset the money change
 		this.money_change = 0;
 		
 		//Tiles updated first
@@ -51,9 +51,9 @@ public class Field implements GameEntityInterface
 		
 		//Towers and enemies next
 		for(Tower t : this.towers)
-			t.update(delta);
+			t.update(delta, this);
 		for(Enemy e : this.enemies)
-			e.update(delta);
+			e.update(delta, this);
 		
 		//Projectiles
 		

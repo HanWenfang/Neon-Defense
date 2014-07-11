@@ -4,9 +4,10 @@
 package com.leepresswood.neondefense.entities.enemies;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.leepresswood.neondefense.entities.Field;
 import com.leepresswood.neondefense.entities.GameEntityInterface;
 
-public class Enemy implements GameEntityInterface
+public class Enemy
 {
 	private float speed;
 	private float damage;
@@ -46,13 +47,11 @@ public class Enemy implements GameEntityInterface
 		this.bounty = bounty;
 	}
 	
-	@Override
-	public void update(float delta)
+	public void update(float delta, Field field)
 	{
 		
 	}
 	
-	@Override
 	public void render(float delta, SpriteBatch batch)
 	{
 		

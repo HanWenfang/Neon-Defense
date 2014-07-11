@@ -8,8 +8,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.leepresswood.neondefense.entities.Field;
 
-public abstract class Tower implements TowerInterface
+public abstract class Tower
 {	
 	protected final int MAX_LEVEL = 5;
 	
@@ -80,13 +81,16 @@ public abstract class Tower implements TowerInterface
 		return this.id;
 	}
 	
-	@Override
-	public abstract void update(float delta);
+	public void update(float delta, Field field)
+	{
+		
+	}
 	
-	@Override
-	public abstract void render(float delta, SpriteBatch batch);
+	public void render(float delta, SpriteBatch batch)
+	{
+		
+	}
 
-	@Override
 	public int levelUp(int money)
 	{//A level up has been requested. 
 		//Level cannot be above the maximum.

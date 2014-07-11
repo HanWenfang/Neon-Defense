@@ -2,6 +2,7 @@ package com.leepresswood.neondefense.entities.towers;
 
 import java.util.HashMap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.leepresswood.neondefense.entities.Field;
 
 public class Blaster extends Tower
 {
@@ -12,7 +13,7 @@ public class Blaster extends Tower
 	}
 
 	@Override
-	public void update(float delta)
+	public void update(float delta, Field field)
 	{
 		
 	}
