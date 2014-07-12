@@ -4,32 +4,29 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
 import com.leepresswood.neondefense.entities.Field;
 import com.leepresswood.neondefense.entities.GameEntityInterface;
-import com.leepresswood.neondefense.entities.towers.Tower;
 import com.leepresswood.neondefense.generators.Assets;
 import com.leepresswood.neondefense.generators.TowerGenerator;
 import com.leepresswood.neondefense.generators.TowerGenerator.Towers;
 
 public class GUI implements GameEntityInterface
 {
-	public Assets asset_manager;
+	private final float GUI_WIDTH = Gdx.graphics.getWidth();
+	private final float GUI_HEIGHT = Gdx.graphics.getHeight() * .05f;
 	
 	private int money;						//Current cash amount.
 	private int money_change;				//Received from field. Bounty from killing enemies.
 	private boolean new_panel_requested;//Has a new panel been requested?
 	private boolean new_panel_shop;		//Is the new panel the shop? True. Upgrade? False.
 	
-	private Sprite background;				//Main GUI bar
+	public Assets asset_manager;
 	private Other other;						//This is the other panel. This will be either the update or the shop panel.
 	private BitmapFont font;
 	
 	public GUI(Assets asset_manager)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
 		this.asset_manager = asset_manager;
-		this.background = new Sprite(asset_manager.TEXTURE_GUI_BACKGROUND);
-		this.background.setBounds(0, 0, Gdx.graphics.getWidth(), 40);
 		
 		//Set the other GUI panels.
 		this.other = null;
@@ -46,29 +43,22 @@ public class GUI implements GameEntityInterface
 		this.money += money_change;
 		
 		//Only update the other panel if it's not null.
-		if(other == null)
+		if(this.other == null)
 		{
 			
 		}
 		else
 		{
 			this.other.update(delta);
-		
-			//Panel-specific updating
-			if(this.other.getClass() == GUIShop.class)
-			{//If a buy is queued, change to the confirmation panel
-				
-			}
 		}
 	}
 
 	@Override
 	public void render(float delta, SpriteBatch batch)
 	{//Draw all components.
-		//Only draw the other panel if it's not null. Draw the main panel otherwise.
-		if(other == null)
-			this.background.draw(batch);
-		else
+		//Only draw the other panel if it's not null.
+		System.out.println(this.other);
+		if(this.other != null)
 			this.other.render(delta, batch);
 		
 		this.font.draw(batch, ((Integer) this.money).toString(), 0, Gdx.graphics.getHeight());
@@ -86,7 +76,7 @@ public class GUI implements GameEntityInterface
 			this.new_panel_requested = true;
 		}
 		
-		//Otherwise, if a blank panel is selected, open the shop.
+		//Otherwise, if a blank tile is selected, open the shop.
 		else if(field.isShopOpen())
 		{			
 			//Set the flags
@@ -95,16 +85,16 @@ public class GUI implements GameEntityInterface
 		}
 		
 		//Is there a new panel requested?
-		if(new_panel_requested)
+		if(this.new_panel_requested)
 		{
 			//Reset variable to avoid infinite panel changes
 			this.new_panel_requested = false;
 			
 			//Which panel is it?
 			if(new_panel_shop) 		//Shop
-				this.other = new GUIShop(0, 0, this.background.getWidth(), this.background.getHeight(), this);
+				this.other = new GUIShop(0, 0, GUI_WIDTH, GUI_HEIGHT, this);
 			else							//Upgrade
-				this.other = new GUIUpdate(0, 0, this.background.getWidth(), this.background.getHeight(), field.getTowerFromID(field.getSelectedTower()), this);
+				this.other = new GUIUpdate(0, 0, GUI_WIDTH, GUI_HEIGHT, field.getTowerFromID(field.getSelectedTower()), this);
 		}
 	}
 
@@ -126,7 +116,7 @@ public class GUI implements GameEntityInterface
 		
 		//Other bar (if open)
 		if(this.other != null)
-			this.other.checkTouch(x, y);
+			return this.other.checkTouch(x, y);
 		
 		return false;
 	}

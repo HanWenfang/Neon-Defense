@@ -157,12 +157,22 @@ public class Field implements GameEntityInterface
 	
 	public boolean isShopOpen()
 	{//Did we click on an empty tile?
-		return this.open_shop;
+		if(this.open_shop)
+		{
+			this.open_shop = false;
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean isTowerSelected()
 	{//Did we click on a tower?
-		return this.tower_is_selected;
+		if(this.tower_is_selected)
+		{
+			this.tower_is_selected = false;
+			return true;
+		}
+		return false;
 	}
 	
 	public int getSelectedTower()
