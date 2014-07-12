@@ -190,12 +190,10 @@ public class Field implements GameEntityInterface
 			this.open_shop = false;
 			this.tower_is_selected = true;
 			
-			//Scan for the id of the selected tile
+			//Scan for the location of the selected tile
 			for(Tower t : towers)
-				if(t.getTileID() == tile.getID())
+				if(tile.getLocation() == t.getTileLocation())
 					this.selected_tower_id = t.getID();
-			
-			this.selected_tile_id = tile.getID();
 		}
 		else
 		{//This tile is empty. Open the tower shop.

@@ -123,4 +123,9 @@ public abstract class Tower
 	{
 		return this.base_sprite;		
 	}
+
+	public Vector2 getTileLocation()
+	{
+		return this.tile_location;
+	}
 }

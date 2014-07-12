@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.generators.TileDecoder;
 
 public class Tile implements GameEntityInterface
@@ -69,8 +70,8 @@ public class Tile implements GameEntityInterface
 		return this.sprite;		
 	}
 	
-	public int getID()
+	public Vector2 getLocation()
 	{
-		return this.id;
+		return this.location;
 	}
 }

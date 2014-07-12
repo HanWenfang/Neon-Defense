@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.Tile;
 
 public class LevelGenerator
@@ -56,7 +57,6 @@ public class LevelGenerator
 		//Every other number is a tile. Make the tiles
 		this.tiles = new Tile[this.tiles_down][this.tiles_across];
 		TileNumberDecoder tnd = new TileNumberDecoder();
-		int tower_id = 0;
 		for(int y = 0; y < this.tiles_down; y++)
 		{
 			this.tiles[y] = new Tile[this.tiles_across];
@@ -70,7 +70,7 @@ public class LevelGenerator
 				float pos_y = Gdx.graphics.getHeight() - y * tile_size;
 				
 				//Set tile				
-				this.tiles[y][x] = new Tile(tower_id++, tile_type, tnd.getTileTexture(tile_type), this.tile_size, pos_x, pos_y, color);	
+				this.tiles[y][x] = new Tile(new Vector2(x, y), tile_type, tnd.getTileTexture(tile_type), this.tile_size, pos_x, pos_y, color);	
 			}
 		}
 		scanner.close();
