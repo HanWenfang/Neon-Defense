@@ -17,16 +17,16 @@ public class Assets
 	private static final String GUI_BUTTON = GUI_FILE_PATH + "button.png";
 	
 	//Preload all the textures for the game.
+	//GUI
+	public Texture TEXTURE_GUI_BACKGROUND = new Texture(GUI_BACKGROUND); 
+	public Texture TEXTURE_BUTTON = new Texture(GUI_BUTTON);
+	
 	//Tiles
 	public Texture TEXTURE_UNOCCUPIED = new Texture(TILE_UNOCCUPIED); 
 	public Texture TEXTURE_PATH = new Texture(TILE_PATH);
 	
 	//Towers
-	public Texture TEXTURE_TOWER_BLASTER = null;
-	
-	//GUI
-	public Texture TEXTURE_GUI_BACKGROUND = new Texture(GUI_BACKGROUND); 
-	public Texture TEXTURE_BUTTON = new Texture(GUI_BUTTON);
+	public Texture TEXTURE_TOWER_BLASTER = TEXTURE_UNOCCUPIED;
 	
 	//Preload all the fonts for the game
 	public BitmapFont FONT = new BitmapFont(Gdx.files.internal("gui/white.fnt"));

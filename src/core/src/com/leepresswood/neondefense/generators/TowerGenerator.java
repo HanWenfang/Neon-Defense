@@ -52,12 +52,12 @@ public class TowerGenerator
 				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(id));
 				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(id));
 				return new Blaster(this.id++, tile.getID(), attribute_pairs, upgrade_pairs);
-			case BOLT:
+			/*case BOLT:
 				break;
 			case BOMB:
 				break;
 			case BUFF:
-				break;
+				break;*/
 		}
 		
 		//Something went wrong if you are here.
@@ -85,6 +85,6 @@ public class TowerGenerator
 	
 	public static enum Towers
 	{//Tower names to be called during spawning.
-		BLASTER, BOMB, BOLT, BUFF
+		BLASTER//, BOMB, BOLT, BUFF
 	}
 }
