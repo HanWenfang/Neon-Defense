@@ -4,23 +4,22 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.leepresswood.neondefense.entities.towers.Tower;
 import com.leepresswood.neondefense.generators.TileDecoder;
 
 public class Tile implements GameEntityInterface
 {//The tiles for the game board. Towers placed on these, and enemies walk on these.	
+	protected int id;
 	protected boolean walkable;
 	protected boolean occupied;
 	protected boolean placeable;
 	
-	protected Tower occupied_by;
-	
 	protected Sprite sprite;
 	protected Color color;
 	
-	public Tile(int tile_type, Texture texture, float tile_size, float pos_x, float pos_y, Color color)
+	public Tile(int id, int tile_type, Texture texture, float tile_size, float pos_x, float pos_y, Color color)
 	{	
 		//Set tile properties.
+		this.id = id;
 		this.walkable = TileDecoder.getWalkable(tile_type);
 		this.placeable = TileDecoder.getPlaceable(tile_type);
 		this.occupied = false;
@@ -30,9 +29,6 @@ public class Tile implements GameEntityInterface
 		this.sprite.setPosition(pos_x, pos_y);
 		this.sprite.setSize(tile_size, tile_size);
 		this.color = color;
-		
-		//Set the occupied tower (Should be blank)
-		this.occupied_by = null;
 	}
 
 	@Override
@@ -47,10 +43,8 @@ public class Tile implements GameEntityInterface
 		//Walkable textures will have a tint.
 		Color old = batch.getColor();
 		if(this.walkable)
-			batch.setColor(color);
-		
+			batch.setColor(color);		
 		batch.draw(sprite.getTexture(), sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
-		
 		if(this.walkable)
 			batch.setColor(old);
 	}
@@ -75,13 +69,8 @@ public class Tile implements GameEntityInterface
 		return this.sprite;		
 	}
 	
-	public Tower getTower()
+	public int getID()
 	{
-		return this.occupied_by;
-	}
-
-	public void setTower(Tower t)
-	{//Set a tower for this tile.
-		
+		return this.id;
 	}
 }
