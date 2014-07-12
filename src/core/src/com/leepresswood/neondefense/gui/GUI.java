@@ -91,9 +91,9 @@ public class GUI implements GameEntityInterface
 			this.new_panel_requested = false;
 			
 			//Which panel is it?
-			if(new_panel_shop) 		//Shop
+			if(this.new_panel_shop) 		//Shop
 				this.other = new GUIShop(0, 0, GUI_WIDTH, GUI_HEIGHT, this);
-			else							//Upgrade
+			else									//Upgrade
 				this.other = new GUIUpdate(0, 0, GUI_WIDTH, GUI_HEIGHT, field.getTowerFromID(field.getSelectedTower()), this);
 		}
 	}

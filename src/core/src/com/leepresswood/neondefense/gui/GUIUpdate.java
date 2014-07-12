@@ -43,4 +43,17 @@ public class GUIUpdate extends Other
 		this.tower.draw(batch);
 		this.button_upgrade.draw(batch);
 	}
+
+	@Override
+	public boolean checkTouch(float x, float y)
+	{
+		return false;
+		
+		
+	}
+
+	@Override
+	public void doTouch(float x, float y)
+	{
+	}
 }

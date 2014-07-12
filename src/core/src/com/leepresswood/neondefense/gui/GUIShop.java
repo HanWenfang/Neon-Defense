@@ -64,4 +64,12 @@ public class GUIShop extends Other
 		this.buy_id = -1;
 		this.buy_ready = false;
 	}
+
+	@Override
+	public boolean checkTouch(float x, float y)
+	{
+		return false;
+		
+		
+	}
 }

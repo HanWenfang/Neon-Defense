@@ -13,13 +13,7 @@ public abstract class Other implements GameEntityInterface
 	@Override
 	public abstract void render(float delta, SpriteBatch batch);
 
-	public boolean checkTouch(float x, float y)
-	{
-		return false;
-	}
+	public abstract boolean checkTouch(float x, float y);
 
-	public void doTouch(float x, float y)
-	{
-		
-	}
+	public abstract void doTouch(float x, float y);
 }
