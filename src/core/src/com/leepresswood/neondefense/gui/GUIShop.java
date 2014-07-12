@@ -19,8 +19,7 @@ public class GUIShop extends Other
 		//Initialize variables
 		this.buy_ready = false;
 		this.buy_id = -1;
-		this.towers = new Sprite[TowerGenerator.Towers.values().length];
-		
+		this.towers = new Sprite[TowerGenerator.Towers.values().length];		
 		this.background = new Sprite(gui.asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(x, y, width, height);
 		
@@ -29,7 +28,6 @@ public class GUIShop extends Other
 		{
 			//Get the tower's x
 			float tower_x = x + i * height + i * this.gap;
-			
 			this.towers[i] = new Sprite(TowerGenerator.getTowerTexture(gui.asset_manager, i));
 			this.towers[i].setBounds(tower_x, y, height, height);
 		}

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
@@ -44,14 +45,14 @@ public class TowerGenerator
 		}		
 	}
 	
-	public Tower spawn(Towers t, Tile tile)
+	public Tower spawn(Towers t, Vector2 location)
 	{//Spawn the passed tower and return it.
 		switch(t)
 		{
 			case BLASTER:
 				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(id));
 				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(id));
-				return new Blaster(this.id++, tile.getID(), attribute_pairs, upgrade_pairs);
+				return new Blaster(this.id++, location, attribute_pairs, upgrade_pairs);
 			/*case BOLT:
 				break;
 			case BOMB:

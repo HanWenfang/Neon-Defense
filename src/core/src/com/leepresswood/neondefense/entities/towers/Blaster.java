@@ -2,14 +2,15 @@ package com.leepresswood.neondefense.entities.towers;
 
 import java.util.HashMap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.Field;
 
 public class Blaster extends Tower
 {
 
-	public Blaster(int id, int tower_id, HashMap<String, String> properties, HashMap<String, String> upgrades)
+	public Blaster(int id, Vector2 location, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
-		super(id, tower_id, properties, upgrades);
+		super(id, location, properties, upgrades);
 	}
 
 	@Override

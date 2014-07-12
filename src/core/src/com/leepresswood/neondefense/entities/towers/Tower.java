@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.Field;
 
 public abstract class Tower
@@ -14,7 +15,7 @@ public abstract class Tower
 	protected final int MAX_LEVEL = 5;
 	
 	protected int id;
-	protected int tile_id;
+	protected Vector2 tile_location;
 	
 	protected float radius;						//In terms of blocks.
 	protected float strength;					//Damage removed from enemy
@@ -30,10 +31,10 @@ public abstract class Tower
 	protected String base_texture_file;		//The file for the base sprite's texture.
 	protected Sprite base_sprite;				//The base sprite of the tower
 	
-	public Tower(int id, int tile_id, HashMap<String, String> properties, HashMap<String, String> upgrades)
+	public Tower(int id, Vector2 location, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
 		this.id = id;
-		this.tile_id = tile_id;
+		this.tile_location = location;
 		
 		//Get the properties
 		this.radius = Float.parseFloat(properties.get("radius"));

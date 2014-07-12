@@ -1,7 +1,6 @@
 <towers>
 	<tower id="0">
 	    <name value="Blaster"/>
-	    <file value="blaster.png"/>
 	    <radius value="2"/>
 	    <strength value="10"/>
 	    <attack_speed value="1"/>

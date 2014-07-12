@@ -218,7 +218,7 @@ public class Field implements GameEntityInterface
 		if(buyTowerCheck != null)
 		{
 			//Generate a tower and put it in the tower array
-			Tower t = this.tower_generator.spawn(buyTowerCheck, this.tiles[(int) location.x][(int) location.y]);
+			Tower t = this.tower_generator.spawn(buyTowerCheck, location);
 			this.towers.add(t);
 		}
 	}
