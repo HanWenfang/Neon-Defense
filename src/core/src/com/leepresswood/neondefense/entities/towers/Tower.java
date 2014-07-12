@@ -123,9 +123,4 @@ public abstract class Tower
 	{
 		return this.base_sprite;		
 	}
-
-	public int getTileID()
-	{
-		return this.tile_id;
-	}
 }

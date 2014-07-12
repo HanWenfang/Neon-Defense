@@ -16,6 +16,10 @@ public class Assets
 	private static final String GUI_BACKGROUND = GUI_FILE_PATH + "background.png";
 	private static final String GUI_BUTTON = GUI_FILE_PATH + "button.png";
 	
+	//Towers
+	private static final String TOWER_FILE_PATH = "towers/";
+	private static final String TOWER_BLASTER = TOWER_FILE_PATH + "blaster.png";
+	
 	//Preload all the textures for the game.
 	//GUI
 	public Texture TEXTURE_GUI_BACKGROUND = new Texture(GUI_BACKGROUND); 
@@ -26,7 +30,7 @@ public class Assets
 	public Texture TEXTURE_PATH = new Texture(TILE_PATH);
 	
 	//Towers
-	public Texture TEXTURE_TOWER_BLASTER = TEXTURE_UNOCCUPIED;
+	public Texture TEXTURE_TOWER_BLASTER = new Texture(TOWER_BLASTER);
 	
 	//Preload all the fonts for the game
 	public BitmapFont FONT = new BitmapFont(Gdx.files.internal("gui/white.fnt"));

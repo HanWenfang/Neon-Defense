@@ -8,7 +8,7 @@ import com.leepresswood.neondefense.generators.TileDecoder;
 
 public class Tile implements GameEntityInterface
 {//The tiles for the game board. Towers placed on these, and enemies walk on these.	
-	protected int id;
+	protected Vector2 location;
 	protected boolean walkable;
 	protected boolean occupied;
 	protected boolean placeable;
@@ -16,10 +16,10 @@ public class Tile implements GameEntityInterface
 	protected Sprite sprite;
 	protected Color color;
 	
-	public Tile(int id, int tile_type, Texture texture, float tile_size, float pos_x, float pos_y, Color color)
+	public Tile(Vector2 location, int tile_type, Texture texture, float tile_size, float pos_x, float pos_y, Color color)
 	{	
 		//Set tile properties.
-		this.id = id;
+		this.location = location;
 		this.walkable = TileDecoder.getWalkable(tile_type);
 		this.placeable = TileDecoder.getPlaceable(tile_type);
 		this.occupied = false;
