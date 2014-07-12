@@ -26,6 +26,7 @@ public class Field implements GameEntityInterface
 	private int money_change;
 	private boolean open_shop;
 	private boolean tower_is_selected;
+	private int selected_tile_id;
 	private int selected_tower_id;
 	
 	public Field(Assets assets, int level)
@@ -39,7 +40,7 @@ public class Field implements GameEntityInterface
 		this.enemies = new ArrayList<Enemy>();
 		this.open_shop = false;
 		this.tower_is_selected = false;
-		this.selected_tower_id = -1;
+		this.selected_tile_id = -1;
 	}
 	
 	@Override
@@ -166,7 +167,7 @@ public class Field implements GameEntityInterface
 	
 	public int getSelectedTower()
 	{//The selected tower should be gathered by the ID.
-		return this.selected_tower_id;
+		return this.selected_tile_id;
 	}
 
 	public void doInput(Vector2 location)
@@ -188,13 +189,19 @@ public class Field implements GameEntityInterface
 		{//This tile is occupied. Allow user to upgrade or sell tower.
 			this.open_shop = false;
 			this.tower_is_selected = true;
-			this.selected_tower_id = tile.getTower().getID();
+			
+			//Scan for the id of the selected tile
+			for(Tower t : towers)
+				if(t.getTileID() == tile.getID())
+					this.selected_tower_id = t.getID();
+			
+			this.selected_tile_id = tile.getID();
 		}
 		else
 		{//This tile is empty. Open the tower shop.
 			this.open_shop = true;
 			this.tower_is_selected = false;
-			this.selected_tower_id = -1;
+			this.selected_tile_id = -1;
 		}
 	}
 

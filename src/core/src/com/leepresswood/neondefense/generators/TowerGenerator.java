@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.leepresswood.neondefense.entities.Tile;
 import com.leepresswood.neondefense.entities.towers.Blaster;
 import com.leepresswood.neondefense.entities.towers.Tower;
 
@@ -35,14 +36,14 @@ public class TowerGenerator
 		this.tower_upgrades = root.getChildrenByName("upgrade");
 	}
 	
-	public Tower spawn(Towers t)
+	public Tower spawn(Towers t, Tile tile)
 	{//Spawn the passed tower and return it.
 		switch(t)
 		{
 			case BLASTER:
 				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(id));
 				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(id));
-				return new Blaster(this.id++, attribute_pairs, upgrade_pairs);
+				return new Blaster(this.id++, tile.getID(), attribute_pairs, upgrade_pairs);
 			case BOLT:
 				break;
 			case BOMB:

@@ -7,9 +7,9 @@ import com.leepresswood.neondefense.entities.Field;
 public class Blaster extends Tower
 {
 
-	public Blaster(int id, HashMap<String, String> properties, HashMap<String, String> upgrades)
+	public Blaster(int id, int tower_id, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
-		super(id, properties, upgrades);
+		super(id, tower_id, properties, upgrades);
 	}
 
 	@Override
