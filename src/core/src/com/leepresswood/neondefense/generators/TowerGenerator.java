@@ -4,7 +4,9 @@
  */
 package com.leepresswood.neondefense.generators;
 
+import java.io.IOException;
 import java.util.HashMap;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Array;
@@ -27,13 +29,19 @@ public class TowerGenerator
 	public TowerGenerator(float tile_size)
 	{
 		//Every tower must fit to the tile width and height.
-		this.tile_size = tile_size;
-		
-		//Read the XML file for the properties
-		XmlReader reader = new XmlReader();
-		Element root = reader.parse(new FileHandle(tower_xml).read().toString());
-		this.tower_properties = root.getChildrenByName("tower");
+		this.tile_size = tile_size;		
+		try
+		{
+			//Read the XML file for the properties
+		XmlReader reader = new XmlReader();		
+			Element root;
+			root = reader.parse(new FileHandle(tower_xml));
+			this.tower_properties = root.getChildrenByName("tower");
 		this.tower_upgrades = root.getChildrenByName("upgrade");
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}		
 	}
 	
 	public Tower spawn(Towers t, Tile tile)
