@@ -2,6 +2,7 @@ package com.leepresswood.neondefense.gui;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.towers.Tower;
 
 public class GUIUpdate extends Other
@@ -46,10 +47,8 @@ public class GUIUpdate extends Other
 
 	@Override
 	public boolean checkTouch(float x, float y)
-	{
-		return false;
-		
-		
+	{//If within the bounds, return true
+		return this.background.getBoundingRectangle().contains(new Vector2(x, y));
 	}
 
 	@Override

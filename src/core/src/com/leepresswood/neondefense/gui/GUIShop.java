@@ -3,6 +3,7 @@ package com.leepresswood.neondefense.gui;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.generators.TowerGenerator;
 
 public class GUIShop extends Other
@@ -48,6 +49,12 @@ public class GUIShop extends Other
 	}
 	
 	@Override
+	public boolean checkTouch(float x, float y)
+	{//If within the bounds, return true
+		return this.background.getBoundingRectangle().contains(new Vector2(x, y));
+	}
+	
+	@Override
 	public void doTouch(float x, float y)
 	{//Check every sprite to see if it was tapped
 		for(int i = 0; i < towers.length; i++)
@@ -63,13 +70,5 @@ public class GUIShop extends Other
 	{//Reset the buy queue
 		this.buy_id = -1;
 		this.buy_ready = false;
-	}
-
-	@Override
-	public boolean checkTouch(float x, float y)
-	{
-		return false;
-		
-		
 	}
 }
