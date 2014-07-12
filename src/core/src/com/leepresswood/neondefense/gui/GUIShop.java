@@ -1,5 +1,6 @@
 package com.leepresswood.neondefense.gui;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.generators.TowerGenerator;
@@ -7,7 +8,8 @@ import com.leepresswood.neondefense.generators.TowerGenerator;
 public class GUIShop extends Other
 {
 	private Sprite background;				//Main GUI bar
-	private Sprite[] towers;					//The buyable towers
+	private Sprite[] towers;				//The buyable towers
+	private float gap = Gdx.graphics.getWidth() * 0.01f;
 	
 	public boolean buy_ready;
 	public int buy_id;
@@ -25,8 +27,11 @@ public class GUIShop extends Other
 		//Display every tower at the bottom. Might need to be horizontally scrollable if enough towers exist.
 		for(int i = 0; i < towers.length; i++)
 		{
+			//Get the tower's x
+			float tower_x = x + i * height + i * this.gap;
+			
 			this.towers[i] = new Sprite(TowerGenerator.getTowerTexture(gui.asset_manager, i));
-			this.towers[i].setBounds(x, y, height, height);
+			this.towers[i].setBounds(tower_x, y, height, height);
 		}
 	}
 
