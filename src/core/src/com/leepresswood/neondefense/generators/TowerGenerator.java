@@ -22,23 +22,23 @@ public class TowerGenerator
 	private final String FILE_PATH_START_TOWER = "towers/";
 	
 	private float tile_size;
+	private Assets assets;
 	private int id = 0;				//Current tower being placed. This is the tower's "name".
 	private final String tower_xml = this.FILE_PATH_START_TOWER + "tower.xml";
 	private Array<Element> tower_properties;
 	private Array<Element> tower_upgrades;
 	
-	public TowerGenerator(float tile_size)
+	public TowerGenerator(float tile_size, Assets assets)
 	{
 		//Every tower must fit to the tile width and height.
 		this.tile_size = tile_size;		
+		this.assets = assets;
 		try
-		{
-			//Read the XML file for the properties
-		XmlReader reader = new XmlReader();		
-			Element root;
-			root = reader.parse(new FileHandle(tower_xml));
+		{//Read the XML file for the properties
+			XmlReader reader = new XmlReader();		
+			Element root = reader.parse(new FileHandle(tower_xml));
 			this.tower_properties = root.getChildrenByName("tower");
-		this.tower_upgrades = root.getChildrenByName("upgrade");
+			this.tower_upgrades = root.getChildrenByName("upgrade");
 		} catch (IOException e)
 		{
 			e.printStackTrace();
@@ -50,9 +50,10 @@ public class TowerGenerator
 		switch(t)
 		{
 			case BLASTER:
-				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(id));
-				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(id));
-				return new Blaster(this.id++, location, attribute_pairs, upgrade_pairs);
+				System.out.println(this.get(this.tower_properties.get(this.id)));
+				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(this.id));
+				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(this.id));
+				return new Blaster(this.id++, location, assets, attribute_pairs, upgrade_pairs);
 			/*case BOLT:
 				break;
 			case BOMB:
@@ -66,10 +67,10 @@ public class TowerGenerator
 	}
 
 	private HashMap<String, String> get(Element e)
-	{//Get the data here and package it into a NameValuePair array. This goes into the tower and is parsed there.		
+	{//Get the data here and package it into a hashmap. This goes into the tower and is parsed there.		
 		HashMap<String, String> map = new HashMap<String, String>();
 		for(int i = 0; i < e.getChildCount(); i++)
-			map.put(e.getChild(i).getName(), e.getChild(i).getAttribute("value"));
+		{	map.put(e.getChild(i).getName(), e.getChild(i).getAttribute("value"));
 		return map;
 	}
 	

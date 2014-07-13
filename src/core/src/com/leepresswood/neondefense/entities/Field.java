@@ -35,7 +35,7 @@ public class Field implements GameEntityInterface
 		this.tiles = this.level_generator.getTiles();
 		
 		//Initialize the variables.		
-		this.tower_generator = new TowerGenerator(this.getTileWidth());
+		this.tower_generator = new TowerGenerator(this.getTileWidth(), assets);
 		this.towers = new ArrayList<Tower>();
 		this.enemies = new ArrayList<Enemy>();
 		this.open_shop = false;

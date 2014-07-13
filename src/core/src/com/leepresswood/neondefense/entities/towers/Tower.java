@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.Field;
+import com.leepresswood.neondefense.generators.Assets;
 
 public abstract class Tower
 {	
@@ -28,13 +29,14 @@ public abstract class Tower
 	protected float upgrade_strength;		//How much strength changes
 	protected float upgrade_attack_speed;	//How much attack speed changes
 	
-	protected String base_texture_file;		//The file for the base sprite's texture.
+	protected Assets assets;					//Holds the towers' textures
 	protected Sprite base_sprite;				//The base sprite of the tower
 	
-	public Tower(int id, Vector2 location, HashMap<String, String> properties, HashMap<String, String> upgrades)
+	public Tower(int id, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
 		this.id = id;
 		this.tile_location = location;
+		this.assets = assets;
 		
 		//Get the properties
 		this.radius = Float.parseFloat(properties.get("radius"));
@@ -47,11 +49,9 @@ public abstract class Tower
 		this.upgrade_radius = Float.parseFloat(upgrades.get("radius"));
 		this.upgrade_strength = Float.parseFloat(upgrades.get("strength"));
 		this.upgrade_attack_speed = Float.parseFloat(upgrades.get("attack_speed"));
-	
-		//Set the base image.
-		this.base_texture_file = properties.get("file");
-		this.base_sprite = new Sprite(new Texture(Gdx.files.internal(this.base_texture_file)));
 	}
+	
+	public abstract void setTexture();
 	
 	public float getRadius()
 	{
@@ -90,7 +90,7 @@ public abstract class Tower
 	
 	public void render(float delta, SpriteBatch batch)
 	{
-		
+		this.base_sprite.draw(batch);
 	}
 
 	public int levelUp(int money)
