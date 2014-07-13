@@ -26,6 +26,7 @@ public class Field implements GameEntityInterface
 	private int money_change;
 	private boolean open_shop;
 	private boolean tower_is_selected;
+	private Vector2 selected_tile;
 	private int selected_tile_id;
 	private int selected_tower_id;
 	
@@ -209,7 +210,7 @@ public class Field implements GameEntityInterface
 		{//This tile is empty. Open the tower shop.
 			this.open_shop = true;
 			this.tower_is_selected = false;
-			this.selected_tile_id = -1;
+			this.selected_tile = tile.getLocation();
 		}
 	}
 
@@ -221,12 +222,12 @@ public class Field implements GameEntityInterface
 		return null;		
 	}
 
-	public void spawn(Towers buyTowerCheck, Vector2 location)
+	public void spawn(Towers buyTowerCheck)
 	{//If the passed Towers attribute isn't null, spawn the tower at the passed location.
 		if(buyTowerCheck != null)
 		{
 			//Generate a tower and put it in the tower array
-			Tower t = this.tower_generator.spawn(buyTowerCheck, location);
+			Tower t = this.tower_generator.spawn(buyTowerCheck, this.tiles[(int) selected_tile.y][(int) selected_tile.x].getPosition(), this.tiles[(int) selected_tile.y][(int) selected_tile.x].getLocation());
 			this.towers.add(t);
 		}
 	}

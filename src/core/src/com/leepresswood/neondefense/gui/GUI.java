@@ -135,6 +135,7 @@ public class GUI implements GameEntityInterface
 		{//If a buy is queued, get the queued tower and put it on the field.
 			Towers t = TowerGenerator.Towers.values()[((GUIShop) this.other).buy_id];
 			((GUIShop) this.other).reset();
+			this.closeExtraScreens();
 			return t;
 		}
 		

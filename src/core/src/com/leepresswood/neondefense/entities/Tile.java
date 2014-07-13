@@ -74,4 +74,9 @@ public class Tile implements GameEntityInterface
 	{
 		return this.location;
 	}
+	
+	public Vector2 getPosition()
+	{
+		return new Vector2(this.getSprite().getX(), this.getSprite().getY());
+	}
 }

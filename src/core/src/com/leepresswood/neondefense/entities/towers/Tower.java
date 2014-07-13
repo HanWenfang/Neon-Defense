@@ -3,8 +3,6 @@
 package com.leepresswood.neondefense.entities.towers;
 
 import java.util.HashMap;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -17,6 +15,7 @@ public abstract class Tower
 	
 	protected int id;
 	protected Vector2 tile_location;
+	protected float tile_size;
 	
 	protected float radius;						//In terms of blocks.
 	protected float strength;					//Damage removed from enemy
@@ -32,9 +31,10 @@ public abstract class Tower
 	protected Assets assets;					//Holds the towers' textures
 	protected Sprite base_sprite;				//The base sprite of the tower
 	
-	public Tower(int id, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades)
+	public Tower(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
 		this.id = id;
+		this.tile_size = tile_size;
 		this.tile_location = location;
 		this.assets = assets;
 		
@@ -49,9 +49,11 @@ public abstract class Tower
 		this.upgrade_radius = Float.parseFloat(upgrades.get("radius"));
 		this.upgrade_strength = Float.parseFloat(upgrades.get("strength"));
 		this.upgrade_attack_speed = Float.parseFloat(upgrades.get("attack_speed"));
+		
+		this.setTexture(xy);
 	}
 	
-	public abstract void setTexture();
+	public abstract void setTexture(Vector2 xy);
 	
 	public float getRadius()
 	{

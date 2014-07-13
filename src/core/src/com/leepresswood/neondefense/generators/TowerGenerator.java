@@ -43,14 +43,14 @@ public class TowerGenerator
 		}		
 	}
 	
-	public Tower spawn(Towers t, Vector2 location)
+	public Tower spawn(Towers t, Vector2 xy, Vector2 location)
 	{//Spawn the passed tower and return it.
 		switch(t)
 		{
 			case BLASTER:
 				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(0));
 				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(0));
-				return new Blaster(this.id++, location, assets, attribute_pairs, upgrade_pairs);
+				return new Blaster(this.id++, xy, this.tile_size, location, assets, attribute_pairs, upgrade_pairs);
 			/*case BOLT:
 				break;
 			case BOMB:

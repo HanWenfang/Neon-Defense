@@ -10,15 +10,16 @@ import com.leepresswood.neondefense.generators.Assets;
 public class Blaster extends Tower
 {
 
-	public Blaster(int id, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades)
+	public Blaster(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
-		super(id, location, assets, properties, upgrades);
+		super(id, xy, tile_size, location, assets, properties, upgrades);
 	}
 
 	@Override
-	public void setTexture()
+	public void setTexture(Vector2 xy)
 	{
-			this.base_sprite = new Sprite(super.assets.TEXTURE_TOWER_BLASTER);
+		this.base_sprite = new Sprite(super.assets.TEXTURE_TOWER_BLASTER);
+		this.base_sprite.setBounds(xy.x, xy.y, super.tile_size, super.tile_size);
 	}
 	
 	@Override
@@ -30,6 +31,6 @@ public class Blaster extends Tower
 	@Override
 	public void render(float delta, SpriteBatch batch)
 	{
-		
+		super.render(delta, batch);
 	}
 }
