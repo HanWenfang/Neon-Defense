@@ -123,9 +123,6 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	@Override
 	public boolean pan(float x, float y, float deltaX, float deltaY)
 	{
-		//Clear any open extra GUI screens.
-		this.gui.closeExtraScreens();
-		
 		//if(deltaY < 0 && !this.camera.frustum.pointInFrustum(this.field.getTopLeft()))
 
 		this.camera.translate(-deltaX, deltaY);
