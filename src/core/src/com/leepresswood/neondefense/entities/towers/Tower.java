@@ -3,6 +3,7 @@
 package com.leepresswood.neondefense.entities.towers;
 
 import java.util.HashMap;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -63,7 +64,11 @@ public abstract class Tower
 	
 	public void setTexture(Vector2 xy)
 	{
-		this.base_sprite.setBounds(xy.x, xy.y,	this.tile_size, this.tile_size);
+		//Make the sprite smaller than the actual box so there isn't overlap on rotation
+		float size = this.tile_size * 0.8f;
+		float position_x = xy.x + 0.1f * this.tile_size;
+		float position_y = xy.y + 0.1f * this.tile_size;
+		this.base_sprite.setBounds(position_x, position_y,	size, size);
 		this.base_sprite.setOriginCenter();
 	}
 	
@@ -103,7 +108,18 @@ public abstract class Tower
 		//1) Is it in the range
 		//2) How long has it traveled.
 		//The tower will aim at the enemy within range that has traveled the longest distance.
+		this.lookAt(Gdx.input.getX(), Gdx.input.getY());
+	}
+	
+	private void lookAt(float x, float y)
+	{//Look at the given point.
+		//Get the difference in x and y between the origin and the point.
+		float diff_x = x - this.base_sprite.getOriginX();
+		float diff_y = y - this.base_sprite.getOriginY();
 		
+		//Find the angle of rotation for that difference
+		float angle = (float) (Math.atan2(diff_y, diff_x) * 180f / Math.PI - 90d);
+		this.base_sprite.setRotation(angle);
 	}
 	
 	public void render(float delta, SpriteBatch batch)
