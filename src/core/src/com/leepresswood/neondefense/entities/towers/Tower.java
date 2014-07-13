@@ -3,6 +3,7 @@
 package com.leepresswood.neondefense.entities.towers;
 
 import java.util.HashMap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -55,9 +56,13 @@ public abstract class Tower
 		this.setTexture(xy);
 	}
 	
+	public void allocate(Texture t)
+	{
+		this.base_sprite = new Sprite(t);
+	}
+	
 	public void setTexture(Vector2 xy)
 	{
-		this.base_sprite = new Sprite();
 		this.base_sprite.setBounds(xy.x, xy.y,	this.tile_size, this.tile_size);
 		this.base_sprite.setOriginCenter();
 	}

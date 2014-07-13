@@ -18,8 +18,9 @@ public class Blaster extends Tower
 	@Override
 	public void setTexture(Vector2 xy)
 	{
+		super.allocate(super.assets.TEXTURE_TOWER_BLASTER);
 		super.setTexture(xy);
-		this.base_sprite.setTexture(super.assets.TEXTURE_TOWER_BLASTER);
+		//this.base_sprite.setTexture(super.assets.TEXTURE_TOWER_BLASTER);
 	}
 	
 	@Override
@@ -32,5 +33,6 @@ public class Blaster extends Tower
 	public void render(float delta, SpriteBatch batch)
 	{
 		super.render(delta, batch);
+		this.base_sprite.rotate(10 * delta);
 	}
 }
