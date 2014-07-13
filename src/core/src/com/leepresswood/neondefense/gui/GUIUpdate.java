@@ -10,24 +10,30 @@ public class GUIUpdate extends Other
 	private Sprite background;
 	private Sprite button_sell;			
 	private Sprite button_upgrade;		
-	private Sprite tower;
+	private Sprite tower_sprite;
+	
+	private Tower tower;
+	private GUI gui;
 	
 	public GUIUpdate(int x, int y, float width, float height, Tower tower, GUI gui)
 	{
+		this.tower = tower;
+		this.gui = gui;
+		
 		this.background = new Sprite(gui.asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(x, y, width, height);
 		
 		//Show a picture of this tower centered. Sell button on left. Update on right.
-		this.tower = new Sprite(tower.getSprite().getTexture());
+		this.tower_sprite = new Sprite(tower.getSprite().getTexture());
 		float tower_x = x + width / 2f - height / 2f;
-		this.tower.setBounds(tower_x, y, height, height);
+		this.tower_sprite.setBounds(tower_x, y, height, height);
 		
 		//Buttons
 		this.button_sell = new Sprite(gui.asset_manager.TEXTURE_BUTTON);
 		this.button_sell.setBounds(x, y, tower_x - x, height);
 		
 		this.button_upgrade = new Sprite(gui.asset_manager.TEXTURE_BUTTON);
-		this.button_upgrade.setBounds(tower_x + this.tower.getWidth(), y, tower_x - x, height);
+		this.button_upgrade.setBounds(tower_x + this.tower_sprite.getWidth(), y, tower_x - x, height);
 	}
 	
 	@Override
@@ -41,18 +47,26 @@ public class GUIUpdate extends Other
 	{
 		this.background.draw(batch);
 		this.button_sell.draw(batch);
-		this.tower.draw(batch);
+		this.tower_sprite.draw(batch);
 		this.button_upgrade.draw(batch);
 	}
 
 	@Override
 	public boolean checkTouch(float x, float y)
 	{//If within the bounds, return true
-		return this.background.getBoundingRectangle().contains(new Vector2(x, y));
+		return this.background.getBoundingRectangle().contains(x, y);
 	}
 
 	@Override
 	public void doTouch(float x, float y)
-	{
+	{//Check to see if either of the buttons were pressed
+		if(this.button_sell.getBoundingRectangle().contains(x, y))
+		{
+			System.out.println("Left");
+		}
+		else if(this.button_upgrade.getBoundingRectangle().contains(x, y))
+		{
+			System.out.println("Right");
+		}
 	}
 }

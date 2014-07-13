@@ -57,7 +57,6 @@ public class GUI implements GameEntityInterface
 	public void render(float delta, SpriteBatch batch)
 	{//Draw all components.
 		//Only draw the other panel if it's not null.
-		System.out.println(this.other);
 		if(this.other != null)
 			this.other.render(delta, batch);
 		
@@ -132,10 +131,11 @@ public class GUI implements GameEntityInterface
 	
 	public Towers buyTowerCheck()
 	{//Was a buy requested? If so, buy and send it to the field.
-		if(this.other != null && this.other.getClass() == GUIShop.class)
+		if(this.other != null && this.other.getClass() == GUIShop.class && ((GUIShop) this.other).buy_id != -1)
 		{//If a buy is queued, get the queued tower and put it on the field.
+			Towers t = TowerGenerator.Towers.values()[((GUIShop) this.other).buy_id];
 			((GUIShop) this.other).reset();
-			return TowerGenerator.Towers.values()[((GUIShop) this.other).buy_id];
+			return t;
 		}
 		
 		return null;
