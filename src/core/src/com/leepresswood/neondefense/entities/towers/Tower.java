@@ -6,7 +6,9 @@ import java.util.HashMap;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.leepresswood.neondefense.entities.Field;
+import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.generators.Assets;
 
 public abstract class Tower
@@ -86,7 +88,11 @@ public abstract class Tower
 	}
 	
 	public void update(float delta, Field field)
-	{
+	{//Every tower should have a look-at method. This is where it will be housed.
+		//Scan through every enemy to determine:
+		//1) Is it in the range
+		//2) How long has it traveled.
+		//The tower will aim at the enemy within range that has traveled the longest distance.
 		
 	}
 	
