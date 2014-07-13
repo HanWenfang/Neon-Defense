@@ -41,6 +41,7 @@ public abstract class Tower
 
 	private ShapeRenderer shapes;
 	private OrthographicCamera camera;
+	private boolean is_selected;
 	
 	public Tower(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades, OrthographicCamera camera)
 	{
@@ -118,7 +119,7 @@ public abstract class Tower
 		//2) How long has it traveled.
 		//The tower will aim at the enemy within range that has traveled the longest distance.
 		this.lookAt(30, 30);
-		
+		this.is_selected = field.checkSelected(this.getTileLocation());
 	}
 	
 	private void lookAt(float x, float y)
@@ -131,15 +132,20 @@ public abstract class Tower
 	
 	public void render(float delta, SpriteBatch batch)
 	{
-		float v2x = this.base_sprite.getWidth() / 2f + this.base_sprite.getX();
-		float v2y = -this.base_sprite.getHeight() + this.base_sprite.getY();
+		//Render the radius of the tower if selected
+		if(this.is_selected)
+		{
+			float v2x = this.base_sprite.getWidth() / 2f + this.base_sprite.getX();
+			float v2y = -this.base_sprite.getHeight() + this.base_sprite.getY();
+			
+			batch.end();
+			shapes.begin(ShapeType.Line);
+				shapes.setColor(0.2f, 0.5f, 0.7f, 0.125f);
+				shapes.circle(v2x, v2y, this.tile_size * this.radius, 30);
+			shapes.end();
+			batch.begin();
+		}
 		
-		batch.end();
-		shapes.begin(ShapeType.Line);
-			shapes.setColor(0.2f, 0.5f, 0.7f, 0.125f);
-			shapes.circle(v2x, v2y, this.tile_size * this.radius);
-		shapes.end();
-		batch.begin();
 		this.base_sprite.draw(batch);
 	}
 

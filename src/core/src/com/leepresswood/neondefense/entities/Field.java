@@ -232,4 +232,10 @@ public class Field implements GameEntityInterface
 			this.towers.add(t);
 		}
 	}
+
+	public boolean checkSelected(Vector2 tile)
+	{//Check to see if the passed tower ID is a selected tower
+		//this.tiles[(int) selected_tile.y][(int) selected_tile.x]
+		return false;
+	}
 }
