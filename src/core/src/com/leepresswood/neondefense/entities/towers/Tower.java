@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
@@ -37,6 +39,7 @@ public abstract class Tower
 	protected Assets assets;					//Holds the towers' textures
 	protected Sprite base_sprite;				//The base sprite of the tower
 
+	private ShapeRenderer shapes;
 	private OrthographicCamera camera;
 	
 	public Tower(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades, OrthographicCamera camera)
@@ -46,6 +49,7 @@ public abstract class Tower
 		this.tile_location = location;
 		this.assets = assets;
 		this.camera = camera;
+		this.shapes = new ShapeRenderer();
 		
 		//Get the properties
 		this.radius = Float.parseFloat(properties.get("radius"));
@@ -127,6 +131,15 @@ public abstract class Tower
 	
 	public void render(float delta, SpriteBatch batch)
 	{
+		float v2x = this.base_sprite.getWidth() / 2f + this.base_sprite.getX();
+		float v2y = -this.base_sprite.getHeight() + this.base_sprite.getY();
+		
+		batch.end();
+		shapes.begin(ShapeType.Line);
+			shapes.setColor(0.2f, 0.5f, 0.7f, 0.125f);
+			shapes.circle(v2x, v2y, this.tile_size * this.radius);
+		shapes.end();
+		batch.begin();
 		this.base_sprite.draw(batch);
 	}
 
