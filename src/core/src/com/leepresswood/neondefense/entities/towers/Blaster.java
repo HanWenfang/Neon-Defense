@@ -18,8 +18,8 @@ public class Blaster extends Tower
 	@Override
 	public void setTexture(Vector2 xy)
 	{
-		this.base_sprite = new Sprite(super.assets.TEXTURE_TOWER_BLASTER);
-		this.base_sprite.setBounds(xy.x, xy.y, super.tile_size, super.tile_size);
+		super.setTexture(xy);
+		this.base_sprite.setTexture(super.assets.TEXTURE_TOWER_BLASTER);
 	}
 	
 	@Override

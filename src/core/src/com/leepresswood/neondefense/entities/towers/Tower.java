@@ -55,7 +55,12 @@ public abstract class Tower
 		this.setTexture(xy);
 	}
 	
-	public abstract void setTexture(Vector2 xy);
+	public void setTexture(Vector2 xy)
+	{
+		this.base_sprite = new Sprite();
+		this.base_sprite.setBounds(xy.x, xy.y,	this.tile_size, this.tile_size);
+		this.base_sprite.setOriginCenter();
+	}
 	
 	public float getRadius()
 	{
