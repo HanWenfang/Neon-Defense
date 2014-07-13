@@ -6,14 +6,12 @@ package com.leepresswood.neondefense.generators;
 
 import java.io.IOException;
 import java.util.HashMap;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.leepresswood.neondefense.entities.Tile;
 import com.leepresswood.neondefense.entities.towers.Blaster;
 import com.leepresswood.neondefense.entities.towers.Tower;
 
@@ -50,9 +48,8 @@ public class TowerGenerator
 		switch(t)
 		{
 			case BLASTER:
-				System.out.println(this.get(this.tower_properties.get(this.id)));
-				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(this.id));
-				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(this.id));
+				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(0));
+				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(0));
 				return new Blaster(this.id++, location, assets, attribute_pairs, upgrade_pairs);
 			/*case BOLT:
 				break;
@@ -70,7 +67,7 @@ public class TowerGenerator
 	{//Get the data here and package it into a hashmap. This goes into the tower and is parsed there.		
 		HashMap<String, String> map = new HashMap<String, String>();
 		for(int i = 0; i < e.getChildCount(); i++)
-		{	map.put(e.getChild(i).getName(), e.getChild(i).getAttribute("value"));
+			map.put(e.getChild(i).getName(), e.getChild(i).getAttribute("value"));
 		return map;
 	}
 	
