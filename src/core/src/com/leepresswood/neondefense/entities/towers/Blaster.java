@@ -1,6 +1,7 @@
 package com.leepresswood.neondefense.entities.towers;
 
 import java.util.HashMap;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -10,9 +11,9 @@ import com.leepresswood.neondefense.generators.Assets;
 public class Blaster extends Tower
 {
 
-	public Blaster(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades)
+	public Blaster(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades, OrthographicCamera camera)
 	{
-		super(id, xy, tile_size, location, assets, properties, upgrades);
+		super(id, xy, tile_size, location, assets, properties, upgrades, camera);
 	}
 
 	@Override

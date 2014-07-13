@@ -3,6 +3,7 @@
 package com.leepresswood.neondefense.entities;
 
 import java.util.ArrayList;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -30,13 +31,13 @@ public class Field implements GameEntityInterface
 	private int selected_tile_id;
 	private int selected_tower_id;
 	
-	public Field(Assets assets, int level)
+	public Field(Assets assets, int level, OrthographicCamera camera)
 	{//Collect the level and generate it.
 		this.level_generator = new LevelGenerator(assets, level);
 		this.tiles = this.level_generator.getTiles();
 		
 		//Initialize the variables.		
-		this.tower_generator = new TowerGenerator(this.getTileWidth(), assets);
+		this.tower_generator = new TowerGenerator(this.getTileWidth(), assets, camera);
 		this.towers = new ArrayList<Tower>();
 		this.enemies = new ArrayList<Enemy>();
 		this.open_shop = false;

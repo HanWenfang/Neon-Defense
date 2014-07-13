@@ -7,6 +7,7 @@ package com.leepresswood.neondefense.generators;
 import java.io.IOException;
 import java.util.HashMap;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -25,9 +26,12 @@ public class TowerGenerator
 	private final String tower_xml = this.FILE_PATH_START_TOWER + "tower.xml";
 	private Array<Element> tower_properties;
 	private Array<Element> tower_upgrades;
+	private OrthographicCamera camera;
 	
-	public TowerGenerator(float tile_size, Assets assets)
+	public TowerGenerator(float tile_size, Assets assets, OrthographicCamera camera)
 	{
+		this.camera = camera;
+		
 		//Every tower must fit to the tile width and height.
 		this.tile_size = tile_size;		
 		this.assets = assets;
@@ -50,7 +54,7 @@ public class TowerGenerator
 			case BLASTER:
 				HashMap<String, String> attribute_pairs = this.get(this.tower_properties.get(0));
 				HashMap<String, String> upgrade_pairs = this.get(this.tower_upgrades.get(0));
-				return new Blaster(this.id++, xy, this.tile_size, location, assets, attribute_pairs, upgrade_pairs);
+				return new Blaster(this.id++, xy, this.tile_size, location, assets, attribute_pairs, upgrade_pairs, this.camera);
 			/*case BOLT:
 				break;
 			case BOMB:

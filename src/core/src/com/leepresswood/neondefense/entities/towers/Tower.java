@@ -4,10 +4,12 @@ package com.leepresswood.neondefense.entities.towers;
 
 import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.leepresswood.neondefense.entities.Field;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
@@ -34,13 +36,16 @@ public abstract class Tower
 	
 	protected Assets assets;					//Holds the towers' textures
 	protected Sprite base_sprite;				//The base sprite of the tower
+
+	private OrthographicCamera camera;
 	
-	public Tower(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades)
+	public Tower(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades, OrthographicCamera camera)
 	{
 		this.id = id;
 		this.tile_size = tile_size;
 		this.tile_location = location;
 		this.assets = assets;
+		this.camera = camera;
 		
 		//Get the properties
 		this.radius = Float.parseFloat(properties.get("radius"));
@@ -108,18 +113,16 @@ public abstract class Tower
 		//1) Is it in the range
 		//2) How long has it traveled.
 		//The tower will aim at the enemy within range that has traveled the longest distance.
-		this.lookAt(Gdx.input.getX(), Gdx.input.getY());
+		this.lookAt(30, 30);
+		
 	}
 	
 	private void lookAt(float x, float y)
 	{//Look at the given point.
-		//Get the difference in x and y between the origin and the point.
-		float diff_x = x - this.base_sprite.getOriginX();
-		float diff_y = y - this.base_sprite.getOriginY();
-		
-		//Find the angle of rotation for that difference
-		float angle = (float) (Math.atan2(diff_y, diff_x) * 180f / Math.PI - 90d);
-		this.base_sprite.setRotation(angle);
+		float v2x = this.base_sprite.getWidth() / 2f + this.base_sprite.getX();
+		float v2y = Gdx.graphics.getHeight() + this.base_sprite.getHeight() / 2f - this.base_sprite.getY();
+		float angle = new Vector2(x, y).sub(v2x, v2y).angle() + 90f;
+		this.base_sprite.setRotation(-angle);
 	}
 	
 	public void render(float delta, SpriteBatch batch)
