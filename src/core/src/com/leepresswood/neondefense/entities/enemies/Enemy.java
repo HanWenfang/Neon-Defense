@@ -3,16 +3,25 @@
 //Possible attributes: Invisibility, level, type (such as creep, boss, healer)
 package com.leepresswood.neondefense.entities.enemies;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.entities.Field;
 
 public class Enemy
 {
-	private float health;							//How many hitpoints the enemy has.
-	private float speed;								//How fast the enemy is going in tiles per second
-	private float damage;							//Damage to your life if they reach the end. Should usually be 1. Bosses may be a special case.
-	private float bounty;							//Gold reward on death.
-	private float distance = 0f;					//Total distance traveled.
+	protected float health;							//How many hitpoints the enemy has.
+	protected float speed;								//How fast the enemy is going in tiles per second
+	protected float damage;							//Damage to your life if they reach the end. Should usually be 1. Bosses may be a special case.
+	protected float bounty;							//Gold reward on death.
+	protected float distance = 0f;					//Total distance traveled.
+	
+	protected Sprite sprite;
+	protected Direction direction;
+	
+	public Enemy()
+	{
+		
+	}
 	
 	public float getSpeed()
 	{
@@ -46,6 +55,23 @@ public class Enemy
 		
 		//Keep the distance traveled in a distance variable
 		this.distance += delta * this.speed;
+		
+		//Get the change
+		switch(this.direction)
+		{
+			case DOWN:
+				this.sprite.translateY(-delta * this.speed);
+				break;
+			case LEFT:
+				this.sprite.translateX(-delta * this.speed);
+				break;
+			case RIGHT:
+				this.sprite.translateX(delta * this.speed);
+				break;
+			case UP:
+				this.sprite.translateY(delta * this.speed);
+				break;			
+		}
 	}
 	
 	public void render(float delta, SpriteBatch batch)
