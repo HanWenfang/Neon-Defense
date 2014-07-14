@@ -85,7 +85,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		//We need to unproject the screen coordinates to world coordinates
 		Vector3 unprojected = this.camera.unproject(new Vector3(x, y, 0));
 		
-		//Y will also be flipped. Flip it back
+		//Y will also be flipped. Flip it back.
 		y = Gdx.graphics.getHeight() - y;
 		
 		//Send the location of the tap to the field and the GUI.

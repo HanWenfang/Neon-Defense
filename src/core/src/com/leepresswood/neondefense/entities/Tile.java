@@ -13,6 +13,7 @@ public class Tile implements GameEntityInterface
 	protected boolean walkable;
 	protected boolean occupied;
 	protected boolean placeable;
+	protected boolean selected;
 	
 	protected Sprite sprite;
 	protected Color color;
@@ -24,6 +25,7 @@ public class Tile implements GameEntityInterface
 		this.walkable = TileDecoder.getWalkable(tile_type);
 		this.placeable = TileDecoder.getPlaceable(tile_type);
 		this.occupied = false;
+		this.selected = false;
 		
 		//Set the sprite.
 		this.sprite = new Sprite(texture);
@@ -52,17 +54,22 @@ public class Tile implements GameEntityInterface
 
 	public boolean isWalkable()
 	{//True = can't place tower. This will also be useful for the enemies finding the next place to walk.
-		return walkable;
+		return this.walkable;
 	}
 
 	public boolean isOccupied()
 	{//Tile is occupied if there is a tower on it.
-		return occupied;
+		return this.occupied;
 	}
 	
 	public boolean isPlaceable()
 	{
-		return placeable;
+		return this.placeable;
+	}
+	
+	public boolean isSelected()
+	{
+		return this.selected;
 	}
 
 	public Sprite getSprite()
