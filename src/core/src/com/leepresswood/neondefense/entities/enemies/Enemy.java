@@ -8,10 +8,11 @@ import com.leepresswood.neondefense.entities.Field;
 
 public class Enemy
 {
-	private float speed;
-	private float damage;
-	private float health;
-	private float bounty;
+	private float health;							//How many hitpoints the enemy has.
+	private float speed;								//How fast the enemy is going in tiles per second
+	private float damage;							//Damage to your life if they reach the end. Should usually be 1. Bosses may be a special case.
+	private float bounty;							//Gold reward on death.
+	private float distance = 0f;					//Total distance traveled.
 	
 	public float getSpeed()
 	{
@@ -48,6 +49,7 @@ public class Enemy
 	
 	public void update(float delta, Field field)
 	{
+		//Keep the distance traveled in a distance variable
 		
 	}
 	
