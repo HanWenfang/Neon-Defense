@@ -2,6 +2,7 @@
 //Some tower attributes: radius of attack, strength, attack speed, cost, level.
 package com.leepresswood.neondefense.entities.towers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -11,7 +12,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.leepresswood.neondefense.entities.Field;
+import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.generators.Assets;
 
 public abstract class Tower
@@ -115,6 +118,8 @@ public abstract class Tower
 		//1) Is it in the range
 		//2) How long has it traveled.
 		//The tower will aim at the enemy within range that has traveled the longest distance.
+		ArrayList<Enemy> enemies = field.getEnemies();
+		//Enemy closest_enemy
 		this.lookAt(30, 30);
 		this.is_selected = field.checkSelected(this.getTileLocation());
 	}

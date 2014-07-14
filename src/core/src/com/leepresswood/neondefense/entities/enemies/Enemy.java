@@ -55,4 +55,9 @@ public class Enemy
 	{
 		
 	}
+	
+	private enum Direction
+	{
+		UP, DOWN, LEFT, RIGHT
+	}
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Array;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.entities.towers.Tower;
 import com.leepresswood.neondefense.generators.Assets;
@@ -237,5 +238,10 @@ public class Field implements GameEntityInterface
 	{//Check to see if the passed tower ID is a selected tower
 		//this.tiles[(int) selected_tile.y][(int) selected_tile.x]
 		return false;
+	}
+
+	public ArrayList<Enemy> getEnemies()
+	{
+		return this.enemies;
 	}
 }
