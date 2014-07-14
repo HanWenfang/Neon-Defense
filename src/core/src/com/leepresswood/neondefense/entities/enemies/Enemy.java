@@ -18,33 +18,20 @@ public class Enemy
 	{
 		return speed;
 	}
-	public void setSpeed(float speed)
-	{
-		this.speed = speed;
-	}
+
 	public float getDamage()
 	{
 		return damage;
 	}
-	public void setDamage(float damage)
-	{
-		this.damage = damage;
-	}
+
 	public float getHealth()
 	{
 		return health;
 	}
-	public void setHealth(float health)
-	{
-		this.health = health;
-	}
+
 	public float getBounty()
 	{
 		return bounty;
-	}
-	public void setBounty(float bounty)
-	{
-		this.bounty = bounty;
 	}
 	
 	public float getDistance()
@@ -52,15 +39,13 @@ public class Enemy
 		return distance;
 	}
 	
-	public void setDistance(float distance)
-	{
-		this.distance = distance;
-	}
-	
 	public void update(float delta, Field field)
 	{
-		//Keep the distance traveled in a distance variable
+		//Collect any changes from the field.
 		
+		
+		//Keep the distance traveled in a distance variable
+		this.distance += delta * this.speed;
 	}
 	
 	public void render(float delta, SpriteBatch batch)
