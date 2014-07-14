@@ -5,7 +5,6 @@ package com.leepresswood.neondefense.entities.enemies;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.entities.Field;
-import com.leepresswood.neondefense.entities.GameEntityInterface;
 
 public class Enemy
 {

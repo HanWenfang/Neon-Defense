@@ -7,7 +7,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.leepresswood.neondefense.NeonDefense;
 
-public class GameScreen implements Screen
+public abstract class GameScreen implements Screen
 {
 	protected NeonDefense game;
 	
@@ -24,10 +24,7 @@ public class GameScreen implements Screen
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 	
-	public void update(float delta)
-	{
-		
-	}
+	public abstract void update(float delta);
 
 	@Override
 	public void resize(int width, int height)

@@ -2,7 +2,6 @@ package com.leepresswood.neondefense.gui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.entities.Field;
 import com.leepresswood.neondefense.entities.GameEntityInterface;

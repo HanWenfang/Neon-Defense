@@ -11,10 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Array;
 import com.leepresswood.neondefense.entities.Field;
-import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.generators.Assets;
 
 public abstract class Tower
