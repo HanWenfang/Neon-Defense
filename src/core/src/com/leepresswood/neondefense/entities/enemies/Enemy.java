@@ -47,6 +47,16 @@ public class Enemy
 		this.bounty = bounty;
 	}
 	
+	public float getDistance()
+	{
+		return distance;
+	}
+	
+	public void setDistance(float distance)
+	{
+		this.distance = distance;
+	}
+	
 	public void update(float delta, Field field)
 	{
 		//Keep the distance traveled in a distance variable

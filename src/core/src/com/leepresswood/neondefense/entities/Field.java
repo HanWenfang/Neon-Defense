@@ -84,64 +84,6 @@ public class Field implements GameEntityInterface
 		//Projectiles
 		
 	}
-	
-	public float getFieldHeight()
-	{//The height of the field will be the combined heights of all the tiles
-		int array_height = tiles.length;
-		
-		float bot_y = this.tiles[0][0].getSprite().getY();
-		float top_y = this.tiles[array_height][0].getSprite().getY() + this.tiles[array_height][0].getSprite().getHeight();
-		return top_y - bot_y;
-	}
-	
-	public float getFieldWidth()
-	{//The width of the field will be the combined widths of all the tiles
-		int array_height = tiles[0].length;
-		
-		float bot_x = this.tiles[0][0].getSprite().getX();
-		float top_x = this.tiles[array_height - 1][0].getSprite().getX() + this.tiles[0][array_height - 1].getSprite().getWidth();
-		return top_x - bot_x;
-	}
-	
-	//Positions of the corners
-	public Vector3 getTopLeft()
-	{
-		float x = this.tiles[0][0].getSprite().getX();
-		float y = this.tiles[0][0].getSprite().getY() + this.tiles[0][0].getSprite().getHeight();
-		
-		return new Vector3(x, y, 0);
-	}
-	
-	public Vector3 getTopRight()
-	{
-		int array_width = tiles[0].length;
-		
-		float x = this.tiles[0][array_width - 1].getSprite().getX() + this.tiles[0][0].getSprite().getWidth();
-		float y = this.tiles[0][0].getSprite().getY() + this.tiles[0][0].getSprite().getHeight();
-		
-		return new Vector3(x, y, 0);
-	}
-	
-	public Vector3 getBottomLeft()
-	{
-		int array_height = tiles.length;
-		
-		float x = this.tiles[array_height - 1][0].getSprite().getX();
-		float y = this.tiles[array_height - 1][0].getSprite().getY();
-		
-		return new Vector3(x, y, 0);
-	}
-	
-	public Vector3 getBottomRight()
-	{
-		int array_height = tiles.length;
-		int array_width = tiles[0].length;
-		
-		float x = this.tiles[array_height - 1][array_width - 1].getSprite().getX() + this.tiles[0][0].getSprite().getWidth();
-		float y = this.tiles[array_height - 1][array_width - 1].getSprite().getY();
-		
-		return new Vector3(x, y, 0);
-	}
 
 	public int getMoneyChange()
 	{
