@@ -20,7 +20,9 @@ public class Enemy
 	
 	public Enemy()
 	{
-		
+		//Initialize
+		this.sprite = new Sprite();
+		this.direction = Direction.UP;
 	}
 	
 	public float getSpeed()
@@ -72,10 +74,14 @@ public class Enemy
 				this.sprite.translateY(delta * this.speed);
 				break;			
 		}
+		
+		//Update health bar
 	}
 	
 	public void render(float delta, SpriteBatch batch)
 	{
+		this.sprite.draw(batch);
+		//Draw health bar above
 		
 	}
 	
