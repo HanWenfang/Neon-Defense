@@ -75,36 +75,6 @@ public class LevelGenerator
 		}
 		scanner.close();
 	}
-	
-	public float getHeight()
-	{
-		return this.tile_size * this.tiles_down;
-	}
-
-	public Tile[][] getTiles()
-	{
-		return tiles;
-	}
-
-	public int getTiles_across()
-	{
-		return tiles_across;
-	}
-
-	public int getTiles_down()
-	{
-		return tiles_down;
-	}
-
-	public float getTile_size()
-	{
-		return tile_size;
-	}
-	
-	public int getTheme()
-	{
-		return theme;
-	}
 
 	private class TileNumberDecoder
 	{
