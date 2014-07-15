@@ -30,7 +30,7 @@ public class Field
 	private int selected_tile_id;
 	private int selected_tower_id;
 	
-	public Field(Assets assets, int level, OrthographicCamera camera)
+	public Field(Assets assets, int level)
 	{//Collect the level and generate it.
 		this.tiles = new LevelGenerator(assets, level).getTiles();
 		
