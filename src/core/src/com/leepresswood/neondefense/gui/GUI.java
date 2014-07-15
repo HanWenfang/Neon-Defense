@@ -97,10 +97,15 @@ public class GUI
 		if(this.other != null && this.other.getClass() == GUIShop.class && ((GUIShop) this.other).buy_id != -1)
 		{//If a buy is queued, get the queued tower and put it on the field.
 			Towers t = TowerGenerator.Towers.values()[((GUIShop) this.other).buy_id];
-			this.other = null;
+			this.closeExtraScreens();
 			return t;
 		}
 		
 		return null;
+	}
+
+	public void closeExtraScreens()
+	{
+		this.other = null;
 	}
 }
