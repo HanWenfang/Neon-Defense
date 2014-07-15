@@ -4,15 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.entities.Field;
-import com.leepresswood.neondefense.entities.GameEntityInterface;
 import com.leepresswood.neondefense.generators.Assets;
 import com.leepresswood.neondefense.generators.TowerGenerator;
 import com.leepresswood.neondefense.generators.TowerGenerator.Towers;
 
-public class GUI implements GameEntityInterface
+public class GUI
 {
 	private final float GUI_WIDTH = Gdx.graphics.getWidth();
-	private final float GUI_HEIGHT = Gdx.graphics.getHeight() * .05f;
+	private final float GUI_HEIGHT = Gdx.graphics.getHeight() * 0.05f;
 	
 	private int money;						//Current cash amount.
 	private int money_change;				//Received from field. Bounty from killing enemies.
@@ -26,33 +25,21 @@ public class GUI implements GameEntityInterface
 	public GUI(Assets asset_manager)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
 		this.asset_manager = asset_manager;
-		
-		//Set the other GUI panels.
 		this.other = null;
 		this.new_panel_requested = false;
-		
-		//Font locations
 		font = asset_manager.FONT;
 	}
 
-	@Override
 	public void update(float delta)
 	{//Using information passed from field, update.
 		//Change current cash value.
 		this.money += money_change;
 		
 		//Only update the other panel if it's not null.
-		if(this.other == null)
-		{
-			
-		}
-		else
-		{
+		if(this.other != null)
 			this.other.update(delta);
-		}
 	}
 
-	@Override
 	public void render(float delta, SpriteBatch batch)
 	{//Draw all components.
 		//Only draw the other panel if it's not null.

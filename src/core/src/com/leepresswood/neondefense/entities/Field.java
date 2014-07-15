@@ -13,7 +13,7 @@ import com.leepresswood.neondefense.generators.LevelGenerator;
 import com.leepresswood.neondefense.generators.TowerGenerator;
 import com.leepresswood.neondefense.generators.TowerGenerator.Towers;
 
-public class Field implements GameEntityInterface
+public class Field
 {
 	private TowerGenerator tower_generator;
 	private Tile[][] tiles;
@@ -42,7 +42,6 @@ public class Field implements GameEntityInterface
 		this.selected_tile_id = -1;
 	}
 	
-	@Override
 	public void update(float delta)
 	{//Every tower, enemy, and projectile should be updated here.
 		//Every tick should reset the money change
@@ -63,7 +62,6 @@ public class Field implements GameEntityInterface
 		
 	}
 
-	@Override
 	public void render(float delta, SpriteBatch batch)
 	{//Every tower, enemy, and projectile should be rendered here.
 		//Tiles drawn first

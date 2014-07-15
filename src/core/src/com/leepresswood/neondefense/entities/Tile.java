@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.generators.TileDecoder;
 
-public class Tile implements GameEntityInterface
+public class Tile
 {//The tiles for the game board. Towers placed on these, and enemies walk on these.	
 	protected Vector2 location;
 	protected boolean walkable;
@@ -34,13 +34,11 @@ public class Tile implements GameEntityInterface
 		this.color = color;
 	}
 
-	@Override
 	public void update(float delta)
 	{
 		
 	}
 
-	@Override
 	public void render(float delta, SpriteBatch batch)
 	{
 		//Walkable textures will have a tint.
