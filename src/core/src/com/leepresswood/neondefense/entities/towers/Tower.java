@@ -94,7 +94,7 @@ public abstract class Tower
 		return attack_speed;
 	}
 	
-	public float getCost()
+	public int getCost()
 	{
 		return cost;
 	}

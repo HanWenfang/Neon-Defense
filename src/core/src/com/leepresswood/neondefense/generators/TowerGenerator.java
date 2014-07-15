@@ -73,8 +73,8 @@ public class TowerGenerator
 
 	public boolean checkMoney(int money, Towers type)
 	{//Check to see if you have enough money to buy the passed tower.
-		if(money > this.spawn(type, null, null).getCost())
-			return true;		
+		if(money > this.spawn(type, new Vector2(), new Vector2()).getCost())
+			return true;
 		return false;		
 	}
 	

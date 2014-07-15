@@ -52,6 +52,9 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		//Scan the field for a GUI update request.
 		this.gui.getUpdatesFromField(this.field);			
 		this.gui.update(delta);
+		
+		//Reset money change.
+		this.field.resetMoneyChange();
 	}
 	
 	@Override

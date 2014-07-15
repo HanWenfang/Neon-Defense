@@ -44,10 +44,7 @@ public class Field
 	}
 	
 	public void update(float delta)
-	{//Every tower, enemy, and projectile should be updated here.
-		//Every tick should reset the money change
-		this.money_change = 0;
-		
+	{//Every tower, enemy, and projectile should be updated here.		
 		//Tiles updated first
 		for(int y = 0; y < this.tiles.length; y++)
 			for(int x = 0; x < this.tiles[y].length; x++)
@@ -88,6 +85,11 @@ public class Field
 	public int getMoneyChange()
 	{
 		return this.money_change;		
+	}
+	
+	public void resetMoneyChange()
+	{//Every tick should reset the money change
+		this.money_change = 0;
 	}
 
 	public Vector2 getTileCoordinatesByPoint(float x, float y)
@@ -163,8 +165,13 @@ public class Field
 
 	public void spawn(GUI gui)
 	{//If the buying flag attribute isn't null, spawn the tower
-		if(gui.buyTowerCheck() != null && this.tower_generator.checkMoney(gui.getMoney(), gui.buyTowerCheck()))
-			this.towers.add(this.tower_generator.spawn(gui.buyTowerCheck(), this.tiles[(int) selected_tile.y][(int) selected_tile.x].getPosition(), this.tiles[(int) selected_tile.y][(int) selected_tile.x].getLocation()));
+		Towers tower_bought = gui.buyTowerCheck();
+		if(tower_bought != null && this.tower_generator.checkMoney(gui.getMoney(),tower_bought))
+		{
+			Tower t = this.tower_generator.spawn(tower_bought, this.tiles[(int) selected_tile.y][(int) selected_tile.x].getPosition(), this.tiles[(int) selected_tile.y][(int) selected_tile.x].getLocation());
+			this.towers.add(t);
+			this.money_change = t.getCost();
+		}
 	}
 
 	public ArrayList<Enemy> getEnemies()

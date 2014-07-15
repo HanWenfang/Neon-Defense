@@ -15,7 +15,6 @@ public class GUI
 	
 	//Money variables
 	private int money = 400;
-	private int money_change;
 	
 	//Graphical items
 	public Assets asset_manager;
@@ -30,10 +29,7 @@ public class GUI
 	}
 
 	public void update(float delta)
-	{//Using information passed from field, update.
-		//Change current cash value.
-		this.money += money_change;
-		
+	{//Using information passed from field, update.		
 		//Only update the other panel if it's not null.
 		if(this.other != null)
 			this.other.update(delta);
@@ -50,8 +46,9 @@ public class GUI
 
 	public void getUpdatesFromField(Field field)
 	{//Check field for necessary updates. Set them in variable form.
-		this.money_change = field.getMoneyChange();
-		
+		this.money -= field.getMoneyChange();
+		System.out.println(this.money);
+		System.out.println(field.getMoneyChange());
 		//Only check for a shop/upgrade open request if other is null
 		if(this.other == null)
 		{
