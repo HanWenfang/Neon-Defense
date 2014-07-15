@@ -78,6 +78,11 @@ public class Field
 		//Projectiles
 		
 	}
+	
+	public Tile[][] getTiles()
+	{
+		return this.tiles;
+	}
 
 	public int getMoneyChange()
 	{
@@ -118,18 +123,13 @@ public class Field
 	{//The selected tower should be gathered by the ID.
 		return this.selected_tile_id;
 	}
-
-	public void doInput(Vector2 location)
-	{
-		this.doTileAction(this.tiles[(int) location.x][(int) location.y]);
-	}
 	
 	public float getTileWidth()
 	{
 		return this.tiles[0][0].getSprite().getWidth();
 	}
 
-	private void doTileAction(Tile tile)
+	public void doTileAction(Tile tile)
 	{//Do the action of the particular tile.
 		//If we clicked on a path, nothing needs to happen
 		if(tile.isWalkable() || !tile.isPlaceable())

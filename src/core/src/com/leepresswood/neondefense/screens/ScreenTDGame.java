@@ -92,7 +92,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		Vector2 location = this.field.getTileCoordinatesByPoint(unprojected.x, unprojected.y);
 		if(location != null)
 		{
-			this.field.doInput(location);
+			this.field.doTileAction(this.field.getTiles()[(int) location.x][(int) location.y]);
 		}
 		else			
 		{//This tap wasn't on the field. Check GUI.
