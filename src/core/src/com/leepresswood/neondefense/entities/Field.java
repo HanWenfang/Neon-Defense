@@ -34,7 +34,7 @@ public class Field
 		this.tiles = new LevelGenerator(assets, level).getTiles();
 		
 		//Initialize the variables.		
-		this.tower_generator = new TowerGenerator(this.getTileWidth(), assets, camera);
+		this.tower_generator = new TowerGenerator(this.getTileWidth(), assets);
 		this.towers = new ArrayList<Tower>();
 		this.enemies = new ArrayList<Enemy>();
 		this.open_shop = false;

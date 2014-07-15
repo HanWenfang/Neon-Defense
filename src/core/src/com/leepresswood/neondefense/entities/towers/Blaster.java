@@ -10,9 +10,9 @@ import com.leepresswood.neondefense.generators.Assets;
 public class Blaster extends Tower
 {
 
-	public Blaster(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades, OrthographicCamera camera)
+	public Blaster(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
-		super(id, xy, tile_size, location, assets, properties, upgrades, camera);
+		super(id, xy, tile_size, location, assets, properties, upgrades);
 	}
 
 	@Override

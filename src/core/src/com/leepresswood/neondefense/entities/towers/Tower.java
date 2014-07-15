@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
 import com.leepresswood.neondefense.entities.Field;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.generators.Assets;
@@ -40,16 +39,14 @@ public abstract class Tower
 	protected Sprite base_sprite;				//The base sprite of the tower
 
 	private ShapeRenderer shapes;
-	private OrthographicCamera camera;
 	private boolean is_selected;
 	
-	public Tower(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades, OrthographicCamera camera)
+	public Tower(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
 		this.id = id;
 		this.tile_size = tile_size;
 		this.tile_location = location;
 		this.assets = assets;
-		this.camera = camera;
 		this.shapes = new ShapeRenderer();
 		
 		//Get the properties
