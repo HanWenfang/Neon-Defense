@@ -45,10 +45,10 @@ public class Field
 	
 	public void update(float delta)
 	{//Every tower, enemy, and projectile should be updated here.		
-		//Tiles updated first
-		for(int y = 0; y < this.tiles.length; y++)
+		//Tiles updated first. Only need to update if it's an animated tile
+		/*for(int y = 0; y < this.tiles.length; y++)
 			for(int x = 0; x < this.tiles[y].length; x++)
-				this.tiles[y][x].update(delta);
+				this.tiles[y][x].update(delta);*/
 		
 		//Towers and enemies next
 		for(Tower t : this.towers)

@@ -34,11 +34,6 @@ public class Tile
 		this.color = color;
 	}
 
-	public void update(float delta)
-	{
-		
-	}
-
 	public void render(float delta, SpriteBatch batch)
 	{
 		//Walkable textures will have a tint.
