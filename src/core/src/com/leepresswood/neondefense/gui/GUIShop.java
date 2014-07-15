@@ -65,10 +65,4 @@ public class GUIShop extends Other
 				i += towers.length;
 			}
 	}
-
-	public void reset()
-	{//Reset the buy queue
-		this.buy_id = -1;
-		this.buy_ready = false;
-	}
 }

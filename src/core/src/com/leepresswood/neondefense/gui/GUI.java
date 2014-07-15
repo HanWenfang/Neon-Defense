@@ -13,20 +13,19 @@ public class GUI
 	private final float GUI_WIDTH = Gdx.graphics.getWidth();
 	private final float GUI_HEIGHT = Gdx.graphics.getHeight() * 0.05f;
 	
-	private int money;						//Current cash amount.
-	private int money_change;				//Received from field. Bounty from killing enemies.
-	private boolean new_panel_requested;//Has a new panel been requested?
-	private boolean new_panel_shop;		//Is the new panel the shop? True. Upgrade? False.
+	//Money variables
+	private int money = 400;
+	private int money_change;
 	
+	//Graphical items
 	public Assets asset_manager;
-	private Other other;						//This is the other panel. This will be either the update or the shop panel.
+	private Other other;						
 	private BitmapFont font;
 	
 	public GUI(Assets asset_manager)
 	{//GUI will have the money amount and a quit button. Can be expanded to include tower upgrades later.
 		this.asset_manager = asset_manager;
 		this.other = null;
-		this.new_panel_requested = false;
 		font = asset_manager.FONT;
 	}
 
@@ -53,40 +52,17 @@ public class GUI
 	{//Check field for necessary updates. Set them in variable form.
 		this.money_change = field.getMoneyChange();
 		
-		//If a tower is selected, get its ID and open the update panel.
-		if(field.isTowerSelected())
-		{			
-			//Set the flags
-			this.new_panel_shop = false;
-			this.new_panel_requested = true;
-		}
-		
-		//Otherwise, if a blank tile is selected, open the shop.
-		else if(field.isShopOpen())
-		{			
-			//Set the flags
-			this.new_panel_shop = true;
-			this.new_panel_requested = true;
-		}
-		
-		//Is there a new panel requested?
-		if(this.new_panel_requested)
+		//Only check for a shop/upgrade open request if other is null
+		if(this.other == null)
 		{
-			//Reset variable to avoid infinite panel changes
-			this.new_panel_requested = false;
-			
-			//Which panel is it?
-			if(this.new_panel_shop) 		//Shop
-				this.other = new GUIShop(0, 0, GUI_WIDTH, GUI_HEIGHT, this);
-			else									//Upgrade
+			//If a tower is selected, get its ID and open the update panel.
+			if(field.isTowerSelected())		//Upgrade
 				this.other = new GUIUpdate(0, 0, GUI_WIDTH, GUI_HEIGHT, field.getTowerFromID(field.getSelectedTower()), this);
+			
+			//Otherwise, if a blank tile is selected, open the shop.
+			else if(field.isShopOpen())		//Shop
+				this.other = new GUIShop(0, 0, GUI_WIDTH, GUI_HEIGHT, this);
 		}
-	}
-
-	public void closeExtraScreens()
-	{//The other panel needs to be closed.
-		this.new_panel_requested = false;
-		this.other = null;
 	}
 	
 	public int getMoney()
@@ -110,6 +86,7 @@ public class GUI
 	{//Do the touch of the touched GUI component
 		//Fast-Forward button
 		
+		
 		//Other bar (if open)
 		if(this.other != null)
 			this.other.doTouch(x, y);		
@@ -120,8 +97,7 @@ public class GUI
 		if(this.other != null && this.other.getClass() == GUIShop.class && ((GUIShop) this.other).buy_id != -1)
 		{//If a buy is queued, get the queued tower and put it on the field.
 			Towers t = TowerGenerator.Towers.values()[((GUIShop) this.other).buy_id];
-			((GUIShop) this.other).reset();
-			this.closeExtraScreens();
+			this.other = null;
 			return t;
 		}
 		
