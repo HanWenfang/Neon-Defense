@@ -56,7 +56,6 @@ public class LevelGenerator
 		
 		//Every other number is a tile. Make the tiles
 		this.tiles = new Tile[this.tiles_down][this.tiles_across];
-		TileNumberDecoder tnd = new TileNumberDecoder();
 		for(int y = 0; y < this.tiles_down; y++)
 		{
 			this.tiles[y] = new Tile[this.tiles_across];
@@ -70,27 +69,22 @@ public class LevelGenerator
 				float pos_y = Gdx.graphics.getHeight() - y * tile_size;
 				
 				//Set tile				
-				this.tiles[y][x] = new Tile(new Vector2(x, y), tile_type, tnd.getTileTexture(tile_type), this.tile_size, pos_x, pos_y, color);	
+				this.tiles[y][x] = new Tile(new Vector2(x, y), tile_type, this.getTileTexture(tile_type), this.tile_size, pos_x, pos_y, color);	
 			}
 		}
 		scanner.close();
 	}
-
-	private class TileNumberDecoder
+	
+	public Texture getTileTexture(int tile_type)
 	{
-		private Texture[] textures;					
-		
-		public TileNumberDecoder()
+		switch(tile_type)
 		{
-			//Preload the texture
-			textures = new Texture[2];			
-			textures[0] = assets.TEXTURE_UNOCCUPIED;
-			textures[1] =	assets.TEXTURE_PATH;
-		}
-		
-		public Texture getTileTexture(int tile_type)
-		{
-			return this.textures[tile_type];
+			case 0:
+				return assets.TEXTURE_UNOCCUPIED;
+			case 1:
+				return assets.TEXTURE_PATH;
+			default:
+				return null;
 		}
 	}
 }
