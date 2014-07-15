@@ -15,7 +15,6 @@ import com.leepresswood.neondefense.generators.TowerGenerator.Towers;
 
 public class Field implements GameEntityInterface
 {
-	private LevelGenerator level_generator;
 	private TowerGenerator tower_generator;
 	private Tile[][] tiles;
 	
@@ -32,8 +31,7 @@ public class Field implements GameEntityInterface
 	
 	public Field(Assets assets, int level, OrthographicCamera camera)
 	{//Collect the level and generate it.
-		this.level_generator = new LevelGenerator(assets, level);
-		this.tiles = this.level_generator.getTiles();
+		this.tiles = new LevelGenerator(assets, level).getTiles();
 		
 		//Initialize the variables.		
 		this.tower_generator = new TowerGenerator(this.getTileWidth(), assets, camera);

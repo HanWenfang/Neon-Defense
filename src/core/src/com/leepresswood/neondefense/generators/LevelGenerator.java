@@ -13,24 +13,17 @@ import com.leepresswood.neondefense.entities.Tile;
 public class LevelGenerator
 {
 	//Path to file that holds levels.
-	public final String FILE_PATH_START_LEVEL = "levels/";
-	public final String FILE_EXTENSION_LEVEL = ".lvl";
+	private final String FILE_PATH_START_LEVEL = "levels/";
+	private final String FILE_EXTENSION_LEVEL = ".lvl";
 	
 	//Preloaded textures
 	private Assets assets;
 	
-	//Tile holder
-	private Tile[][] tiles;
-	
 	//The first two numbers in the level file will determine the number of tiles across and down.
+	private Tile[][] tiles;
 	private int tiles_across;
 	private int tiles_down;
-	
-	//Using the above, we can then determine the tile size
 	private float tile_size;
-	
-	//Theme of the level. (Color of the path)
-	private int theme;
 	
 	public LevelGenerator(Assets assets, int level)
 	{//Fill the tiles array
@@ -44,11 +37,9 @@ public class LevelGenerator
 		InputStream level_string = file.read();
 		Scanner scanner = new Scanner(level_string);
 		
-		//First two numbers determine tiles_across and tiles_down
+		//First two numbers determine tiles_across and tiles_down. Determine the tile size
 		this.tiles_across = scanner.nextInt();
 		this.tiles_down = scanner.nextInt();
-		
-		//Determine the tile size
 		this.tile_size = Gdx.graphics.getWidth() / (float) tiles_across;
 		
 		//Next number is the theme number. Get this theme's color
@@ -75,7 +66,7 @@ public class LevelGenerator
 		scanner.close();
 	}
 	
-	public Texture getTileTexture(int tile_type)
+	private Texture getTileTexture(int tile_type)
 	{
 		switch(tile_type)
 		{
@@ -86,5 +77,10 @@ public class LevelGenerator
 			default:
 				return null;
 		}
+	}
+
+	public Tile[][] getTiles()
+	{
+		return this.tiles;
 	}
 }
