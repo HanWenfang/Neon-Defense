@@ -7,7 +7,6 @@ package com.leepresswood.neondefense.generators;
 import java.io.IOException;
 import java.util.HashMap;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -70,6 +69,13 @@ public class TowerGenerator
 		for(int i = 0; i < e.getChildCount(); i++)
 			map.put(e.getChild(i).getName(), e.getChild(i).getAttribute("value"));
 		return map;
+	}
+
+	public boolean checkMoney(int money, Towers type)
+	{//Check to see if you have enough money to buy the passed tower.
+		if(money > this.spawn(type, null, null).getCost())
+			return true;		
+		return false;		
 	}
 	
 	public static Texture getTowerTexture(Assets assets, int id)

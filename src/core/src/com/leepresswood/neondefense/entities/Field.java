@@ -12,6 +12,7 @@ import com.leepresswood.neondefense.generators.Assets;
 import com.leepresswood.neondefense.generators.LevelGenerator;
 import com.leepresswood.neondefense.generators.TowerGenerator;
 import com.leepresswood.neondefense.generators.TowerGenerator.Towers;
+import com.leepresswood.neondefense.gui.GUI;
 
 public class Field
 {
@@ -160,14 +161,10 @@ public class Field
 		return null;		
 	}
 
-	public void spawn(Towers buyTowerCheck)
-	{//If the passed Towers attribute isn't null, spawn the tower at the passed location.
-		if(buyTowerCheck != null)
-		{
-			//Generate a tower and put it in the tower array
-			Tower t = this.tower_generator.spawn(buyTowerCheck, this.tiles[(int) selected_tile.y][(int) selected_tile.x].getPosition(), this.tiles[(int) selected_tile.y][(int) selected_tile.x].getLocation());
-			this.towers.add(t);
-		}
+	public void spawn(GUI gui)
+	{//If the buying flag attribute isn't null, spawn the tower
+		if(gui.buyTowerCheck() != null && this.tower_generator.checkMoney(gui.getMoney(), gui.buyTowerCheck()))
+			this.towers.add(this.tower_generator.spawn(gui.buyTowerCheck(), this.tiles[(int) selected_tile.y][(int) selected_tile.x].getPosition(), this.tiles[(int) selected_tile.y][(int) selected_tile.x].getLocation()));
 	}
 
 	public ArrayList<Enemy> getEnemies()

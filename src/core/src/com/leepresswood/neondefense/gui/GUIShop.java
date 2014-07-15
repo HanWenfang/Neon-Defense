@@ -14,12 +14,14 @@ public class GUIShop extends Other
 	
 	public boolean buy_ready;
 	public int buy_id;
+	private GUI gui;
 	
 	public GUIShop(int x, int y, float width, float height, GUI gui)
 	{
 		//Initialize variables
 		this.buy_ready = false;
 		this.buy_id = -1;
+		this.gui = gui;
 		this.towers = new Sprite[TowerGenerator.Towers.values().length];		
 		this.background = new Sprite(gui.asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(x, y, width, height);
@@ -59,7 +61,7 @@ public class GUIShop extends Other
 	{//Check every sprite to see if it was tapped
 		for(int i = 0; i < towers.length; i++)
 			if(towers[i].getBoundingRectangle().contains(x, y))
-			{//It was tapped. Buy.
+			{//It was tapped. Buy if enough money is available.
 				this.buy_id = i;
 				this.buy_ready = true;
 				i += towers.length;
