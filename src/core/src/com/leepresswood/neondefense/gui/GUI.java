@@ -47,8 +47,7 @@ public class GUI
 	public void getUpdatesFromField(Field field)
 	{//Check field for necessary updates. Set them in variable form.
 		this.money -= field.getMoneyChange();
-		System.out.println(this.money);
-		System.out.println(field.getMoneyChange());
+
 		//Only check for a shop/upgrade open request if other is null
 		if(this.other == null)
 		{
