@@ -3,7 +3,6 @@
 package com.leepresswood.neondefense.entities;
 
 import java.util.ArrayList;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
@@ -32,9 +31,7 @@ public class Field
 	
 	public Field(Assets assets, int level)
 	{//Collect the level and generate it.
-		this.tiles = new LevelGenerator(assets, level).getTiles();
-		
-		//Initialize the variables.		
+		this.tiles = new LevelGenerator(assets, level).getTiles();	
 		this.tower_generator = new TowerGenerator(this.getTileWidth(), assets);
 		this.towers = new ArrayList<Tower>();
 		this.enemies = new ArrayList<Enemy>();
