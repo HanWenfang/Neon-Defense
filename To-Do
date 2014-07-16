@@ -1,0 +1,28 @@
+To-Do List:
+===========
+Towers:
+1) Aim at enemies in range.
+2) Fire projectiles.
+3) Add upgrade images.
+4) Make better base images.
+5) Create other towers once the first one is working.
+
+Enemies:
+1) Finish Enemy class.
+2) Create images for enemies
+3) Create movement algorithm.
+
+Field:
+1) Create a better connection between the Tile and Tower classes.
+
+GUI:
+1) Shop bar needs the costs of the towers.
+2) Upgrade bar needs to come up when a tower is selected.
+3) 
+
+Random Thoughts:
+- The enemies should just be basic shapes. This is a complete turnaround from my original idea.
+- Enemies should have a 1-tile memory. Then they can easily determine which direction to move.
+- Enemies should explode on death.
+- Enemies need a bounty. Should this bounty increase as the game moves on?
+- Enemies should get harder the higher up the level chain we go. How should this work? (More health? More enemies?)
