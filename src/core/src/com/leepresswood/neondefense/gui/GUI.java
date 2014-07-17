@@ -11,7 +11,7 @@ import com.leepresswood.neondefense.generators.TowerGenerator.Towers;
 public class GUI
 {
 	private final float GUI_WIDTH = Gdx.graphics.getWidth();
-	private final float GUI_HEIGHT = Gdx.graphics.getHeight() * 0.1f;
+	private final float GUI_HEIGHT = Gdx.graphics.getHeight() * 0.065f;
 	
 	//Money variables
 	private int money = 400;
@@ -46,7 +46,7 @@ public class GUI
 
 	public void getUpdatesFromField(Field field)
 	{//Check field for necessary updates. Set them in variable form.
-		this.money -= field.getMoneyChange();
+		this.money += field.getMoneyChange();
 
 		//Only check for a shop/upgrade open request if other is null
 		if(this.other == null)

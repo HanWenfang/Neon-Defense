@@ -14,6 +14,9 @@ public class GUIUpdate extends Other
 	private Tower tower;
 	private GUI gui;
 	
+	private boolean upgrade_request;
+	private boolean sell_request;
+	
 	public GUIUpdate(int x, int y, float width, float height, Tower tower, GUI gui)
 	{
 		this.tower = tower;
@@ -61,11 +64,28 @@ public class GUIUpdate extends Other
 	{//Check to see if either of the buttons were pressed
 		if(this.button_sell.getBoundingRectangle().contains(x, y))
 		{
-			System.out.println("Left");
+			this.sell_request = true;
+			this.upgrade_request = false;
 		}
 		else if(this.button_upgrade.getBoundingRectangle().contains(x, y))
 		{
-			System.out.println("Right");
+			this.sell_request = false;
+			this.upgrade_request = true;
 		}
+	}
+	
+	public boolean getUpgradeRequested()
+	{
+		return this.upgrade_request;
+	}
+	
+	public boolean getSellRequested()
+	{
+		return this.sell_request;
+	}
+	
+	public int getTowerID()
+	{
+		return this.tower.getID();
 	}
 }

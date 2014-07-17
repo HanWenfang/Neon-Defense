@@ -12,6 +12,7 @@ import com.leepresswood.neondefense.generators.LevelGenerator;
 import com.leepresswood.neondefense.generators.TowerGenerator;
 import com.leepresswood.neondefense.generators.TowerGenerator.Towers;
 import com.leepresswood.neondefense.gui.GUI;
+import com.leepresswood.neondefense.gui.GUIUpdate;
 
 public class Field
 {
@@ -162,7 +163,7 @@ public class Field
 	public void spawn(GUI gui)
 	{//If the buying flag attribute isn't null, spawn the tower
 		Towers tower_bought = gui.buyTowerCheck();
-		if(tower_bought != null && this.tower_generator.checkMoney(gui.getMoney(),tower_bought))
+		if(tower_bought != null && this.tower_generator.checkMoney(gui.getMoney(), tower_bought))
 		{
 			//Buy the tower. Fill the given location.
 			Tile tile = this.tiles[(int) selected_tile.y][(int) selected_tile.x];
@@ -170,7 +171,7 @@ public class Field
 			
 			Tower t = this.tower_generator.spawn(tower_bought, tile.getPosition(), tile.getLocation());
 			this.towers.add(t);
-			this.money_change = t.getCost();
+			this.money_change -= t.getCost();
 		}
 	}
 	
@@ -183,15 +184,23 @@ public class Field
 	{
 		return this.enemies;
 	}
-	
-	public boolean checkSelected(Vector2 tile)
-	{//Check to see if the passed tower ID is a selected tower
-		//this.tiles[(int) selected_tile.y][(int) selected_tile.x]
-		return false;
-	}
 
 	public void upgradeTower(GUI gui)
 	{//Upgrade the selected tower if enough funds are available.
+		//Get the upgrade request type
+		GUIUpdate holder = (GUIUpdate) gui.getOther();
+		boolean type = holder.getSellRequested();
 		
+		//If the above is true, sell requested. False, upgrade requested.
+		Tower t = this.getTowerFromID(holder.getTowerID());
+		if(type)
+		{			
+			this.money_change += t.getCost();
+			this.towers.remove(t);
+		}
+		else
+		{
+			this.money_change -= 
+		}
 	}
 }
