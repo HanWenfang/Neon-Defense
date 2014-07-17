@@ -18,7 +18,7 @@ public class Tinter
 		switch(theme)
 		{
 			case ORANGE:
-				return Color.ORANGE;
+				return colorGetter(70, 130, 180);//.ORANGE;
 			case LIGHT_BLUE:
 				return Color.CYAN;
 			case BLUE:
@@ -34,5 +34,20 @@ public class Tinter
 			default:							//You shouldn't be here.
 				return Color.BLACK;
 		}		
+	}
+	
+	private static Color colorGetter(float r, float g, float b, float a)
+	{//Using the passed in floats, return a color in LibGDX's correct form.
+		float new_r = r / 255f;
+		float new_g = g / 255f;
+		float new_b = b / 255f;
+		float new_a = a / 255f;
+		
+		return new Color(new_r, new_g, new_b, new_a);
+	}
+	
+	private static Color colorGetter(float r, float g, float b)
+	{//Return the colorGetter() method with a perfectly opaque alpha.
+		return colorGetter(r, g, b, 255);
 	}
 }
