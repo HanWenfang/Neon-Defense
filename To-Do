@@ -18,6 +18,10 @@ Field:
 GUI:
 1) Shop bar needs the costs of the towers.
 2) Upgrade bar needs to come up when a tower is selected.
+<<<<<<< HEAD
+=======
+3) 
+>>>>>>> parent of 3a045e9... AAA
 
 Random Thoughts:
 - The enemies should just be basic shapes. This is a complete turnaround from my original idea.

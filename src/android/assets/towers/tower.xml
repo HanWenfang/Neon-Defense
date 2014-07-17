@@ -1,0 +1,15 @@
+<towers>
+	<tower id="0">
+	    <name value="Blaster"/>
+	    <radius value="2"/>
+	    <strength value="10"/>
+	    <attack_speed value="1"/>
+	    <cost value="10"/>
+	</tower>
+	<upgrade id="0">
+	    <multiplier value="2"/>
+	    <radius value="0.5"/>
+	    <strength value="5"/>
+	    <attack_speed value="1"/>
+	</upgrade>
+</towers>
