@@ -3,27 +3,32 @@
 //Possible attributes: Invisibility, level, type (such as creep, boss, healer)
 package com.leepresswood.neondefense.entities.enemies;
 
+import java.util.HashMap;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.Field;
+import com.leepresswood.neondefense.generators.Assets;
 
 public class Enemy
 {
-	protected float health;							//How many hitpoints the enemy has.
-	protected float speed;								//How fast the enemy is going in tiles per second
+	protected float speed;							//How fast the enemy is going in tiles per second
 	protected float damage;							//Damage to your life if they reach the end. Should usually be 1. Bosses may be a special case.
 	protected float bounty;							//Gold reward on death.
-	protected float distance = 0f;					//Total distance traveled.
+	protected float distance = 0f;				//Total distance traveled.
 	
 	protected Sprite sprite;
+	protected Healthbar healthbar;				//How many hitpoints the enemy has.
 	protected Direction direction;
 	
-	public Enemy()
+	public Enemy(Vector2 xy, float size, Assets assets, HashMap<String, String> properties)
 	{
-		//Initialize
+		float health = Float.parseFloat(properties.get("health"));
+		
 		this.sprite = new Sprite();
+		this.sprite.setBounds(xy.x, xy.y, size, size);
 		this.direction = Direction.UP;
+		this.healthbar = new Healthbar(health, xy.x, xy.y, size, size, assets);
 	}
 	
 	public float getSpeed()
@@ -34,11 +39,6 @@ public class Enemy
 	public float getDamage()
 	{
 		return damage;
-	}
-
-	public float getHealth()
-	{
-		return health;
 	}
 
 	public float getBounty()
@@ -76,7 +76,8 @@ public class Enemy
 				break;			
 		}
 		
-		//Update health bar
+		//Update health bar's health amount and position
+		
 	}
 	
 	public void render(float delta, SpriteBatch batch)
