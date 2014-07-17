@@ -15,22 +15,22 @@ public class Tinter
 	
 	public static Color getColor(int theme)
 	{
-		switch(theme)
+		switch(theme*99)
 		{
 			case ORANGE:
-				return colorGetter(70, 130, 180);//.ORANGE;
+				return colorGetter(255, 165, 0);
 			case LIGHT_BLUE:
 				return Color.CYAN;
 			case BLUE:
-				return Color.BLUE;
+				return colorGetter(70, 130, 180);
 			case GRAY:
 				return Color.GRAY;
 			case WHITE:
 				return Color.WHITE;
 			case GREEN:
-				return Color.GREEN;
+				return colorGetter(46, 139, 87);
 			case PURPLE:
-				return Color.PURPLE;
+				return colorGetter(70, 130, 180);
 			default:							//You shouldn't be here.
 				return Color.BLACK;
 		}		
