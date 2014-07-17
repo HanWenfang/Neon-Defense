@@ -85,6 +85,11 @@ public class Enemy
 		
 	}
 	
+	public Vector2 getCenter()
+	{//Get the center of the enemy. This is where the towers should aim.
+		
+	}
+	
 	private enum Direction
 	{
 		UP, DOWN, LEFT, RIGHT

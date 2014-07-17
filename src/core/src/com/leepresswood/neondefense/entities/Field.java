@@ -32,7 +32,7 @@ public class Field
 	public Field(Assets assets, int level)
 	{//Collect the level and generate it.
 		this.tiles = new LevelGenerator(assets, level).getTiles();	
-		this.tower_generator = new TowerGenerator(this.getTileWidth(), assets);
+		this.tower_generator = new TowerGenerator(this.getTileSize(), assets);
 		this.towers = new ArrayList<Tower>();
 		this.enemies = new ArrayList<Enemy>();
 		this.open_shop = false;
@@ -42,10 +42,9 @@ public class Field
 	
 	public void update(float delta)
 	{//Every tower, enemy, and projectile should be updated here.		
-		//Tiles updated first. Only need to update if it's an animated tile
-		/*for(int y = 0; y < this.tiles.length; y++)
+		for(int y = 0; y < this.tiles.length; y++)
 			for(int x = 0; x < this.tiles[y].length; x++)
-				this.tiles[y][x].update(delta);*/
+				this.tiles[y][x].update(delta);
 		
 		//Towers and enemies next
 		for(Tower t : this.towers)
@@ -124,7 +123,7 @@ public class Field
 		return this.selected_tile_id;
 	}
 	
-	public float getTileWidth()
+	public float getTileSize()
 	{
 		return this.tiles[0][0].getSprite().getWidth();
 	}
@@ -169,6 +168,11 @@ public class Field
 			this.towers.add(t);
 			this.money_change = t.getCost();
 		}
+	}
+	
+	public ArrayList<Tower> getTowers()
+	{
+		return this.towers;
 	}
 
 	public ArrayList<Enemy> getEnemies()
