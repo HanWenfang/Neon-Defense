@@ -11,7 +11,7 @@ import com.leepresswood.neondefense.generators.TowerGenerator.Towers;
 public class GUI
 {
 	private final float GUI_WIDTH = Gdx.graphics.getWidth();
-	private final float GUI_HEIGHT = Gdx.graphics.getHeight() * 0.05f;
+	private final float GUI_HEIGHT = Gdx.graphics.getHeight() * 0.1f;
 	
 	//Money variables
 	private int money = 400;
@@ -86,6 +86,11 @@ public class GUI
 		//Other bar (if open)
 		if(this.other != null)
 			this.other.doTouch(x, y);		
+	}
+	
+	public Other getOther()
+	{
+		return this.other;
 	}
 	
 	public Towers buyTowerCheck()

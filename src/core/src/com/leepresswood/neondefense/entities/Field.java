@@ -120,7 +120,7 @@ public class Field
 	
 	public int getSelectedTower()
 	{//The selected tower should be gathered by the ID.
-		return this.selected_tile_id;
+		return this.selected_tower_id;
 	}
 	
 	public float getTileSize()
@@ -188,5 +188,10 @@ public class Field
 	{//Check to see if the passed tower ID is a selected tower
 		//this.tiles[(int) selected_tile.y][(int) selected_tile.x]
 		return false;
+	}
+
+	public void upgradeTower(GUI gui)
+	{//Upgrade the selected tower if enough funds are available.
+		
 	}
 }

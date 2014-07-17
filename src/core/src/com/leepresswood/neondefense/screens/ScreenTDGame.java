@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.leepresswood.neondefense.NeonDefense;
 import com.leepresswood.neondefense.entities.Field;
 import com.leepresswood.neondefense.gui.GUI;
+import com.leepresswood.neondefense.gui.GUIShop;
 
 public class ScreenTDGame extends GameScreen implements GestureListener
 {
@@ -101,8 +102,15 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 			if(this.gui.checkTouch(x, y))	//Touch is on GUI.
 			{
 				this.gui.doTouch(x, y);
-				if(this.gui.)
-				this.field.spawn(this.gui);
+				
+				//Is the Other GUI open?
+				if(this.gui.getOther() != null)
+				{
+					if(this.gui.getOther().getClass() == GUIShop.class)		//Shop
+						this.field.spawn(this.gui);	
+					else																		//Update
+						this.field.upgradeTower(this.gui);
+				}				
 			}
 			else	//Touch not on GUI. Clear any open extra GUI screens.
 				this.gui.closeExtraScreens();
