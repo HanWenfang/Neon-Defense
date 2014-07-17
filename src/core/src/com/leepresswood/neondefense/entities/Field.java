@@ -199,7 +199,7 @@ public class Field
 			Tower t = this.getTowerFromID(holder.getTowerID());
 			if(type)
 			{			
-				this.money_change += t.getCost();
+				this.money_change += t.getCost() / 2;
 				this.towers.remove(t);
 			}
 			else

@@ -167,6 +167,9 @@ public abstract class Tower
 			}
 		}		
 		
+		//Add the cost of this upgrade to the cost of the tower
+		this.cost += cost;
+		
 		//Return cost of the upgrade.
 		return cost;
 	}
