@@ -160,7 +160,7 @@ public class Field
 		return null;		
 	}
 
-	public void spawn(GUI gui)
+	public boolean spawn(GUI gui)
 	{//If the buying flag attribute isn't null, spawn the tower
 		Towers tower_bought = gui.buyTowerCheck();
 		if(tower_bought != null && this.tower_generator.checkMoney(gui.getMoney(), tower_bought))
@@ -172,7 +172,10 @@ public class Field
 			Tower t = this.tower_generator.spawn(tower_bought, tile.getPosition(), tile.getLocation());
 			this.towers.add(t);
 			this.money_change -= t.getCost();
+			return true;
 		}
+		
+		return false;
 	}
 	
 	public ArrayList<Tower> getTowers()
@@ -185,22 +188,28 @@ public class Field
 		return this.enemies;
 	}
 
-	public void upgradeTower(GUI gui)
+	public boolean upgradeTower(GUI gui)
 	{//Upgrade the selected tower if enough funds are available.
 		//Get the upgrade request type
 		GUIUpdate holder = (GUIUpdate) gui.getOther();
 		boolean type = holder.getSellRequested();
 		
-		//If the above is true, sell requested. False, upgrade requested.
-		Tower t = this.getTowerFromID(holder.getTowerID());
-		if(type)
-		{			
-			this.money_change += t.getCost();
-			this.towers.remove(t);
-		}
-		else
+		//Is something requested?
+		if(holder.getSellRequested() || holder.getUpgradeRequested())
 		{
-			this.money_change -= t.levelUp(gui.getMoney());
+			//If the above is true, sell requested. False, upgrade requested.
+			Tower t = this.getTowerFromID(holder.getTowerID());
+			if(type)
+			{			
+				this.money_change += t.getCost();
+				this.towers.remove(t);
+			}
+			else
+				this.money_change -= t.levelUp(gui.getMoney());
+			
+			return true;
 		}
+		
+		return false;
 	}
 }

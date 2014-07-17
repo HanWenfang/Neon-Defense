@@ -12,7 +12,6 @@ public class GUIUpdate extends Other
 	private Sprite tower_sprite;
 	
 	private Tower tower;
-	private GUI gui;
 	
 	private boolean upgrade_request;
 	private boolean sell_request;
@@ -20,7 +19,9 @@ public class GUIUpdate extends Other
 	public GUIUpdate(int x, int y, float width, float height, Tower tower, GUI gui)
 	{
 		this.tower = tower;
-		this.gui = gui;
+		
+		this.upgrade_request = false;
+		this.sell_request = false;
 		
 		this.background = new Sprite(gui.asset_manager.TEXTURE_GUI_BACKGROUND);
 		this.background.setBounds(x, y, width, height);

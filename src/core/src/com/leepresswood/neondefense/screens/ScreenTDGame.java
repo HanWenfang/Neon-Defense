@@ -106,10 +106,14 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 				//Is the Other GUI open?
 				if(this.gui.getOther() != null)
 				{
+					boolean done;
 					if(this.gui.getOther().getClass() == GUIShop.class)		//Shop
-						this.field.spawn(this.gui);	
+						done = this.field.spawn(this.gui);	
 					else																		//Update
-						this.field.upgradeTower(this.gui);
+						done = this.field.upgradeTower(this.gui);
+					
+					//If we're done with these Other screens, close.
+					this.gui.closeExtraScreens();
 				}				
 			}
 			else	//Touch not on GUI. Clear any open extra GUI screens.

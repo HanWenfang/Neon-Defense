@@ -148,11 +148,13 @@ public abstract class Tower
 
 	public int levelUp(int money)
 	{//A level up has been requested. 
+		int cost = 0;
+		
 		//Level cannot be above the maximum.
 		if(this.level < this.MAX_LEVEL)
 		{
 			//Formula: Cost to level up = Initial tower cost * Multiplier * Current level
-			int cost = (int) (this.cost * this.upgrade_multiplier * this.level);
+			cost = (int) (this.cost * this.upgrade_multiplier * this.level);
 			
 			//Do we have the cash for this level up?
 			if(money >= cost)
@@ -162,14 +164,11 @@ public abstract class Tower
 				this.radius += this.upgrade_radius;
 				this.strength += this.upgrade_strength;
 				this.attack_speed += this.upgrade_attack_speed;
-				
-				//Pay for it.
-				money -= cost;
 			}
 		}		
 		
-		//Return the money amount the player has now.
-		return money;	
+		//Return cost of the upgrade.
+		return cost;
 	}
 
 	public Sprite getSprite()
