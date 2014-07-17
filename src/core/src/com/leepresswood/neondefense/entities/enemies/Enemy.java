@@ -5,6 +5,7 @@ package com.leepresswood.neondefense.entities.enemies;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.Field;
 
 public class Enemy
@@ -81,13 +82,14 @@ public class Enemy
 	public void render(float delta, SpriteBatch batch)
 	{
 		this.sprite.draw(batch);
-		//Draw health bar above
+		
+		//Draw health bar above enemy.
 		
 	}
 	
 	public Vector2 getCenter()
 	{//Get the center of the enemy. This is where the towers should aim.
-		
+		return new Vector2(this.sprite.getX() + this.sprite.getWidth() / 2f, this.sprite.getY() + this.sprite.getHeight() / 2f);
 	}
 	
 	private enum Direction
