@@ -27,7 +27,6 @@ public class Field
 	private boolean open_shop;
 	private boolean tower_is_selected;
 	private Vector2 selected_tile;
-	private int selected_tile_id;
 	private int selected_tower_id;
 	
 	public Field(Assets assets, int level)
@@ -38,7 +37,6 @@ public class Field
 		this.enemies = new ArrayList<Enemy>();
 		this.open_shop = false;
 		this.tower_is_selected = false;
-		this.selected_tile_id = -1;
 	}
 	
 	public void update(float delta)
