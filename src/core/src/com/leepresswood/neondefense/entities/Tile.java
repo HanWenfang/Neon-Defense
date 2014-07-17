@@ -84,4 +84,11 @@ public class Tile
 	{
 		return new Vector2(this.getSprite().getX(), this.getSprite().getY());
 	}
+	
+	public void occupy()
+	{//A tower wants to be placed. Occupy this tile.
+		this.occupied = true;
+		this.walkable = false;
+		this.selected = false;
+	}
 }

@@ -164,7 +164,11 @@ public class Field
 		Towers tower_bought = gui.buyTowerCheck();
 		if(tower_bought != null && this.tower_generator.checkMoney(gui.getMoney(),tower_bought))
 		{
-			Tower t = this.tower_generator.spawn(tower_bought, this.tiles[(int) selected_tile.y][(int) selected_tile.x].getPosition(), this.tiles[(int) selected_tile.y][(int) selected_tile.x].getLocation());
+			//Buy the tower. Fill the given location.
+			Tile tile = this.tiles[(int) selected_tile.y][(int) selected_tile.x];
+			tile.occupy();
+			
+			Tower t = this.tower_generator.spawn(tower_bought, tile.getPosition(), tile.getLocation());
 			this.towers.add(t);
 			this.money_change = t.getCost();
 		}

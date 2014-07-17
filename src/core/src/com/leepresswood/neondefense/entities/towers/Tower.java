@@ -5,7 +5,6 @@ package com.leepresswood.neondefense.entities.towers;
 import java.util.ArrayList;
 import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

@@ -52,7 +52,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		this.gui.getUpdatesFromField(this.field);			
 		this.gui.update(delta);
 		
-		//Reset money change.
+		//Reset money change after every tick.
 		this.field.resetMoneyChange();
 	}
 	
@@ -101,6 +101,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 			if(this.gui.checkTouch(x, y))	//Touch is on GUI.
 			{
 				this.gui.doTouch(x, y);
+				if(this.gui.)
 				this.field.spawn(this.gui);
 			}
 			else	//Touch not on GUI. Clear any open extra GUI screens.

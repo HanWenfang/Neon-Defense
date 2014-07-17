@@ -23,6 +23,7 @@ public class GUIUpdate extends Other
 		this.background.setBounds(x, y, width, height);
 		
 		//Show a picture of this tower centered. Sell button on left. Update on right.
+		System.out.println(tower);
 		this.tower_sprite = new Sprite(tower.getSprite().getTexture());
 		float tower_x = x + width / 2f - height / 2f;
 		this.tower_sprite.setBounds(tower_x, y, height, height);
