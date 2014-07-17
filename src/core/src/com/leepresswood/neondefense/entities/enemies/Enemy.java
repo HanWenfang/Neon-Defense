@@ -3,27 +3,29 @@
 //Possible attributes: Invisibility, level, type (such as creep, boss, healer)
 package com.leepresswood.neondefense.entities.enemies;
 
+import java.util.HashMap;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.Field;
+import com.leepresswood.neondefense.generators.Assets;
 
 public class Enemy
 {
-	protected float health;							//How many hitpoints the enemy has.
-	protected float speed;								//How fast the enemy is going in tiles per second
+	protected Healthbar health;					//How many hitpoints the enemy has.
+	protected float speed;							//How fast the enemy is going in tiles per second
 	protected float damage;							//Damage to your life if they reach the end. Should usually be 1. Bosses may be a special case.
 	protected float bounty;							//Gold reward on death.
-	protected float distance = 0f;					//Total distance traveled.
+	protected float distance = 0f;				//Total distance traveled.
 	
 	protected Sprite sprite;
 	protected Direction direction;
 	
-	public Enemy()
+	public Enemy(Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties)
 	{
-		//Initialize
 		this.sprite = new Sprite();
 		this.direction = Direction.UP;
+		
 	}
 	
 	public float getSpeed()
@@ -36,7 +38,7 @@ public class Enemy
 		return damage;
 	}
 
-	public float getHealth()
+	public Healthbar getHealthbar()
 	{
 		return health;
 	}
@@ -77,6 +79,7 @@ public class Enemy
 		}
 		
 		//Update health bar
+		
 	}
 	
 	public void render(float delta, SpriteBatch batch)
