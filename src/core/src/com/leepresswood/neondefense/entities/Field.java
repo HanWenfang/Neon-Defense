@@ -200,7 +200,7 @@ public class Field
 		}
 		else
 		{
-			this.money_change -= 
+			this.money_change -= t.levelUp(gui.getMoney());
 		}
 	}
 }

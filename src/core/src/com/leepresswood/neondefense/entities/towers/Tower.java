@@ -117,7 +117,6 @@ public abstract class Tower
 		ArrayList<Enemy> enemies = field.getEnemies();
 		//Enemy closest_enemy
 		this.lookAt(30, 30);
-		this.is_selected = field.checkSelected(this.getTileLocation());
 	}
 	
 	private void lookAt(float x, float y)
