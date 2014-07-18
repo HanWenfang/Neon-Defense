@@ -125,7 +125,7 @@ public abstract class Tower
 		
 		//Find the farthest traveled of those enemies.
 		enemy = this.getLongestDistance(close_enemies);				
-		
+
 		//If the above enemy is empty, just aim at the enemy that traveled the farthest.
 		if(enemy == null)
 		{
@@ -133,7 +133,7 @@ public abstract class Tower
 			if(enemy != null)
 				this.lookAt(enemy.getCenter());
 			else			//No enemies on screen. Just look straight down.
-				this.lookAt(this.getCenter().x, -1);
+				this.lookAt(this.getCenter().x, Gdx.graphics.getHeight());
 		}
 		else
 			this.lookAt(enemy.getCenter());
