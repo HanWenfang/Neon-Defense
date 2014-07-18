@@ -35,7 +35,7 @@ public abstract class Tower
 	protected float upgrade_attack_speed;	//How much attack speed changes
 	
 	protected Assets assets;					//Holds the towers' textures
-	protected Sprite base_sprite;				//The base sprite of the tower
+	protected Sprite sprite;				//The base sprite of the tower
 
 	private ShapeRenderer shapes;
 	private boolean is_selected;
@@ -65,7 +65,7 @@ public abstract class Tower
 	
 	public void allocate(Texture t)
 	{
-		this.base_sprite = new Sprite(t);
+		this.sprite = new Sprite(t);
 	}
 	
 	public void setTexture(Vector2 xy)
@@ -74,8 +74,8 @@ public abstract class Tower
 		float size = this.tile_size * 0.8f;
 		float position_x = xy.x + 0.1f * this.tile_size;
 		float position_y = xy.y + 0.1f * this.tile_size;
-		this.base_sprite.setBounds(position_x, position_y,	size, size);
-		this.base_sprite.setOriginCenter();
+		this.sprite.setBounds(position_x, position_y,	size, size);
+		this.sprite.setOriginCenter();
 	}
 	
 	public float getRadius()
@@ -115,16 +115,30 @@ public abstract class Tower
 		//2) How long has it traveled.
 		//The tower will aim at the enemy within range that has traveled the longest distance.
 		ArrayList<Enemy> enemies = field.getEnemies();
-		//Enemy closest_enemy
+		ArrayList<Enemy> close_enemies = new ArrayList<Enemy>();
+		Enemy enemy;
+		
+		//Find the close enemies.
+		
+		
 		this.lookAt(30, 30);
+	}
+	
+	private boolean inRange(Vector2 point)
+	{//Is the passed point in-range of the tower?
+		float range_squared = this.radius * this.tile_size * this.radius * this.tile_size;
+		float x_squared = (point.x - this.getCenter().x) * (point.x - this.getCenter().x);
+		float y_squared = (point.y - this.getCenter().y) * (point.y - this.getCenter().y);
+		
+		return (range_squared > x_squared + y_squared) ? true : false;
 	}
 	
 	private void lookAt(float x, float y)
 	{//Look at the given point.
-		float v2x = this.base_sprite.getWidth() / 2f + this.base_sprite.getX();
-		float v2y = Gdx.graphics.getHeight() + this.base_sprite.getHeight() / 2f - this.base_sprite.getY();
+		float v2x = this.sprite.getWidth() / 2f + this.sprite.getX();
+		float v2y = Gdx.graphics.getHeight() + this.sprite.getHeight() / 2f - this.sprite.getY();
 		float angle = new Vector2(x, y).sub(v2x, v2y).angle() + 90f;
-		this.base_sprite.setRotation(-angle);
+		this.sprite.setRotation(-angle);
 	}
 	
 	public void render(float delta, SpriteBatch batch)
@@ -132,8 +146,8 @@ public abstract class Tower
 		//Render the radius of the tower if selected
 		if(this.is_selected)
 		{
-			float v2x = this.base_sprite.getWidth() / 2f + this.base_sprite.getX();
-			float v2y = -this.base_sprite.getHeight() + this.base_sprite.getY();
+			float v2x = this.sprite.getWidth() / 2f + this.sprite.getX();
+			float v2y = -this.sprite.getHeight() + this.sprite.getY();
 			
 			batch.end();
 			shapes.begin(ShapeType.Line);
@@ -143,7 +157,7 @@ public abstract class Tower
 			batch.begin();
 		}
 		
-		this.base_sprite.draw(batch);
+		this.sprite.draw(batch);
 	}
 
 	public int levelUp(int money)
@@ -176,11 +190,16 @@ public abstract class Tower
 
 	public Sprite getSprite()
 	{
-		return this.base_sprite;		
+		return this.sprite;		
 	}
 
 	public Vector2 getTileLocation()
 	{
 		return this.tile_location;
+	}
+	
+	public Vector2 getCenter()
+	{//Get the center of the enemy. This is where the towers should aim.
+		return new Vector2(this.sprite.getX() + this.sprite.getWidth() / 2f, this.sprite.getY() + this.sprite.getHeight() / 2f);
 	}
 }
