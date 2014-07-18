@@ -119,7 +119,9 @@ public abstract class Tower
 		Enemy enemy;
 		
 		//Find the close enemies.
-		
+		for(Enemy e : enemies)
+			if(inRange(e.getCenter()))
+				close_enemies.add(e);
 		
 		this.lookAt(30, 30);
 	}
