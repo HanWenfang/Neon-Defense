@@ -128,7 +128,13 @@ public abstract class Tower
 		
 		//If the above enemy is empty, just aim at the enemy that traveled the farthest.
 		if(enemy == null)
-			this.lookAt(this.getLongestDistance(enemies).getCenter());
+		{
+			enemy = this.getLongestDistance(enemies);
+			if(enemy != null)
+				this.lookAt(enemy.getCenter());
+			else			//No enemies on screen. Just look straight down.
+				this.lookAt(this.getCenter().x, -1);
+		}
 		else
 			this.lookAt(enemy.getCenter());
 	}
