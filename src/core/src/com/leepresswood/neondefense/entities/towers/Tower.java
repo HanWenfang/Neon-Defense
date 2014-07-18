@@ -116,15 +116,34 @@ public abstract class Tower
 		//The tower will aim at the enemy within range that has traveled the longest distance.
 		ArrayList<Enemy> enemies = field.getEnemies();
 		ArrayList<Enemy> close_enemies = new ArrayList<Enemy>();
-		Enemy enemy;
+		Enemy enemy = null;
 		
 		//Find the close enemies.
 		for(Enemy e : enemies)
 			if(inRange(e.getCenter()))
 				close_enemies.add(e);
 		
-		this.lookAt(30, 30);
+		//Find the farthest traveled of those enemies.
+		float longest_travel = -1;
+		for(Enemy e : close_enemies)
+			if(e.getDistance() > longest_travel)
+			{
+				longest_travel = e.getDistance();
+				enemy = e;
+			}
+				
+		
+		//If the above enemy is empty, just aim at the enemy that traveled the farthest.
+		if(enemy == null)
+		{
+			
+		}
+		//Otherwise, look at the enemy.
+		else
+			this.lookAt(enemy.getCenter());
 	}
+	
+	
 	
 	private boolean inRange(Vector2 point)
 	{//Is the passed point in-range of the tower?
@@ -142,6 +161,11 @@ public abstract class Tower
 		float v2y = Gdx.graphics.getHeight() + this.sprite.getHeight() / 2f - this.sprite.getY();
 		float angle = new Vector2(x, y).sub(v2x, v2y).angle() + 90f;
 		this.sprite.setRotation(-angle);
+	}
+	
+	private void lookAt(Vector2 v)
+	{
+		this.lookAt(v.x, v.y);
 	}
 	
 	public void render(float delta, SpriteBatch batch)
