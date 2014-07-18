@@ -124,26 +124,28 @@ public abstract class Tower
 				close_enemies.add(e);
 		
 		//Find the farthest traveled of those enemies.
-		float longest_travel = -1;
-		for(Enemy e : close_enemies)
-			if(e.getDistance() > longest_travel)
-			{
-				longest_travel = e.getDistance();
-				enemy = e;
-			}
-				
+		enemy = this.getLongestDistance(close_enemies);				
 		
 		//If the above enemy is empty, just aim at the enemy that traveled the farthest.
 		if(enemy == null)
-		{
-			
-		}
-		//Otherwise, look at the enemy.
+			this.lookAt(this.getLongestDistance(enemies).getCenter());
 		else
 			this.lookAt(enemy.getCenter());
 	}
 	
-	
+	private Enemy getLongestDistance(ArrayList<Enemy> enemies)
+	{//Find the farthest traveled of the enemies.
+		float longest_travel = -1;
+		Enemy enemy = null;
+		for(Enemy e : enemies)
+			if(e.getDistance() > longest_travel)
+			{
+				longest_travel = e.getDistance();
+				enemy = e;
+			}	
+		
+		return enemy;
+	}
 	
 	private boolean inRange(Vector2 point)
 	{//Is the passed point in-range of the tower?
