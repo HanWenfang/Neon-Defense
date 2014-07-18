@@ -127,10 +127,11 @@ public abstract class Tower
 	private boolean inRange(Vector2 point)
 	{//Is the passed point in-range of the tower?
 		float range_squared = this.radius * this.tile_size * this.radius * this.tile_size;
-		float x_squared = (point.x - this.getCenter().x) * (point.x - this.getCenter().x);
-		float y_squared = (point.y - this.getCenter().y) * (point.y - this.getCenter().y);
+		Vector2 center = this.getCenter();
+		float x_squared = (point.x - center.x) * (point.x - center.x);
+		float y_squared = (point.y - center.y) * (point.y - center.y);
 		
-		return (range_squared > x_squared + y_squared) ? true : false;
+		return range_squared > x_squared + y_squared;
 	}
 	
 	private void lookAt(float x, float y)
