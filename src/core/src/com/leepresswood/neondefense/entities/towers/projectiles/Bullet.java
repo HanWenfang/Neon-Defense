@@ -1,11 +1,13 @@
 //The projectile for the Blaster tower.
 package com.leepresswood.neondefense.entities.towers.projectiles;
 
+import java.util.ArrayList;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.leepresswood.neondefense.entities.enemies.Enemy;
 
 public class Bullet
 {	
@@ -66,5 +68,10 @@ public class Bullet
 	public void decay()
 	{//Decay the bullet. 
 		this.decayed = true;
+	}
+	
+	public void checkCollision(ArrayList<Enemy> enemies)
+	{//Check to see if this sprite has hit one of the enemies
+		
 	}
 }
