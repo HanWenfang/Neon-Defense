@@ -3,17 +3,42 @@ package com.leepresswood.neondefense.entities.towers.projectiles;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bullet
 {	
 	private Sprite sprite;
+	private float direction;
+	private float speed;
 	
-	public Bullet(Texture t, Vector2 position, float width, float height, float direction)
+	public Bullet(Texture t, Vector2 position, float width, float height, float direction, float speed)
 	{
 		this.sprite = new Sprite(t);
 		this.sprite.setBounds(position.x, position.y, width, height);
+		this.direction = direction;
+		this.speed = speed;
 	}
 	
+	public void update(float delta, float direction)
+	{//Do the trigonometry and move the bullet.
+		
+	}
 	
+	public void update(float delta, float direction, float new_speed)
+	{//Allows you to change the speed at which the bullet travels. For instance: A buff tower nearby.
+		this.speed = new_speed;
+		this.update(delta, direction);
+	}
+	
+	public void render(SpriteBatch batch)
+	{
+		this.sprite.draw(batch);
+	}
+	
+	public Rectangle getBounds()
+	{//Get the bounds of the sprite. Good for collision detection (Overlaps)
+		return this.sprite.getBoundingRectangle();
+	}
 }
