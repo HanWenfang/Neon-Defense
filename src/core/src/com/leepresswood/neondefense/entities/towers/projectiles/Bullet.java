@@ -14,21 +14,29 @@ public class Bullet
 	private float speed;
 	private boolean decayed;
 
-	public Bullet(Texture t, Vector2 position, float width, float height, float direction, float speed)
+	public Bullet(Texture t, Vector2 position, float width, float height, float speed)
 	{
 		this.sprite = new Sprite(t);
 		this.sprite.setBounds(position.x, position.y, width, height);
-		this.direction = direction;
 		this.speed = speed;
 	}
 	
 	public void update(float delta, float direction)
 	{//Do the trigonometry and move the bullet.
+		this.direction = direction;
+		
 		//Only need to do this if not decayed
 		if(!this.decayed)
-		{
-			
-		}
+			this.doTrigonometry(delta);
+	}
+	
+	private void doTrigonometry(float delta)
+	{//Do the trigonometry math and update the position of the sprite.
+		float distance = delta * this.speed;
+		float dx = (float) (distance * Math.cos(Math.toRadians(this.direction)));
+		float dy = (float) (distance * Math.sin(Math.toRadians(this.direction)));
+		
+		this.sprite.translate(dx, dy);
 	}
 	
 	public void update(float delta, float direction, float new_speed)
