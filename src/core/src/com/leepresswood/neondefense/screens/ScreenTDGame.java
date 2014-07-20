@@ -127,7 +127,11 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 				}				
 			}
 			else	//Touch not on GUI. Clear any open extra GUI screens.
+			{
 				this.gui.closeExtraScreens();
+				this.field.deselectTile();
+				this.field.clearTowerRadius();
+			}
 		}
 			
 		return true;		
@@ -150,8 +154,12 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	{
 		//if(deltaY < 0 && !this.camera.frustum.pointInFrustum(this.field.getTopLeft()))
 
-		this.camera.translate(-deltaX, deltaY);
-		this.camera.update();	
+		this.gui.closeExtraScreens();
+		this.field.deselectTile();
+		this.field.clearTowerRadius();
+		
+		//this.camera.translate(-deltaX, deltaY);
+		//this.camera.update();	
 		
 		return true;	
 	}

@@ -131,6 +131,8 @@ public class Field
 
 	public void doTileAction(Tile tile)
 	{//Do the action of the particular tile.
+		this.clearTowerRadius();
+		
 		//If we clicked on a path, nothing needs to happen
 		if(tile.isWalkable() || !tile.isPlaceable())
 			return;
@@ -161,6 +163,12 @@ public class Field
 			this.tower_is_selected = false;
 			this.selected_tile = tile.getLocation();
 		}		
+	}
+	
+	public void clearTowerRadius()
+	{//Stop drawing the tower's radius
+		for(Tower t : towers)
+			t.removeSelection();
 	}
 
 	public Tower getTowerFromID(int tower_id)
