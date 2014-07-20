@@ -26,8 +26,8 @@ public abstract class Tower
 	protected float radius;						//In terms of blocks.
 	protected float strength;					//Damage removed from enemy
 	protected float attack_speed;				//Attacks per second
-	protected int cost;							//Cost per upgrade
-	protected int sell;							//Gold invested in tower.
+	protected int cost_to_upgrade;			//Cost per upgrade
+	protected int total_invested;				//Gold invested in tower.
 	protected int level = 1;					//Current upgrade level. Should always start at one
 	
 	protected float upgrade_multiplier;		//The cost per level increase
@@ -53,7 +53,7 @@ public abstract class Tower
 		this.radius = Float.parseFloat(properties.get("radius"));
 		this.strength = Float.parseFloat(properties.get("strength"));
 		this.attack_speed = Float.parseFloat(properties.get("attack_speed"));
-		this.cost = Integer.parseInt(properties.get("cost"));
+		this.cost_to_upgrade = Integer.parseInt(properties.get("cost"));
 		
 		//Get the upgrades
 		this.upgrade_multiplier = Float.parseFloat(upgrades.get("multiplier"));
@@ -96,7 +96,7 @@ public abstract class Tower
 	
 	public int getCost()
 	{
-		return cost;
+		return cost_to_upgrade;
 	}
 	
 	public float getLevel()
@@ -204,7 +204,7 @@ public abstract class Tower
 		if(this.level < this.MAX_LEVEL)
 		{
 			//Formula: Cost to level up = Initial tower cost * Multiplier * Current level
-			cost = (int) (this.cost * this.upgrade_multiplier * this.level);
+			cost = (int) (this.cost_to_upgrade * this.upgrade_multiplier * this.level);
 			
 			//Do we have the cash for this level up?
 			if(money >= cost)
@@ -218,7 +218,7 @@ public abstract class Tower
 		}		
 		
 		//Add the cost of this upgrade to the total investment into the tower
-		this.sell += cost;
+		this.total_invested += cost;
 		
 		//Return cost of the upgrade.
 		return cost;
