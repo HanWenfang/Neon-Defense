@@ -20,7 +20,7 @@ public abstract class GameScreen implements Screen
 	public void render(float delta)
 	{
 		//Clear screen with black
-		Gdx.gl.glClearColor(0.67843137254f, 0.67843137254f, 0.67843137254f, 1);
+		Gdx.gl.glClearColor(0.17843137254f, 0.17843137254f, 0.37843137254f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 	
