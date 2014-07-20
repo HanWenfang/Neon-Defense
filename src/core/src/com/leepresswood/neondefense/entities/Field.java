@@ -139,8 +139,9 @@ public class Field
 		//Visualize the selection
 		tile.makeSelected(this.assets);
 
-		if(tile.isOccupied())	//Otherwise, we're doing something with towers.
-		{//This tile is occupied. Allow user to upgrade or sell tower.
+		//This tile is occupied. Allow user to upgrade or sell tower.
+		if(tile.isOccupied())	
+		{
 			this.open_shop = false;
 			this.tower_is_selected = true;
 			
@@ -212,13 +213,14 @@ public class Field
 				Vector2 v = t.getTileLocation();
 				this.tiles[(int) v.y][(int) v.x].clear();
 				
-				//Clear the tower
+				//Clear the tower and end.
 				this.towers.remove(t);
+				return true;
 			}
-			else
-				this.money_change -= t.levelUp(gui.getMoney());
 			
-			return true;
+			//Upgrade
+			this.money_change -= t.levelUp(gui.getMoney());
+			return false;		
 		}
 		
 		return false;
