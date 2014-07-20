@@ -148,7 +148,12 @@ public class Field
 			//Scan for the location of the selected tile
 			for(Tower t : towers)
 				if(tile.getLocation() == t.getTileLocation())
+				{
 					this.selected_tower_id = t.getID();
+					t.setSelected();
+				}
+				else
+					t.removeSelection();
 		}
 		else
 		{//This tile is empty. Open the tower shop.

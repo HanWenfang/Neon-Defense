@@ -55,6 +55,7 @@ public abstract class Tower
 		this.upgrade_strength = Float.parseFloat(upgrades.get("strength"));
 		this.upgrade_attack_speed = Float.parseFloat(upgrades.get("attack_speed"));
 		
+		//Initialize
 		this.id = id;
 		this.tile_size = tile_size;
 		this.tile_location = location;
@@ -62,11 +63,12 @@ public abstract class Tower
 		this.shapes = new ShapeRenderer();
 		this.total_invested = this.cost_to_upgrade;
 		
+		//Set the sprite
 		this.setTexture(xy);
 	}
 	
 	public void allocate(Texture t)
-	{
+	{//This is called in subclasses to initialize the sprite.
 		this.sprite = new Sprite(t);
 	}
 	
@@ -240,5 +242,15 @@ public abstract class Tower
 	public Vector2 getCenter()
 	{//Get the center of the enemy. This is where the towers should aim.
 		return new Vector2(this.sprite.getX() + this.sprite.getWidth() / 2f, this.sprite.getY() + this.sprite.getHeight() / 2f);
+	}
+
+	public void setSelected()
+	{
+		this.is_selected = true;
+	}
+
+	public void removeSelection()
+	{
+		this.is_selected = false;
 	}
 }
