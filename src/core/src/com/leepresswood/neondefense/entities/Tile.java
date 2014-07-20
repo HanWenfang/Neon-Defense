@@ -42,20 +42,12 @@ public class Tile
 	}
 	
 	public void render(float delta, SpriteBatch batch)
-	{
-		//Walkable textures will have a tint.
-		Color old = batch.getColor();
-		if(this.walkable)
-			batch.setColor(color);		
-		
+	{			
 		batch.draw(sprite.getTexture(), sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
 		
 		//If this tile is selected, draw the selected sprite.
 		if(this.sprite_selected != null)
 			this.sprite_selected.draw(batch);
-		
-		if(this.walkable)
-			batch.setColor(old);
 	}
 
 	public boolean isWalkable()

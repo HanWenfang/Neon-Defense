@@ -106,8 +106,8 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 			if(this.gui.checkTouch(x, y))	//Touch is on GUI.
 			{
 				//Close previous GUIs to avoid overlap.
-				this.gui.closeExtraScreens();
-				this.field.deselectTile();				
+				//this.gui.closeExtraScreens();
+				//this.field.deselectTile();				
 				this.gui.doTouch(x, y);
 				
 				//Is the Other GUI open?
@@ -120,14 +120,15 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 						done = this.field.upgradeTower(this.gui);
 					
 					//If we're done with these Other screens, close.
-					this.gui.closeExtraScreens();
+					if(done)
+					{
+						this.gui.closeExtraScreens();
+						this.field.deselectTile();
+					}
 				}				
 			}
 			else	//Touch not on GUI. Clear any open extra GUI screens.
-			{
 				this.gui.closeExtraScreens();
-				this.field.deselectTile();	
-			}
 		}
 			
 		return true;		
