@@ -15,6 +15,7 @@ public class Assets
 	private static final String GUI_FILE_PATH = "gui/";
 	private static final String GUI_BACKGROUND = GUI_FILE_PATH + "background.png";
 	private static final String GUI_BUTTON = GUI_FILE_PATH + "button.png";
+	private static final String TILE_GUI_SELECTED = GUI_FILE_PATH + "selected.png";
 	
 	//Towers
 	private static final String TOWER_FILE_PATH = "towers/";
@@ -28,6 +29,7 @@ public class Assets
 	//Tiles
 	public Texture TEXTURE_UNOCCUPIED = new Texture(TILE_UNOCCUPIED); 
 	public Texture TEXTURE_PATH = new Texture(TILE_PATH);
+	public Texture TEXTURE_SELECTED = new Texture(TILE_GUI_SELECTED);
 	
 	//Towers
 	public Texture TEXTURE_TOWER_BLASTER = new Texture(TOWER_BLASTER);
@@ -41,6 +43,8 @@ public class Assets
 		TEXTURE_PATH.dispose();
 		TEXTURE_GUI_BACKGROUND.dispose();
 		TEXTURE_BUTTON.dispose();
+		TEXTURE_SELECTED.dispose();
+		TEXTURE_TOWER_BLASTER.dispose();
 		
 		FONT.dispose();
 	}
