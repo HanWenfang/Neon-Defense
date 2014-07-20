@@ -189,14 +189,13 @@ public abstract class Tower
 			float v2y = -this.sprite.getHeight() + this.sprite.getY();
 			
 			batch.end();
-				/*shapes.begin(ShapeType.Filled);
-					shapes.setColor(0.2f, 0.5f, 0.7f, 1f);
-					shapes.circle(v2x, v2y, this.tile_size * this.radius, 30);
-				shapes.end();*/
 			
 				shapes.begin(ShapeType.Line);
-					shapes.setColor(0.2f, 0.5f, 0.7f, 0.125f);
+					shapes.setColor(0.4f, 0.9f, 0.7f, 0.125f);
 					shapes.circle(v2x, v2y, this.tile_size * this.radius, 30);
+					shapes.circle(v2x, v2y, this.tile_size * this.radius - 1, 30);
+					shapes.circle(v2x, v2y, this.tile_size * this.radius - 1.5f, 30);
+					shapes.circle(v2x, v2y, this.tile_size * this.radius - 2, 30);
 				shapes.end();
 			batch.begin();
 		}
