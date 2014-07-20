@@ -42,9 +42,6 @@ public class LevelGenerator
 		this.tiles_down = scanner.nextInt();
 		this.tile_size = Gdx.graphics.getWidth() / (float) tiles_across;
 		
-		//Next number is the theme number. Get this theme's color
-		Color color = Tinter.getColor(scanner.nextInt());
-		
 		//Every other number is a tile. Make the tiles
 		this.tiles = new Tile[this.tiles_down][this.tiles_across];
 		for(int y = 0; y < this.tiles_down; y++)
@@ -60,7 +57,7 @@ public class LevelGenerator
 				float pos_y = Gdx.graphics.getHeight() - y * tile_size;
 				
 				//Set tile				
-				this.tiles[y][x] = new Tile(new Vector2(x, y), tile_type, this.getTileTexture(tile_type), this.tile_size, pos_x, pos_y, color);	
+				this.tiles[y][x] = new Tile(new Vector2(x, y), tile_type, this.getTileTexture(tile_type), this.tile_size, pos_x, pos_y);	
 			}
 		}
 		scanner.close();

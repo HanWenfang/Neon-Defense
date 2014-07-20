@@ -18,9 +18,8 @@ public class Tile
 	
 	protected Sprite sprite;
 	protected Sprite sprite_selected = null;
-	protected Color color;
 	
-	public Tile(Vector2 location, int tile_type, Texture texture, float tile_size, float pos_x, float pos_y, Color color)
+	public Tile(Vector2 location, int tile_type, Texture texture, float tile_size, float pos_x, float pos_y)
 	{	
 		//Set tile properties.
 		this.location = location;
@@ -33,7 +32,6 @@ public class Tile
 		this.sprite = new Sprite(texture);
 		this.sprite.setPosition(pos_x, pos_y);
 		this.sprite.setSize(tile_size, tile_size);
-		this.color = color;
 	}
 
 	public void update(float delta)
