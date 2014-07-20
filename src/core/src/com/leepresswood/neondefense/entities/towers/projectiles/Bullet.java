@@ -72,6 +72,7 @@ public class Bullet
 	
 	public void checkCollision(ArrayList<Enemy> enemies)
 	{//Check to see if this sprite has hit one of the enemies
-		
+		for(Enemy e : enemies)
+			this.decayed = this.sprite.getBoundingRectangle().overlaps(e.getSprite().getBoundingRectangle()) ? true : this.decayed;
 	}
 }

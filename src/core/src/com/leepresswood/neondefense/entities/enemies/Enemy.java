@@ -95,6 +95,11 @@ public class Enemy
 		return new Vector2(this.sprite.getX() + this.sprite.getWidth() / 2f, this.sprite.getY() + this.sprite.getHeight() / 2f);
 	}
 	
+	public Sprite getSprite()
+	{
+		return this.sprite;
+	}
+	
 	private enum Direction
 	{
 		UP, DOWN, LEFT, RIGHT

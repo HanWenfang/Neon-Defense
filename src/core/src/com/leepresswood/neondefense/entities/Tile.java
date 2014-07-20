@@ -91,4 +91,11 @@ public class Tile
 		this.walkable = false;
 		this.selected = false;
 	}
+	
+	public void clear()
+	{//We sold this tile's tower. Clear this tile.
+		this.occupied = false;
+		this.walkable = false;
+		this.selected = false;
+	}
 }

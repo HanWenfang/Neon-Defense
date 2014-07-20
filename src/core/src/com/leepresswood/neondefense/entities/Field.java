@@ -200,6 +200,12 @@ public class Field
 			if(type)
 			{			
 				this.money_change += t.getCost() / 2;
+				
+				//Clear the tile
+				Vector2 v = t.getTileLocation();
+				this.tiles[(int) v.y][(int) v.x].clear();
+				
+				//Clear the tower
 				this.towers.remove(t);
 			}
 			else
