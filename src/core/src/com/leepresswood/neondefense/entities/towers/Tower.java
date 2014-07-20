@@ -215,10 +215,12 @@ public abstract class Tower
 				this.strength += this.upgrade_strength;
 				this.attack_speed += this.upgrade_attack_speed;
 			}
+			else
+				cost = 0;
 		}		
 		
 		//Add the cost of this upgrade to the total investment into the tower
-		this.total_invested += cost;
+				this.total_invested += cost;
 		
 		//Return cost of the upgrade.
 		return cost;
