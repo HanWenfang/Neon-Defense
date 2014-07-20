@@ -81,27 +81,27 @@ public abstract class Tower
 	
 	public float getRadius()
 	{
-		return radius;
+		return this.radius;
 	}
 
 	public float getStrength()
 	{
-		return strength;
+		return this.strength;
 	}
 	
 	public float getAttack_speed()
 	{
-		return attack_speed;
+		return this.attack_speed;
 	}
 	
 	public int getCost()
 	{
-		return cost_to_upgrade;
+		return this.total_invested;
 	}
 	
 	public float getLevel()
 	{
-		return level;
+		return this.level;
 	}
 	
 	public int getID()
