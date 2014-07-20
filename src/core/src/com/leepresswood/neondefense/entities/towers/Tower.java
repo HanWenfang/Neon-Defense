@@ -26,7 +26,8 @@ public abstract class Tower
 	protected float radius;						//In terms of blocks.
 	protected float strength;					//Damage removed from enemy
 	protected float attack_speed;				//Attacks per second
-	protected int cost;							//Gold cost
+	protected int cost;							//Cost per upgrade
+	protected int sell;							//Gold invested in tower.
 	protected int level = 1;					//Current upgrade level. Should always start at one
 	
 	protected float upgrade_multiplier;		//The cost per level increase
@@ -35,7 +36,7 @@ public abstract class Tower
 	protected float upgrade_attack_speed;	//How much attack speed changes
 	
 	protected Assets assets;					//Holds the towers' textures
-	protected Sprite sprite;				//The base sprite of the tower
+	protected Sprite sprite;					//The base sprite of the tower
 
 	private ShapeRenderer shapes;
 	private boolean is_selected;
@@ -216,8 +217,8 @@ public abstract class Tower
 			}
 		}		
 		
-		//Add the cost of this upgrade to the cost of the tower
-		this.cost += cost;
+		//Add the cost of this upgrade to the total investment into the tower
+		this.sell += cost;
 		
 		//Return cost of the upgrade.
 		return cost;
