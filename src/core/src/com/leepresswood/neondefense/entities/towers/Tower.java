@@ -43,12 +43,6 @@ public abstract class Tower
 	
 	public Tower(int id, Vector2 xy, float tile_size, Vector2 location, Assets assets, HashMap<String, String> properties, HashMap<String, String> upgrades)
 	{
-		this.id = id;
-		this.tile_size = tile_size;
-		this.tile_location = location;
-		this.assets = assets;
-		this.shapes = new ShapeRenderer();
-		
 		//Get the properties
 		this.radius = Float.parseFloat(properties.get("radius"));
 		this.strength = Float.parseFloat(properties.get("strength"));
@@ -60,6 +54,13 @@ public abstract class Tower
 		this.upgrade_radius = Float.parseFloat(upgrades.get("radius"));
 		this.upgrade_strength = Float.parseFloat(upgrades.get("strength"));
 		this.upgrade_attack_speed = Float.parseFloat(upgrades.get("attack_speed"));
+		
+		this.id = id;
+		this.tile_size = tile_size;
+		this.tile_location = location;
+		this.assets = assets;
+		this.shapes = new ShapeRenderer();
+		this.total_invested = this.cost_to_upgrade;
 		
 		this.setTexture(xy);
 	}
