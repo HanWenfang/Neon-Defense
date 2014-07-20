@@ -8,8 +8,8 @@ public class Assets
 {
 	//File path to tile textures
 	private static final String TILE_FILE_PATH = "tiles/";
-	private static final String TILE_UNOCCUPIED = TILE_FILE_PATH + "unoccupied.png";
-	private static final String TILE_PATH = TILE_FILE_PATH + "tile.png";
+	private static final String TILE_UNOCCUPIED = TILE_FILE_PATH + "placeable.png";
+	private static final String TILE_PATH = TILE_FILE_PATH + "path.png";
 	
 	//GUI components
 	private static final String GUI_FILE_PATH = "gui/";
