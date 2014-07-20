@@ -63,7 +63,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 		//Clear screen and update.
 		super.render(delta);
 		this.update(delta);
-		
+
 		//Begin drawing
 		this.field_batch.setProjectionMatrix(camera.combined);
 		this.field_batch.begin();
@@ -121,8 +121,8 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 					//If we're done with these Other screens, close.
 					if(done || this.gui.getOther() == null)
 					{
-						this.gui.closeExtraScreens();
 						this.field.deselectTile();
+						this.gui.closeExtraScreens();
 					}
 				}				
 			}

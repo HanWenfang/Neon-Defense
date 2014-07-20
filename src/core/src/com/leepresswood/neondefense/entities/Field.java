@@ -232,7 +232,7 @@ public class Field
 			for(int j = 0; j < this.tiles[0].length; j++)
 			{
 				this.tiles[i][j].deselect();
-				this.tiles[i][j].clear();		
+				//this.tiles[i][j].clear();		
 			}
 	}
 }
