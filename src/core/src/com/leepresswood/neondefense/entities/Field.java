@@ -16,6 +16,7 @@ import com.leepresswood.neondefense.gui.GUIUpdate;
 
 public class Field
 {
+	private Assets assets;
 	private TowerGenerator tower_generator;
 	private Tile[][] tiles;
 	
@@ -31,6 +32,7 @@ public class Field
 	
 	public Field(Assets assets, int level)
 	{//Collect the level and generate it.
+		this.assets = assets;
 		this.tiles = new LevelGenerator(assets, level).getTiles();	
 		this.tower_generator = new TowerGenerator(this.getTileSize(), assets);
 		this.towers = new ArrayList<Tower>();
@@ -132,7 +134,12 @@ public class Field
 		//If we clicked on a path, nothing needs to happen
 		if(tile.isWalkable() || !tile.isPlaceable())
 			return;
-		else if(tile.isOccupied())	//Otherwise, we're doing something with towers.
+		
+		//Otherwise, we want to work with the tiles.
+		//Visualize the selection
+		tile.makeSelected(this.assets);
+
+		if(tile.isOccupied())	//Otherwise, we're doing something with towers.
 		{//This tile is occupied. Allow user to upgrade or sell tower.
 			this.open_shop = false;
 			this.tower_is_selected = true;
@@ -147,7 +154,7 @@ public class Field
 			this.open_shop = true;
 			this.tower_is_selected = false;
 			this.selected_tile = tile.getLocation();
-		}
+		}		
 	}
 
 	public Tower getTowerFromID(int tower_id)
@@ -215,5 +222,15 @@ public class Field
 		}
 		
 		return false;
+	}
+	
+	public void deselectTile()
+	{//Deselect the selected tile
+		for(int i = 0; i < this.tiles.length; i++)
+			for(int j = 0; j < this.tiles[0].length; j++)
+			{
+				this.tiles[i][j].deselect();
+				this.tiles[i][j].clear();		
+			}
 	}
 }

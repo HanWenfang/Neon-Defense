@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.leepresswood.neondefense.generators.Assets;
 import com.leepresswood.neondefense.generators.TileDecoder;
 
 public class Tile
@@ -16,6 +17,7 @@ public class Tile
 	protected boolean selected;
 	
 	protected Sprite sprite;
+	protected Sprite sprite_selected = null;
 	protected Color color;
 	
 	public Tile(Vector2 location, int tile_type, Texture texture, float tile_size, float pos_x, float pos_y, Color color)
@@ -45,7 +47,13 @@ public class Tile
 		Color old = batch.getColor();
 		if(this.walkable)
 			batch.setColor(color);		
+		
 		batch.draw(sprite.getTexture(), sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
+		
+		//If this tile is selected, draw the selected sprite.
+		if(this.sprite_selected != null)
+			this.sprite_selected.draw(batch);
+		
 		if(this.walkable)
 			batch.setColor(old);
 	}
@@ -85,8 +93,19 @@ public class Tile
 		return new Vector2(this.getSprite().getX(), this.getSprite().getY());
 	}
 	
+	public void makeSelected(Assets assets)
+	{//Add visual feedback that states a tile has been selected.
+		this.sprite_selected = new Sprite(assets.TEXTURE_SELECTED);
+		this.sprite_selected.setBounds(this.sprite.getX(), this.sprite.getY(), this.sprite.getWidth(), this.sprite.getHeight());
+	}
+	
+	public void deselect()
+	{//Remove selection visual feedback
+		this.sprite_selected = null;		
+	}
+	
 	public void occupy()
-	{//A tower wants to be placed. Occupy this tile.
+	{//A tower wants to be placed. Occupy this tile.		
 		this.occupied = true;
 		this.walkable = false;
 		this.selected = false;
