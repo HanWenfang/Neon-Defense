@@ -190,15 +190,15 @@ public abstract class Tower
 			float v2x = this.sprite.getWidth() / 2f + this.sprite.getX();
 			float v2y = -this.sprite.getHeight() + this.sprite.getY();
 			
-			batch.end();
-			
-				shapes.begin(ShapeType.Line);
-					shapes.setColor(0.4f, 0.9f, 0.7f, 0.125f);
-					shapes.circle(v2x, v2y, radius, segments);
-					shapes.circle(v2x, v2y, radius - 1, segments);
-					shapes.circle(v2x, v2y, radius - 1.5f, segments);
-					shapes.circle(v2x, v2y, radius - 2, segments);
-				shapes.end();
+			//Have to end batch to draw the shape.
+			batch.end();			
+			shapes.begin(ShapeType.Line);
+				shapes.setColor(0.4f, 0.9f, 0.7f, 0.125f);
+				shapes.circle(v2x, v2y, radius, segments);
+				shapes.circle(v2x, v2y, radius - 1, segments);
+				shapes.circle(v2x, v2y, radius - 1.5f, segments);
+				shapes.circle(v2x, v2y, radius - 2, segments);
+			shapes.end();
 			batch.begin();
 		}
 		
