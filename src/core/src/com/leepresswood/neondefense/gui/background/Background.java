@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leepresswood.neondefense.generators.Assets;
 
 public class Background
@@ -19,6 +20,17 @@ public class Background
 		//Initialize grid sprites
 		this.initializeGridFromShape(shape, t);
 		
+	}
+	
+	public void update(float delta)
+	{//Move background components
+		
+	}
+	
+	public void render(SpriteBatch batch)
+	{//Draw all components of the background
+		for(Sprite s : grid)
+			s.draw(batch);
 	}
 	
 	private Texture getTextureFromShape(Assets assets, Shapes shape)
