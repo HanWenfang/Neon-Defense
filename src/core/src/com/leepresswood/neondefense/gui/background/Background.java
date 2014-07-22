@@ -1,6 +1,7 @@
 //Allow for a moving background of various shapes.
 package com.leepresswood.neondefense.gui.background;
 
+import java.util.ArrayList;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -8,8 +9,7 @@ import com.leepresswood.neondefense.generators.Assets;
 
 public class Background
 {
-	private final int NUMBER_SHAPES = 12;
-	private Sprite[][] grid;
+	private ArrayList<Sprite> grid;
 	
 	public Background(Assets assets, Shapes shape, Color foreground, Color background, Direction direction)
 	{
@@ -17,22 +17,27 @@ public class Background
 		Texture t = this.getTextureFromShape(assets, shape);
 		
 		//Initialize grid sprites
-		this.grid = new Sprite[NUMBER_SHAPES][];
-		for(int i = 0; i < NUMBER_SHAPES; i++)
-		{
-			
-		}
+		this.initializeGridFromShape(shape, t);
 		
 	}
 	
-	public Texture getTextureFromShape(Assets assets, Shapes shape)
+	private Texture getTextureFromShape(Assets assets, Shapes shape)
 	{//Determine which shape to use
 		switch(shape)
 		{
 			case CIRCLE:
-				break;
+				return null;
 			case SQUARE:
-				break;
+				return null;
+			case GRID:
+				return assets.TEXTURE_BACKGROUND_GRID;
+			default:
+				return null;
 		}
+	}
+	
+	private void initializeGridFromShape(Shapes shape, Texture t)
+	{
+		
 	}
 }
