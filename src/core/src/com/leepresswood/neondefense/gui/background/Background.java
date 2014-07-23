@@ -11,17 +11,19 @@ import com.leepresswood.neondefense.generators.Assets;
 public class Background
 {
 	private ArrayList<Sprite> grid;
+	private Shapes shape;
+	private Direction direction;
 	
 	public Background(Assets assets, Shapes shape, Color foreground, Color background, Direction direction)
-	{
-		//Get the texture for the sprite
-		Texture t = this.getTextureFromShape(assets, shape);
+	{		
+		this.shape = shape;
+		this.direction = direction;
 		
-		//Initialize grid sprites
-		this.initializeGridFromShape(shape, t);
-		
+		//Initialize sprites
+		this.initializeGridFromShape(shape, this.getTextureFromShape(assets, shape));
+		this.setColors(foreground, background);
 	}
-	
+
 	public void update(float delta)
 	{//Move background components
 		
@@ -49,6 +51,11 @@ public class Background
 	}
 	
 	private void initializeGridFromShape(Shapes shape, Texture t)
+	{
+		
+	}
+	
+	private void setColors(Color foreground, Color background)
 	{
 		
 	}
