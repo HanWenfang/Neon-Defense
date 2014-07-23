@@ -12,9 +12,15 @@ import com.leepresswood.neondefense.NeonDefense;
 import com.leepresswood.neondefense.entities.Field;
 import com.leepresswood.neondefense.gui.GUI;
 import com.leepresswood.neondefense.gui.GUIShop;
+import com.leepresswood.neondefense.gui.background.Background;
+import com.leepresswood.neondefense.gui.background.Direction;
+import com.leepresswood.neondefense.gui.background.Shapes;
 
 public class ScreenTDGame extends GameScreen implements GestureListener
 {
+	//Background
+	private Background background;
+	
 	//Field variables
 	private SpriteBatch field_batch;
 	private OrthographicCamera camera;
@@ -27,6 +33,8 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	public ScreenTDGame(NeonDefense game)
 	{
 		super(game);
+		
+		this.background = new Background(game.asset_manager, Shapes.GRID, Direction.LEFT);
 		
 		//Set up camera
 		this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
