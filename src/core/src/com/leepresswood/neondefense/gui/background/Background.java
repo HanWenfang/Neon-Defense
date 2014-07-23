@@ -51,12 +51,31 @@ public class Background
 	}
 	
 	private void initializeGridFromShape(Shapes shape, Texture t)
-	{
-		
+	{//Initialize the grid based upon the passed shape
+		switch(shape)
+		{
+			case CIRCLE:
+				;
+			case SQUARE:
+				;
+			case GRID:
+				this.initGrid(t);
+			default:
+				;
+		}
 	}
 	
 	private void setColors(Color foreground, Color background)
 	{
 		
+	}
+	
+	private void initGrid(Texture t)
+	{//Initialize the background for the grid shape.
+		//Size of the ArrayList should be a constant
+		int SIZE = 12;
+		
+		//Use the above size to determine how large the grid squares are.
+		this.grid = new ArrayList<Sprite>();
 	}
 }
