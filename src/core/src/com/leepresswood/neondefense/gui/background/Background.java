@@ -2,6 +2,7 @@
 package com.leepresswood.neondefense.gui.background;
 
 import java.util.ArrayList;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -14,19 +15,26 @@ public class Background
 	private Shapes shape;
 	private Direction direction;
 	
-	public Background(Assets assets, Shapes shape, Color foreground, Color background, Direction direction)
+	public Background(Assets assets, Shapes shape, Direction direction)
 	{		
 		this.shape = shape;
 		this.direction = direction;
 		
 		//Initialize sprites
 		this.initializeGridFromShape(shape, this.getTextureFromShape(assets, shape));
-		this.setColors(foreground, background);
 	}
 
 	public void update(float delta)
 	{//Move background components
-		
+		switch(shape)
+		{
+			case CIRCLE:
+				;
+			case GRID:
+				;
+			default:
+				;
+		}
 	}
 	
 	public void render(SpriteBatch batch)
@@ -41,8 +49,6 @@ public class Background
 		{
 			case CIRCLE:
 				return null;
-			case SQUARE:
-				return null;
 			case GRID:
 				return assets.TEXTURE_BACKGROUND_GRID;
 			default:
@@ -56,18 +62,11 @@ public class Background
 		{
 			case CIRCLE:
 				;
-			case SQUARE:
-				;
 			case GRID:
 				this.initGrid(t);
 			default:
-				;
+				System.out.println("Error: No shape passed.");
 		}
-	}
-	
-	private void setColors(Color foreground, Color background)
-	{
-		
 	}
 	
 	private void initGrid(Texture t)
@@ -76,6 +75,12 @@ public class Background
 		int SIZE = 12;
 		
 		//Use the above size to determine how large the grid squares are.
+		//The idea is that there will be two extra squares on either side, both top and bottom and left and right
+		//After each movement, check to see if any tile is off-screen.
+		//If it is, move it to the other side.
+		float block_size = Gdx.graphics.getWidth() / (float) (SIZE - 2);
+		
+		
 		this.grid = new ArrayList<Shape>();
 	}
 }
