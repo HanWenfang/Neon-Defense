@@ -3,9 +3,7 @@ package com.leepresswood.neondefense.gui.background;
 
 import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.generators.Assets;
@@ -13,12 +11,11 @@ import com.leepresswood.neondefense.generators.Assets;
 public class Background
 {
 	private ArrayList<Shape> grid;
-	private Shapes shape;
+	private int tiles_across = 12;
 	private Direction direction;
 	
 	public Background(Assets assets, Shapes shape, Direction direction)
-	{		
-		this.shape = shape;
+	{
 		this.direction = direction;
 		
 		//Initialize sprites
@@ -26,15 +23,29 @@ public class Background
 	}
 
 	public void update(float delta)
-	{//Move background components
-		switch(shape)
+	{//Move background components based upon direction.
+		switch(direction)
 		{
-			case CIRCLE:
-				;
-			case GRID:
-				;
+			case DOWN:
+				break;
+			case DOWNLEFT:
+				break;
+			case DOWNRIGHT:
+				break;
+			case LEFT:
+				break;
+			case NONE:
+				break;
+			case RIGHT:
+				break;
+			case UP:
+				break;
+			case UPLEFT:
+				break;
+			case UPRIGHT:
+				break;
 			default:
-				;
+				break;
 		}
 	}
 	
@@ -72,14 +83,11 @@ public class Background
 	
 	private void initGrid(Texture t)
 	{//Initialize the background for the grid shape.
-		//Size of the ArrayList should be a constant
-		int SIZE = 12;
-		
 		//Use the above size to determine how large the grid squares are.
 		//The idea is that there will be two extra squares on either side, both top and bottom and left and right
 		//After each movement, check to see if any tile is off-screen.
 		//If it is, move it to the other side.
-		float block_size = Gdx.graphics.getWidth() / (float) (SIZE - 2);
+		float block_size = Gdx.graphics.getWidth() / (float) (this.tiles_across - 2);
 		
 		//From here, start X and Y values off-screen. Increment with each square.
 		float x = -block_size;
@@ -87,9 +95,9 @@ public class Background
 		
 		//Initialize grid.
 		this.grid = new ArrayList<Shape>();
-		for(int i = 0; i < SIZE; i++)
+		for(int i = 0; i < this.tiles_across; i++)
 		{
-			for(int j = 0; j < SIZE; j++)		
+			for(int j = 0; j < this.tiles_across; j++)		
 			{
 				this.grid.add(new Shape(t, new Vector2(x, y), block_size));
 				
