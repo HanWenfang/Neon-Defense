@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.generators.Assets;
 
 public class Background
@@ -80,7 +81,26 @@ public class Background
 		//If it is, move it to the other side.
 		float block_size = Gdx.graphics.getWidth() / (float) (SIZE - 2);
 		
+		//From here, start X and Y values off-screen. Increment with each square.
+		float x = -block_size;
+		float y = -block_size;
 		
+		//Initialize grid.
 		this.grid = new ArrayList<Shape>();
+		for(int i = 0; i < SIZE; i++)
+		{
+			for(int j = 0; j < SIZE; j++)		
+			{
+				this.grid.add(new Shape(t, new Vector2(x, y), block_size));
+				
+				
+				//Increment x
+				x += block_size;
+			}
+			
+			//Increment y. Reset x;
+			x = -block_size;
+			y += block_size;
+		}
 	}
 }
