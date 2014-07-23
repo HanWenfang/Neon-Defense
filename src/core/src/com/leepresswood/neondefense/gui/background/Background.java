@@ -10,7 +10,7 @@ import com.leepresswood.neondefense.generators.Assets;
 
 public class Background
 {
-	private ArrayList<Sprite> grid;
+	private ArrayList<Shape> grid;
 	private Shapes shape;
 	private Direction direction;
 	
@@ -31,7 +31,7 @@ public class Background
 	
 	public void render(SpriteBatch batch)
 	{//Draw all components of the background
-		for(Sprite s : grid)
+		for(Shape s : grid)
 			s.draw(batch);
 	}
 	
@@ -76,6 +76,6 @@ public class Background
 		int SIZE = 12;
 		
 		//Use the above size to determine how large the grid squares are.
-		this.grid = new ArrayList<Sprite>();
+		this.grid = new ArrayList<Shape>();
 	}
 }
