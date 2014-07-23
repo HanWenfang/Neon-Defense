@@ -19,7 +19,7 @@ public class Background
 		this.direction = direction;
 		
 		//Initialize sprites
-		this.initializeGridFromShape(shape, this.getTextureFromShape(assets, shape));
+		this.initGrid(this.getTextureFromShape(assets, shape));
 	}
 
 	public void update(float delta)
@@ -65,19 +65,6 @@ public class Background
 				return assets.TEXTURE_BACKGROUND_GRID;
 			default:
 				return null;
-		}
-	}
-	
-	private void initializeGridFromShape(Shapes shape, Texture t)
-	{//Initialize the grid based upon the passed shape
-		switch(shape)
-		{
-			case CIRCLE:
-				;
-			case GRID:
-				this.initGrid(t);
-			default:
-				System.out.println("Error: No shape passed.");
 		}
 	}
 	
