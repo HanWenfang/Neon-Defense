@@ -18,8 +18,15 @@ public class Background
 	{
 		this.direction = direction;
 		
+		this.getSize(direction);
+		
 		//Initialize sprites
 		this.initGrid(this.getTextureFromShape(assets, shape));
+	}
+	
+	private void getSize(Direction direction)
+	{//Get the size of the grid shapes based on their direction.
+		//Left-right determined by Vertical height. Opposite for Up-down.
 	}
 
 	public void update(float delta)
@@ -65,6 +72,9 @@ public class Background
 		
 		for(Shape s : grid)
 			s.translate(translate_x, translate_y);
+		
+		//Check locations here.
+		
 	}
 	
 	public void render(SpriteBatch batch)
