@@ -11,17 +11,15 @@ import com.leepresswood.neondefense.generators.Assets;
 public class Background
 {
 	private ArrayList<Shape> grid;
-	private int tiles_across = 12;
+	private int tiles_across = 6;
 	private float tile_size = 1;
 	private Direction direction;
+	private boolean usedHorizontal = true;
 	
 	public Background(Assets assets, Shapes shape, Direction direction)
-	{
+	{	
 		this.direction = direction;
-		
 		this.getSize(direction);
-		
-		//Initialize sprites
 		this.initGrid(this.getTextureFromShape(assets, shape));
 	}
 	
@@ -37,11 +35,13 @@ public class Background
 			case UPLEFT:
 			case UPRIGHT:	
 				this.tile_size = Gdx.graphics.getWidth() /  ((float) this.tiles_across);
+				this.usedHorizontal = true;
 				break;
 			case LEFT:
 			case NONE:
 			case RIGHT:
 				this.tile_size = Gdx.graphics.getHeight() /  ((float) this.tiles_across);
+				this.usedHorizontal = false;
 				break;
 		}
 	}
@@ -119,16 +119,21 @@ public class Background
 		//The idea is that there will be two extra squares on either side, both top and bottom and left and right
 		//After each movement, check to see if any tile is off-screen.
 		//If it is, move it to the other side.		
-		//Determine how many vertical blocks there should be from this size
-		int vertical = (int) (Gdx.graphics.getHeight() / this.tile_size);
 		
+		//Depending upon whether we used horizontal or vertical, determine the other shape numbers.
+		int other = 1;
+		if(this.usedHorizontal)
+			other = (int) (Gdx.graphics.getHeight() / this.tile_size);
+		else
+			other = (int) (Gdx.graphics.getWidth() / this.tile_size);
+
 		//From here, start X and Y values off-screen. Increment with each square.
 		float x = -this.tile_size;
 		float y = -this.tile_size;
 		
 		//Initialize grid.
 		this.grid = new ArrayList<Shape>();
-		for(int i = 0; i < vertical + 2; i++)
+		for(int i = 0; i < other + 2; i++)
 		{
 			for(int j = 0; j < this.tiles_across + 2; j++)		
 			{
