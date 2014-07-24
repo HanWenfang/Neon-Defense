@@ -11,7 +11,8 @@ import com.leepresswood.neondefense.generators.Assets;
 public class Background
 {
 	private ArrayList<Shape> grid;
-	private int tiles_across = 200;
+	private int tiles_across = 12;
+	private float tile_size = 1;
 	private Direction direction;
 	
 	public Background(Assets assets, Shapes shape, Direction direction)
@@ -26,7 +27,23 @@ public class Background
 	
 	private void getSize(Direction direction)
 	{//Get the size of the grid shapes based on their direction.
-		//Left-right determined by Vertical height. Opposite for Up-down.
+		//Left-right determined by Vertical height. Opposite for Up-down. Diagonal just determined by horizontal width.
+		switch(direction)
+		{
+			case DOWN:
+			case DOWNLEFT:
+			case UP:				
+			case DOWNRIGHT:			
+			case UPLEFT:
+			case UPRIGHT:	
+				this.tile_size = Gdx.graphics.getWidth() /  ((float) this.tiles_across);
+				break;
+			case LEFT:
+			case NONE:
+			case RIGHT:
+				this.tile_size = Gdx.graphics.getHeight() /  ((float) this.tiles_across);
+				break;
+		}
 	}
 
 	public void update(float delta)
@@ -101,15 +118,13 @@ public class Background
 		//Use the above size to determine how large the grid squares are.
 		//The idea is that there will be two extra squares on either side, both top and bottom and left and right
 		//After each movement, check to see if any tile is off-screen.
-		//If it is, move it to the other side.
-		float block_size = Gdx.graphics.getWidth() /  ((float) this.tiles_across);
-		
+		//If it is, move it to the other side.		
 		//Determine how many vertical blocks there should be from this size
-		int vertical = (int) (Gdx.graphics.getHeight() / block_size);
+		int vertical = (int) (Gdx.graphics.getHeight() / this.tile_size);
 		
 		//From here, start X and Y values off-screen. Increment with each square.
-		float x = -block_size;
-		float y = -block_size;
+		float x = -this.tile_size;
+		float y = -this.tile_size;
 		
 		//Initialize grid.
 		this.grid = new ArrayList<Shape>();
@@ -117,16 +132,16 @@ public class Background
 		{
 			for(int j = 0; j < this.tiles_across + 2; j++)		
 			{
-				this.grid.add(new Shape(t, new Vector2(x, y), block_size));
+				this.grid.add(new Shape(t, new Vector2(x, y), this.tile_size));
 				
 				
 				//Increment x
-				x += block_size;
+				x += this.tile_size;
 			}
 			
 			//Increment y. Reset x;
-			x = -block_size;
-			y += block_size;
+			x = -this.tile_size;
+			y += this.tile_size;
 		}
 	}
 }
