@@ -34,7 +34,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	{
 		super(game);
 		
-		this.background = new Background(game.asset_manager, Shapes.GRID, Direction.UP);
+		this.background = new Background(game.asset_manager, Shapes.GRID, Direction.RIGHT);
 		
 		//Set up camera
 		this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());

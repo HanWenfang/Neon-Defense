@@ -139,14 +139,24 @@ public class Background
 			{
 				this.grid.add(new Shape(t, new Vector2(x, y), this.tile_size));
 				
-				
-				//Increment x
-				x += this.tile_size;
+				//Increment x or y
+				if(this.usedHorizontal)
+					x += this.tile_size;
+				else
+					y += this.tile_size;
 			}
 			
-			//Increment y. Reset x;
-			x = -this.tile_size;
-			y += this.tile_size;
+			//Increment x or y. Reset other;
+			if(this.usedHorizontal)
+			{
+				x = -this.tile_size;
+				y += this.tile_size;
+			}
+			else
+			{
+				y = -this.tile_size;
+				x += this.tile_size;
+			}
 		}
 	}
 }
