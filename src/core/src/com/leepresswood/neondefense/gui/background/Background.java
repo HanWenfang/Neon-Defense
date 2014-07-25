@@ -70,39 +70,40 @@ public class Background
 	public void update(float delta)
 	{//Move background components based upon direction.
 		float translate_x = 0;
-		float translate_y = 0;
+		float translate_y = 0;		
+		float move_speed = this.tile_size * this.move_speed * delta;
 		
 		switch(direction)
 		{
 			case DOWN:
-				translate_y = -this.move_speed;
+				translate_y = -move_speed;
 				break;
 			case DOWNLEFT:
-				translate_x = -this.move_speed;
-				translate_y = -this.move_speed;
+				translate_x = -move_speed;
+				translate_y = -move_speed;
 				break;
 			case DOWNRIGHT:
-				translate_x = this.move_speed;
-				translate_y = -this.move_speed;
+				translate_x = move_speed;
+				translate_y = -move_speed;
 				break;
 			case LEFT:
-				translate_x = this.move_speed;
+				translate_x = move_speed;
 				break;
 			case NONE:
 				break;
 			case RIGHT:
-				translate_x = this.move_speed;
+				translate_x = move_speed;
 				break;
 			case UP:
-				translate_y = this.move_speed;
+				translate_y = move_speed;
 				break;
 			case UPLEFT:
-				translate_x = -this.move_speed;
-				translate_y = this.move_speed;
+				translate_x = -move_speed;
+				translate_y = move_speed;
 				break;
 			case UPRIGHT:
-				translate_x = this.move_speed;
-				translate_y = this.move_speed;
+				translate_x = move_speed;
+				translate_y = move_speed;
 				break;
 			default:
 				break;
