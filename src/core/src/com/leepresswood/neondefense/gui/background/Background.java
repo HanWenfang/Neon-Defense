@@ -109,7 +109,7 @@ public class Background
 				break;
 		}
 		
-		for(Shape s : grid)
+		for(Shape s : this.grid)
 		{
 			s.translate(translate_x, translate_y);
 			this.checkPosition(s);
@@ -118,7 +118,7 @@ public class Background
 
 	public void render(SpriteBatch batch)
 	{//Draw all components of the background
-		for(Shape s : grid)
+		for(Shape s : this.grid)
 			s.draw(batch);
 	}
 	
@@ -187,34 +187,50 @@ public class Background
 		//Check X
 		Rectangle rect = s.getBoundingRectangle();
 		if(rect.x <= -this.tile_size)
-			s.setX(this.farthestRight());
+			s.setX(this.farthestRight() + this.tile_size);
 		else if(rect.x >= Gdx.graphics.getWidth())
-			s.setX(this.farthestLeft());
+			s.setX(this.farthestLeft() - this.tile_size);
 		
 		//Check Y
 		if(rect.y <= -this.tile_size)
-			s.setY(this.farthestUp());
+			s.setY(this.farthestUp() + this.tile_size);
 		else if(rect.y >= Gdx.graphics.getHeight())
-			s.setY(this.farthestDown());
+			s.setY(this.farthestDown() - this.tile_size);
 	}
 	
 	private float farthestLeft()
-	{
-		
+	{//Get the farthest left point on the grid.
+		float extreme = 999;
+		for(Shape s : this.grid)
+			if(s.getX() < extreme)
+				extreme = s.getX();
+		return extreme;
 	}
 	
 	private float farthestRight()
-	{
-		
+	{//Get the farthest left point on the grid.
+		float extreme = -1;
+		for(Shape s : this.grid)
+			if(s.getX() + s.getWidth() > extreme)
+				extreme = s.getX() + s.getWidth();
+		return extreme;
 	}
 	
 	private float farthestUp()
-	{
-		
+	{//Get the farthest left point on the grid.
+		float extreme = -1;
+		for(Shape s : this.grid)
+			if(s.getY() + s.getHeight() > extreme)
+				extreme = s.getY() + s.getHeight();
+		return extreme;
 	}
 	
 	private float farthestDown()
-	{
-		
+	{//Get the farthest left point on the grid.
+		float extreme = 999;
+		for(Shape s : this.grid)
+			if(s.getY() < extreme)
+				extreme = s.getY();
+		return extreme;
 	}
 }
