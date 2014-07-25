@@ -12,7 +12,7 @@ import com.leepresswood.neondefense.generators.Assets;
 public class Background
 {
 	private ArrayList<Shape> grid;
-	private int tiles_across = 12;
+	private int tiles_across = 8;
 	private float tile_size;
 	private Direction direction;
 	private boolean usedHorizontal = true;
