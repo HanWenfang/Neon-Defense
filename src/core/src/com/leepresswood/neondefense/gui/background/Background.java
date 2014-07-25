@@ -16,14 +16,33 @@ public class Background
 	private float tile_size;
 	private Direction direction;
 	private boolean usedHorizontal = true;
-	private float move_speed = 1;
+	private float move_speed;
 	private float total_moved = 0;
 	
-	public Background(Assets assets, Shapes shape, Direction direction)
+	public Background(Assets assets, Shapes shape, Direction direction, Speed speed)
 	{	
 		this.direction = direction;
 		this.getSize(direction);
 		this.initGrid(this.getTextureFromShape(assets, shape));
+		
+		switch(speed)
+		{
+			case EXTREME:
+				this.move_speed = 2f;
+				break;
+			case FAST:
+				this.move_speed = 1f;
+				break;
+			case MEDIUM:
+				this.move_speed = 0.5f;
+				break;
+			case NONE:
+				this.move_speed = 0f;
+				break;
+			case SLOW:
+				this.move_speed = 0.25f;
+				break;
+		}
 	}
 	
 	private void getSize(Direction direction)

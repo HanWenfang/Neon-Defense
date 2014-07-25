@@ -15,6 +15,7 @@ import com.leepresswood.neondefense.gui.GUIShop;
 import com.leepresswood.neondefense.gui.background.Background;
 import com.leepresswood.neondefense.gui.background.Direction;
 import com.leepresswood.neondefense.gui.background.Shapes;
+import com.leepresswood.neondefense.gui.background.Speed;
 
 public class ScreenTDGame extends GameScreen implements GestureListener
 {
@@ -34,7 +35,7 @@ public class ScreenTDGame extends GameScreen implements GestureListener
 	{
 		super(game);
 		
-		this.background = new Background(game.asset_manager, Shapes.GRID, Direction.RIGHT);
+		this.background = new Background(game.asset_manager, Shapes.GRID, Direction.RIGHT, Speed.EXTREME);
 		
 		//Set up camera
 		this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
