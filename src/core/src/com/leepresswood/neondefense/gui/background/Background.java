@@ -17,7 +17,6 @@ public class Background
 	private Direction direction;
 	private boolean usedHorizontal = true;
 	private float move_speed;
-	private float total_moved = 0;
 	
 	public Background(Assets assets, Shapes shape, Direction direction, Speed speed)
 	{	
@@ -109,14 +108,10 @@ public class Background
 				break;
 		}
 		
-		this.total_moved += this.move_speed;
-		
 		for(Shape s : grid)
 		{
 			s.translate(translate_x, translate_y);
-			
-			if(this.total_moved % this.tile_size == 0)
-				this.checkPosition(s);
+			this.checkPosition(s);
 		}
 	}
 
@@ -190,16 +185,16 @@ public class Background
 	{//Check to see if the the given shape is offscreen.
 		//Check X
 		Rectangle rect = s.getBoundingRectangle();
-		if(rect.x < -this.tile_size)
-			s.setX(Gdx.graphics.getWidth());
-		else if(rect.x > Gdx.graphics.getWidth())
-			s.setX(-this.tile_size);
+		if(rect.x <= -this.tile_size)
+			s.setX(this.farthestRight());
+		else if(rect.x >= Gdx.graphics.getWidth())
+			s.setX(this.farthestLeft());
 		
 		//Check Y
 		if(rect.y <= -this.tile_size)
-			s.setY(Gdx.graphics.getHeight());
+			s.setY(this.farthestUp());
 		else if(rect.y >= Gdx.graphics.getHeight())
-			s.setY(-this.tile_size);
+			s.setY(this.farthestDown());
 	}
 	
 	private float farthestLeft()
