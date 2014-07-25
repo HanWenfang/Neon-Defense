@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.generators.Assets;
 
 public class Background
 {
 	private ArrayList<Shape> grid;
-	private int tiles_across = 6;
+	private int tiles_across = 12;
 	private float tile_size = 1;
 	private Direction direction;
 	private boolean usedHorizontal = true;
@@ -88,12 +89,15 @@ public class Background
 		}
 		
 		for(Shape s : grid)
+		{
 			s.translate(translate_x, translate_y);
+			this.checkPosition(s);
+		}
 		
 		//Check locations here.
 		
 	}
-	
+
 	public void render(SpriteBatch batch)
 	{//Draw all components of the background
 		for(Shape s : grid)
@@ -158,5 +162,21 @@ public class Background
 				x += this.tile_size;
 			}
 		}
+	}
+	
+	private void checkPosition(Shape s)
+	{//Check to see if the the given shape is offscreen.
+		//Check X
+		Rectangle rect = s.getBoundingRectangle();
+		if(rect.x <= -this.tile_size)
+			s.setX(Gdx.graphics.getWidth() + 1);
+		else if(rect.x >= Gdx.graphics.getWidth())
+			s.setX(-this.tile_size);
+		
+		//Check Y
+		if(rect.y <= -this.tile_size)
+			s.setY(Gdx.graphics.getHeight());
+		else if(rect.y >= Gdx.graphics.getHeight())
+			s.setY(-this.tile_size);
 	}
 }
