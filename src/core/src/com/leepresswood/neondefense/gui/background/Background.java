@@ -201,4 +201,24 @@ public class Background
 		else if(rect.y >= Gdx.graphics.getHeight())
 			s.setY(-this.tile_size);
 	}
+	
+	private float farthestLeft()
+	{
+		
+	}
+	
+	private float farthestRight()
+	{
+		
+	}
+	
+	private float farthestUp()
+	{
+		
+	}
+	
+	private float farthestDown()
+	{
+		
+	}
 }
