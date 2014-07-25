@@ -13,9 +13,11 @@ public class Background
 {
 	private ArrayList<Shape> grid;
 	private int tiles_across = 12;
-	private float tile_size = 1;
+	private float tile_size;
 	private Direction direction;
 	private boolean usedHorizontal = true;
+	private float move_speed = 1;
+	private float total_moved = 0;
 	
 	public Background(Assets assets, Shapes shape, Direction direction)
 	{	
@@ -55,47 +57,48 @@ public class Background
 		switch(direction)
 		{
 			case DOWN:
-				translate_y = -1;
+				translate_y = -this.move_speed;
 				break;
 			case DOWNLEFT:
-				translate_x = -1;
-				translate_y = -1;
+				translate_x = -this.move_speed;
+				translate_y = -this.move_speed;
 				break;
 			case DOWNRIGHT:
-				translate_x = 1;
-				translate_y = -1;
+				translate_x = this.move_speed;
+				translate_y = -this.move_speed;
 				break;
 			case LEFT:
-				translate_x = 1;
+				translate_x = this.move_speed;
 				break;
 			case NONE:
 				break;
 			case RIGHT:
-				translate_x = 1;
+				translate_x = this.move_speed;
 				break;
 			case UP:
-				translate_y = 1;
+				translate_y = this.move_speed;
 				break;
 			case UPLEFT:
-				translate_x = -1;
-				translate_y = 1;
+				translate_x = -this.move_speed;
+				translate_y = this.move_speed;
 				break;
 			case UPRIGHT:
-				translate_x = 1;
-				translate_y = 1;
+				translate_x = this.move_speed;
+				translate_y = this.move_speed;
 				break;
 			default:
 				break;
 		}
 		
+		this.total_moved += this.move_speed;
+		
 		for(Shape s : grid)
 		{
 			s.translate(translate_x, translate_y);
-			this.checkPosition(s);
+			
+			if(this.total_moved % this.tile_size == 0)
+				this.checkPosition(s);
 		}
-		
-		//Check locations here.
-		
 	}
 
 	public void render(SpriteBatch batch)
@@ -168,9 +171,9 @@ public class Background
 	{//Check to see if the the given shape is offscreen.
 		//Check X
 		Rectangle rect = s.getBoundingRectangle();
-		if(rect.x <= -this.tile_size)
-			s.setX(Gdx.graphics.getWidth() + 1);
-		else if(rect.x >= Gdx.graphics.getWidth())
+		if(rect.x < -this.tile_size)
+			s.setX(Gdx.graphics.getWidth());
+		else if(rect.x > Gdx.graphics.getWidth())
 			s.setX(-this.tile_size);
 		
 		//Check Y
