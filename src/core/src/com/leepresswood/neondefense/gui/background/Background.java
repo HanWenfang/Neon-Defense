@@ -107,14 +107,23 @@ public class Background
 				break;
 			default:
 				break;
-		}
+		}		
 		
 		for(Shape s : this.grid)
 		{
-			s.translate(translate_x, translate_y);
-			this.checkPosition(s);
+			s.translate(translate_x, translate_y);			
 		}
-	}
+		
+		float far_d = this.farthestDown();
+		float far_u = this.farthestUp();
+		float far_l = this.farthestLeft();
+		float far_r = this.farthestRight();
+		
+		for(Shape s : this.grid)
+		{
+			this.checkPosition(s, far_d, far_u, far_l, far_r);
+		}
+	}	
 
 	public void render(SpriteBatch batch)
 	{//Draw all components of the background
@@ -182,20 +191,20 @@ public class Background
 		}
 	}
 	
-	private void checkPosition(Shape s)
+	private void checkPosition(Shape s, float far_d, float far_u, float far_l, float far_r)
 	{//Check to see if the the given shape is offscreen.
 		//Check X
 		Rectangle rect = s.getBoundingRectangle();
-		if(rect.x <= -this.tile_size)
-			s.setX(this.farthestRight() + this.tile_size);
+		if(rect.x <= -this.tile_size - 1)
+			s.setX(far_r);
 		else if(rect.x >= Gdx.graphics.getWidth())
-			s.setX(this.farthestLeft() - this.tile_size);
+			s.setX(far_l - this.tile_size + 1);
 		
 		//Check Y
 		if(rect.y <= -this.tile_size)
-			s.setY(this.farthestUp() + this.tile_size);
+			s.setY(far_u - 1);
 		else if(rect.y >= Gdx.graphics.getHeight())
-			s.setY(this.farthestDown() - this.tile_size);
+			s.setY(far_d - this.tile_size + 1);
 	}
 	
 	private float farthestLeft()
