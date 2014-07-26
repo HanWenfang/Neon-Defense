@@ -1,6 +1,6 @@
 <enemies>
 	<enemy id="0">
-		<name value=""/>
+		<name value="Triangle"/>
 		<speed value="1.5"/>
 		<damage value="1"/>
 	</enemy>

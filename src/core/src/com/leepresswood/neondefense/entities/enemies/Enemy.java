@@ -55,26 +55,27 @@ public class Enemy
 	
 	public void update(float delta, Field field)
 	{
-		//Collect any changes from the field.
+		//Get the next direction.
 		
 		
 		//Keep the distance traveled in a distance variable
-		this.distance += delta * this.speed;
+		float move = delta * this.speed;
+		this.distance += move;
 		
-		//Get the change
+		//Get the change in position based upon direction.
 		switch(this.direction)
 		{
 			case DOWN:
-				this.sprite.translateY(-delta * this.speed);
+				this.sprite.translateY(-move);
 				break;
 			case LEFT:
-				this.sprite.translateX(-delta * this.speed);
+				this.sprite.translateX(-move);
 				break;
 			case RIGHT:
-				this.sprite.translateX(delta * this.speed);
+				this.sprite.translateX(move);
 				break;
 			case UP:
-				this.sprite.translateY(delta * this.speed);
+				this.sprite.translateY(move);
 				break;			
 		}
 		
