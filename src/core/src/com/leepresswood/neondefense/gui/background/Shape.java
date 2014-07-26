@@ -1,6 +1,7 @@
 //A Sprite extension that has specialized qualities for the background
 package com.leepresswood.neondefense.gui.background;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -16,6 +17,7 @@ public class Shape extends Sprite
 		this.visible = true;
 		this.setPosition(position.x, position.y);
 		this.setSize(size, size);
+		this.setColor(Color.RED);
 	}
 	
 	public Shape(Texture t, float size, Vector2 position, boolean visible, boolean flipped)
