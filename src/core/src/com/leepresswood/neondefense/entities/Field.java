@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
 import com.leepresswood.neondefense.entities.towers.Tower;
+import com.leepresswood.neondefense.entities.towers.projectiles.Projectile;
 import com.leepresswood.neondefense.generators.Assets;
 import com.leepresswood.neondefense.generators.LevelGenerator;
 import com.leepresswood.neondefense.generators.TowerGenerator;
@@ -22,6 +23,7 @@ public class Field
 	
 	private ArrayList<Tower> towers;
 	private ArrayList<Enemy> enemies;
+	private ArrayList<Projectile> projectiles;
 	
 	//GUI variables
 	private int money_change;
@@ -243,9 +245,11 @@ public class Field
 	{//Deselect the selected tile
 		for(int i = 0; i < this.tiles.length; i++)
 			for(int j = 0; j < this.tiles[0].length; j++)
-			{
 				this.tiles[i][j].deselect();
-				//this.tiles[i][j].clear();		
-			}
+	}
+
+	public ArrayList<Projectile> getProjectiles()
+	{
+		return this.projectiles;		
 	}
 }

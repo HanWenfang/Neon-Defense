@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.Field;
+import com.leepresswood.neondefense.entities.towers.projectiles.Projectile;
 import com.leepresswood.neondefense.generators.Assets;
 
 public class Enemy
