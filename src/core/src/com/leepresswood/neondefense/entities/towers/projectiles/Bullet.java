@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.leepresswood.neondefense.entities.enemies.Enemy;
 
-public class Bullet
+public class Bullet extends Projectile
 {	
 	private Sprite sprite;
 	private float direction;

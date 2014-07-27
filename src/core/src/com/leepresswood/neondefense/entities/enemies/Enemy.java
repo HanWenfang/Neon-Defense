@@ -79,8 +79,11 @@ public class Enemy
 				break;			
 		}
 		
-		//Update health bar
-		
+		//Update health bar by checking all projectiles.
+		for(Projectile p : field.getProjectiles())
+		{
+			
+		}
 	}
 	
 	public void render(float delta, SpriteBatch batch)
