@@ -48,9 +48,17 @@ public class Healthbar
 			this.foreground.setSize(new_width, this.foreground.getHeight());
 			
 			//Readjust the positioning for the enemy's movement.
-			this.background.setPosition(position.x, position.y);
-			this.foreground.setPosition(position.x, position.y);			
+			this.setPosition(position);		
 		}		
+	}
+	
+	private void setPosition(Vector2 position)
+	{//Given the middle of the enemy, find where the healthbar must be positioned.
+		float x = position.x - this.background.getWidth() / 2f;
+		float y = position.y + this.background.getHeight() ;
+		
+		this.background.setPosition(position.x, position.y);
+		this.foreground.setPosition(position.x, position.y);	
 	}
 	
 	public void render(SpriteBatch batch)
